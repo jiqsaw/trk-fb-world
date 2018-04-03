@@ -1,0 +1,6 @@
+﻿{
+	"CurrentInvoice":
+		{
+			"invoice": { "getOpenAmount":"58.82" }
+		}
+}

@@ -1,0 +1,78 @@
+﻿@using TurkcellFacebookDunyasi.Com.Helpers
+@using TurkcellFacebookDunyasi.App.Models
+@using Microsoft.AspNet.Mvc.Facebook.Models
+
+@model TurkcellFacebookDunyasi.App.Models.LoginModel
+
+@{
+    Layout = null;
+}
+
+<script>
+
+    $(function () {
+                
+        $('.welcome').animate(
+            {
+                marginLeft: '0',
+                opacity: 1
+            },
+            {
+                duration: 1200,
+                easing: 'easeOutQuart'
+            });
+
+        setTimeout(function () {            
+
+            //$('#loading').hide();
+
+            $('.loginForm').animate(
+                {
+                    marginLeft: '0',
+                    opacity: 1
+                },
+                {
+                    duration: 900,
+                    easing: 'easeOutQuart'
+                });
+
+        }, 800);
+    });
+
+
+
+</script>
+
+<section class="container">
+
+        <section class="login">
+                    
+
+            <section class="fLeft welcome" style="margin-left: -300px;">
+                <figure class="fLeft user userLarge">
+                    <img src="@Model.UserFb.Data.FbProfilePicture" border="0" />
+                </figure>
+                <section class="fRight name fIta">
+                    <span>Hoş Geldiniz</span>    
+                    <p><b>@Model.UserFb.Data.FbFullName</b></p>
+                </section>
+            </section>
+
+            <article class="fRight tips">
+                @Html.Action("Startup", "Offer")
+            </article>
+
+            <section class="fLeft loginForm" style="-moz-opacity: 0; opacity: 0; margin-left: 500px; min-height: 500px; margin-top:0px !important">                
+
+                @*<iframe src="@PathHelper.UrlStatic/_pages/giris.html" width="100%" height="500px" allowtransparency="true" frameborder="0"></iframe>*@
+                <iframe src="@PathHelper.UrlWeb/Login/SsoResult" width="100%" height="500px" allowtransparency="true" frameborder="0"></iframe>
+
+            </section>
+            
+            @*@Html.Action("LoadingSmall", "Global")*@
+
+        </section>
+
+    <ins></ins>
+
+</section>

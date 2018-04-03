@@ -1,0 +1,1 @@
+﻿{"Kontormetre":{"currentCounter":"0.64"}}

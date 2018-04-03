@@ -1,0 +1,36 @@
+﻿@using TurkcellFacebookDunyasi.Com.Helpers
+
+<section class="landingPage">
+                    
+<img src="@PathHelper.UrlStatic/images/landing/landing.png" />
+                 
+</section>
+
+<ins></ins>
+
+                
+<section class="fIta lpText">
+
+    <section class="lpTitle fIta">Daha birçok avantaj Turkcell Hesabım’da sizi bekliyor!</section>
+                       
+
+    @if (!Convert.ToBoolean(ViewBag.IsPageLiked))
+    {
+        <section id="sectionLike">
+            <span class="yellowText">Turkcell Hesabım’a giriş yapmak için sayfayı beğenmelisiniz. </span>
+            <br /><br />
+            <fb:like href="@Helper.configFb(TurkcellFacebookDunyasi.App.App_Manager.ConfigManager.ConfigNameFb.Facebook_PageAppTabUrl)" send="false" layout="button_count" width="100" show_faces="false"></fb:like>
+        </section>
+    }
+                    
+    else
+    {
+        <section id="sectionStart" class="fBoldIta">
+            <a class="buttonLink bigButton" href="javascript:fbLogin()">GİRİŞ</a>
+        </section>
+    }
+                            
+                  
+</section>  
+                    
+<ins class="space35"></ins>

@@ -1,0 +1,24 @@
+﻿@model  IEnumerable<TurkcellFacebookDunyasi.App.Models.SmsGonderResultModel>
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+
+        <aside class="friendUser2">
+                      
+            <figure class="fLeft user userMedium">
+                <img src="@item.PictureLink" border="0" />
+            </figure>
+            <label class="noneLink" style="width:250px !important;">
+                <p>@item.FirstNameView @item.LastNameView - @if(item.Status=="delivered"){<text><span class="fLightGreen">Gönderildi</span></text>} else {<text><span class="fPink">Gönderilemedi</span></text>}</p>
+            </label>
+                        
+        </aside>
+
+
+        <ins class="lineTransparent"></ins>
+    }
+}
+<ins class="space15"></ins>
+<a href="javascript:;" class="ajax buttonLink pageNav leftButton" data-page="SmsGonder" data-ga="SmsGonder">Yeni SMS Gönder</a>

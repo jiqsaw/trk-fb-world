@@ -1,0 +1,24 @@
+﻿@model TurkcellFacebookDunyasi.Core.TransferAmount
+
+
+@section scriptsPreRender {
+}
+
+@Helper.BodyNav(Html, "TransferAmount", true)
+                
+@using (Ajax.BeginForm(null, null, new AjaxOptions { UpdateTargetId = "PageForm", LoadingElementId = "LoadingForm", OnSuccess = "FormOnSuccess" }, new { @id = "PageForm" }))
+{    
+    <aside class="panel main">
+
+        @Html.ValidationMessageFor(model => model.TlTransferAmount)    @Html.LabelFor(model => model.TlTransferAmount)    @Html.EditorFor(model => model.TlTransferAmount)
+
+        @Html.Partial("Common/FormFooter")
+            
+    </aside>
+    
+    <aside class="panel side">
+
+        @Html.Partial("Common/DataDefaultFields")
+
+    </aside>
+}

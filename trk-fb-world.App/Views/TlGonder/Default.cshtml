@@ -1,0 +1,76 @@
+﻿@using TurkcellFacebookDunyasi.Com.Helpers
+@using TurkcellFacebookDunyasi.App.Models
+@model TurkcellFacebookDunyasi.App.Models.TlGonderModel
+<script>
+    $(document).ready(function () {
+        $("select").kendoDropDownList();
+
+        $("#Amount").live("change", function () {
+            var SelectIndex = document.getElementById('Amount').selectedIndex;
+            $("#creditIndex").val(SelectIndex);
+        });
+    });
+    function friendSelected() {
+
+    }
+</script>
+<div id='colorboxContentainer3'>
+    <div id="colorboxContent3">
+		<h2 class="colorboxHeader">Arkadaşına TL GÖNDER</h2>              
+
+        <section id="krediIsteForm">
+
+            <section id="response"></section>
+
+            
+            <ins class="space35"></ins>
+            @using (Ajax.BeginForm(new AjaxOptions { UpdateTargetId = "krediIsteForm", LoadingElementId = "LoadingForm", Url = "/TlGonder/Default" }))
+            {
+                <input type="hidden" name="ToId" id="ToId" value="@ViewBag.FbId" />
+                <input type="hidden" name="ToMsisdn" id="ToMsisdn" value="@ViewBag.Msisdn" />
+                <input type="hidden" name="creditIndex" id="creditIndex" />
+
+                <aside class="colorboxFormText _padTop">TL Talep Ettiğiniz Arkadaşınız</aside>
+
+                
+                <article class="friend friendSmall">
+                    <figure class="fLeft user userMedium">
+                        <img src="@ViewBag.Picture" border="0" id="frImage" />
+                    </figure>
+                    <p id="frName">@ViewBag.FirstNameView<br />@ViewBag.LastNameView</p>
+                </article>
+
+                <span class="link linkMargin" id="linkChange"><a href="/Friend/FriendList/?NextUrl=TlIste/Default" class="ajax">Değiştir</a></span>
+
+                <aside class="colorboxFormText">Talep Ettiğiniz TL Miktarı</aside>
+                <select id="Amount" name="Amount" style="width:146px">
+                    @if(Model.serviceData!=null)
+                    {
+                        if (Model.serviceData.AvailableLimits.Count > 0)
+                        {
+                            foreach (var item in Model.serviceData.AvailableLimits.ToList())
+                            {
+                                <option value="@item.Limit TL">@item.Limit TL</option>
+                            }
+                        }
+                    }
+                </select>
+                                
+                <ins></ins>
+
+                <aside class="button">
+                    <input type="submit" name="btnKrediIste" id="btnKrediIste" value="GÖNDER" />
+                    <section id="LoadingForm" class="fRight ajaxFormLoadLb">@Html.Action("LoadingSmall","Global")</section>
+                </aside>
+
+            }
+        </section>
+
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".ajax").colorbox();
+        $("#creditIndex").val(document.getElementById('Amount').selectedIndex);
+    });
+</script>

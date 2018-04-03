@@ -1,0 +1,63 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.KalanKullanimBilgisiModel
+
+@{int takeCount = 2;}
+@if (Model.serviceData.FreeUnits.Count < 2)
+{
+    takeCount = 1;
+}
+else if (Model.serviceData.FreeUnits.Count == 0)
+{
+    takeCount = 0;
+}
+
+@foreach (var item in Model.serviceData.FreeUnits.Take(takeCount).ToList())
+{                  
+
+    <section class="remainingContainer">
+        <label class="remainingTitle">
+            @item.UnitTypeDesc<span> (Bitiş: @item.EndDate)</span>
+        </label>
+        @if ((new UserFbManager()).Data.UserType == (int)Parameter.UserType.posp)
+        {
+        <label class="remainingInfo">
+            <span class="remainingInfoLeft">@item.CampaignName <br /> 
+                
+                @if (item.ZoneTypeDesc != "") {
+                <span class="remainingInfoZoneType fIta">Kullanım Yönü: @item.ZoneTypeDesc</span> 
+                }
+
+            </span>
+            <span class="remainingInfoRight">@String.Format("{0:0.00}", item.UsedBalance)  @item.CreditUnit / @item.TotalBalance @item.CreditUnit</span>
+        </label>
+        <label>
+            <aside id="bar_@item.Id"></aside>
+        </label>
+        <script>
+            $(function () {
+                RateGenerate('bar_@item.Id', '@item.Percentage%', '@item.Percentage%');
+            });
+        </script>
+        }
+        else
+        {
+        <label class="remainingInfo">
+            <span class="remainingInfoLeft">@item.CampaignName <br /> 
+                
+                
+                @if (item.ZoneTypeDesc != "") {
+                <span class="remainingInfoZoneType fIta">Kullanım Yönü: @item.ZoneTypeDesc</span> 
+                }
+
+            </span>
+            <span class="remainingInfoRight">@String.Format("{0:0.00}", item.AvailableBalance)  @item.CreditUnit</span>
+        </label>
+            
+        }
+    </section>    
+                        
+    
+}
+
+<aside class="title fReg listAll">
+    <a href="javascript:;" class="pageNav" data-page="HatOzetim" data-ga="HatOzetim">Tümü</a>
+</aside>

@@ -1,0 +1,16 @@
+﻿[
+	{
+		"Description": "Paket Ucretleri",
+		"Rate": 25		
+	}, {
+		"Description": "Kota Aşım Ücreti",
+		"Rate": 15
+	}, {
+		"Description": "Kullanım Ücretleri",
+		"Rate": 45,
+		"explode": true
+	}, {
+		"Description": "Vergiler",
+		"Rate": 15
+	}
+]

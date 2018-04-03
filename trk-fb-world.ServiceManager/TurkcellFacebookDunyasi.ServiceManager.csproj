@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{39FCC7B8-6BE0-417D-BA0A-D3A44BA08E4A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TurkcellFacebookDunyasi.ServiceManager</RootNamespace>
+    <AssemblyName>TurkcellFacebookDunyasi.ServiceManager</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config.cs" />
+    <Compile Include="Definitions.cs" />
+    <Compile Include="Models\BaseServiceModel.cs" />
+    <Compile Include="Models\CallDetails.cs" />
+    <Compile Include="Models\EnCokArananNumaralar.cs" />
+    <Compile Include="Models\FaturaAnalizi.cs" />
+    <Compile Include="Models\KontorIsteLimit.cs" />
+    <Compile Include="Models\Msisdn2FbResponse.cs" />
+    <Compile Include="Models\Faturalarim.cs" />
+    <Compile Include="Models\FaturaLimitBilgisi.cs" />
+    <Compile Include="Models\GuncelTLMiktari.cs" />
+    <Compile Include="Models\HatOzetim.cs" />
+    <Compile Include="Models\GuncelFaturaBilgisi.cs" />
+    <Compile Include="Models\KalanKullanimBilgisi.cs" />
+    <Compile Include="Models\Klubum.cs" />
+    <Compile Include="Models\PaketVeServis.cs" />
+    <Compile Include="Models\Partials\Recipient.cs" />
+    <Compile Include="Models\WebSms.cs" />
+    <Compile Include="ServiceHandlers\CallDetailHandler.cs" />
+    <Compile Include="ServiceHandlers\CokArananNumaralarHandler.cs" />
+    <Compile Include="ServiceHandlers\KlubumHandler.cs" />
+    <Compile Include="Models\Partials\Clubs.cs" />
+    <Compile Include="Models\Partials\FreeUnits.cs" />
+    <Compile Include="Models\Partials\Services.cs" />
+    <Compile Include="Models\SmsGonder.cs" />
+    <Compile Include="Models\SsoLogin.cs" />
+    <Compile Include="Models\TiklaAra.cs" />
+    <Compile Include="Models\TLGonder.cs" />
+    <Compile Include="Models\TLIste.cs" />
+    <Compile Include="Models\TLYukle.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceHandlers\BaseHandler.cs" />
+    <Compile Include="ServiceHandlers\FaturaLimitSubsHandler.cs" />
+    <Compile Include="ServiceHandlers\GetUpdatePersonHandler.cs" />
+    <Compile Include="ServiceHandlers\HatOzetimHandler.cs" />
+    <Compile Include="ServiceHandlers\FaturalarimHandler.cs" />
+    <Compile Include="ServiceHandlers\KalanKullanimBilgisiHandler.cs" />
+    <Compile Include="ServiceHandlers\GuncelTLMiktariHandler.cs" />
+    <Compile Include="ServiceHandlers\KontorIsteLimitHandler.cs" />
+    <Compile Include="ServiceHandlers\PaketServisHandler.cs" />
+    <Compile Include="ServiceHandlers\SsoLoginHandler.cs" />
+    <Compile Include="ServiceHandlers\TiklaAraHandler.cs" />
+    <Compile Include="ServiceHandlers\TLGonderHandler.cs" />
+    <Compile Include="ServiceHandlers\TLIsteHandler.cs" />
+    <Compile Include="ServiceHandlers\WebSmsHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LIB\LIB.csproj">
+      <Project>{4a17e724-613d-4d65-84d0-bcc96716943e}</Project>
+      <Name>LIB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TurkcellFacebookDunyasi.Com\TurkcellFacebookDunyasi.Com.csproj">
+      <Project>{70bb7cd2-cc02-425b-aa9e-5ee1f21cdda1}</Project>
+      <Name>TurkcellFacebookDunyasi.Com</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TurkcellFacebookDunyasi.Core\TurkcellFacebookDunyasi.Core.csproj">
+      <Project>{6c4bbb94-da39-4bb6-9933-efd2105e804b}</Project>
+      <Name>TurkcellFacebookDunyasi.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TurkcellFacebookDunyasi.Logger\TurkcellFacebookDunyasi.Logger.csproj">
+      <Project>{8d9a6950-a0f8-4a5d-88ed-5f98cf61419e}</Project>
+      <Name>TurkcellFacebookDunyasi.Logger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TurkcellFacebookDunyasi.ServiceConnector\TurkcellFacebookDunyasi.ServiceConnector.csproj">
+      <Project>{9fd867ce-d6ea-4e6a-9d98-118f04fe30ae}</Project>
+      <Name>TurkcellFacebookDunyasi.ServiceConnector</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

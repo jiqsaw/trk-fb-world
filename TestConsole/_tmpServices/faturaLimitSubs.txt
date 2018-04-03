@@ -1,0 +1,7 @@
+﻿{
+	"FaturaLimitSubs":
+		{
+			"currentAmount":"80.81",
+			"limitAmount":"60.0"
+		}
+}

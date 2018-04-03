@@ -1,0 +1,30 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.KontrolLimitimModel
+
+@if(Model.serviceData.LimitAmount>0){
+  
+<label class="limitTitle">
+    <p class="fLeft">Limit kullanım oranı: %@Model.Percentage </p>
+    <ins></ins>
+    <p class="fRight">@Model.serviceData.CurrentAmount TL / <span>@Model.serviceData.LimitAmount TL</span></p>
+</label>
+
+<script>
+    $(document).ready(function () {
+        RateGenerate('bar11', '@Model.Percentage%');
+    });
+</script>    
+<label>
+    <aside id="bar11"></aside>
+</label>
+
+<aside class="fReg listAll">
+    <a href="https://csi.turkcell.com.tr/csi/invoiceSettings?referrer=invoiceSettings&csiEntranceId=0101&ref=1" data-ga="KontrolLimitDegistir" class="csiLink">Limit Değiştir</a>
+</aside>
+
+    }
+else
+{
+    <aside class="fReg listAll mNoneTop">
+        Fatura Kontrol aboneliğiniz bulunmamaktadır. <a href="https://csi.turkcell.com.tr/csi/invoiceSettings?referrer=invoiceSettings&csiEntranceId=0101&ref=1" data-ga="KontrolLimitAboneOl" class="csiLink">Abone Olun</a>
+    </aside>
+}

@@ -1,0 +1,5 @@
+﻿AD hesaplı logon iken;
+10.200.148.16 88
+
+Dışarıdan girişlerde
+10.200.125.200 80

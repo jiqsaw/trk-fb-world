@@ -1,0 +1,28 @@
+﻿@*<section class="contentLanguage">
+ 
+    <header>
+        @HttpContext.GetGlobalResourceObject("Global", "LanguageTitle")
+    </header>
+
+    @{
+        var _class = "selected";
+    }
+
+    @if (GlobalVars.ContentLanguageCode == (int)TurkcellFacebookDunyasi.Com.Enums.Parameter.Language.Turkish) { _class = "selected"; }
+    else { _class = ""; }
+    @Html.ActionLink("TR", "Default", new { ContentLng = ((int)TurkcellFacebookDunyasi.Com.Enums.Parameter.Language.Turkish).ToString() }, new { @class = _class } )
+
+
+    @if (GlobalVars.ContentLanguageCode == (int)TurkcellFacebookDunyasi.Com.Enums.Parameter.Language.English) { _class = "selected"; }
+    else { _class = ""; }
+    @Html.ActionLink("EN", "Default", new { ContentLng = ((int)TurkcellFacebookDunyasi.Com.Enums.Parameter.Language.English).ToString() }, new { @class = _class } )
+
+    @if (GlobalVars.ContentLanguageCode == (int)TurkcellFacebookDunyasi.Com.Enums.Parameter.Language.Russian) { _class = "selected"; }
+    else { _class = ""; }
+    @Html.ActionLink("RU", "Default", new { ContentLng = ((int)TurkcellFacebookDunyasi.Com.Enums.Parameter.Language.Russian).ToString() }, new { @class = _class } )
+
+    @if (GlobalVars.ContentLanguageCode == (int)TurkcellFacebookDunyasi.Com.Enums.Parameter.Language.Persian) { _class = "selected"; }
+    else { _class = ""; }
+    @Html.ActionLink("AR", "Default", new { ContentLng = ((int)TurkcellFacebookDunyasi.Com.Enums.Parameter.Language.Persian).ToString() }, new { @class = _class } )
+
+</section>*@

@@ -1,0 +1,33 @@
+﻿@using TurkcellFacebookDunyasi.Com.Helpers
+@model IEnumerable<TurkcellFacebookDunyasi.Core.Offer>
+
+
+@if(Model!=null)
+{
+    foreach(var item in Model.ToList())
+    {
+    <section class="tip">
+        <article class="functionBanner">
+            <img src="@PathHelper.Images.Offer(item.FileName,Parameter.ImageSizeNaming.Original)" />
+            <p class="title">@item.Title</p>
+            <p class="summary fReg">@item.Detail
+                @if(item.URL!=null || item.URL!=string.Empty || item.URL!=""){
+                    <text><br /><a href="@item.URL" target="@((Parameter.WindowType)item.WindowTypeCode)" data-ga="@item.URL">Detaylı Bilgi</a></text>
+                }
+            </p>
+        </article>
+    </section>
+    }
+    
+    <ins></ins>
+    <ul class="alertNav">
+        @{int _count = 0;}
+        @foreach(var item in Model.ToList())
+        {
+            _count++;
+            
+            if (_count == 1) { <li><a class="active">@item.Id</a></li> }
+            else { <li><a>@item.Id</a></li> }
+        }
+    </ul>
+}

@@ -1,0 +1,128 @@
+﻿@using TurkcellFacebookDunyasi.Com.Helpers
+
+@model TurkcellFacebookDunyasi.App.Models.CallModel
+
+<script>
+    $(document).ready(function () {
+        //$("select").kendoDropDownList();
+        $("#btnAra").click(function () {
+
+            $("#CallStep1").hide();
+            $("#CallStep2").fadeIn('slow');
+
+            var postData = { FriendUserId: @Model.FriendData.UserId };
+
+            $.ajax({
+                url: '/TiklaAra/CallStart/',
+                type: "POST",
+                data: postData,
+                dataType: 'json',
+                success: function (response) {
+
+                    if (response.result == 0) {
+                        $("#CallStep2").hide();
+                        $('#CallStepError').show();
+                    }
+                    else if (response.result == 1) {
+
+                        setTimeout(function () {
+                            
+                            $.ajax({
+                                url: '/TiklaAra/CheckBusy/?CallId=' + response.callId,
+                                type: "GET",
+                                dataType: 'json',
+                                success: function (response) {
+                                    if (response.result == 1) {
+                                        $("#CallStep2").hide();
+                                        $('#CallStepBusy').show();
+                                    }
+                                }
+                            });
+
+                        }, 5000);
+
+                    }
+
+                }
+            });
+
+        });
+    });
+</script>
+
+<div id='colorboxContentainer2'>
+    <div id="colorboxContent2">
+		<h2 class="colorboxHeader">Arkadaşını Tıkla ARA</h2>
+
+        <section id="CallStep1">
+            
+            <section class="information fIta fLeft top35">
+                <img src="@PathHelper.UrlStatic/images/icons/information.png" /> İlk aramada 10 dakika ücretsiz. Sonraki her arama 40 kuruş üzerinden ücretlendirilir.
+            </section>
+            @*<section class="information fIta fLeft top35">
+                <img src="@PathHelper.UrlStatic/images/icons/information.png" /> Günlük kalan ücretsiz konuşma hakkınız: <span id="remainingBalance"></span>
+            </section>
+            <script>
+                partialViewLoad("remainingBalance", "/TiklaAra/RemainingBalance");
+            </script>*@
+
+        <section class="fLeft profil">
+            <figure class="fLeft user userLarge">
+                <img src="@Model.FriendData.PictureLink" border="0" />
+            </figure>
+            <section class="fRight fBoldIta">
+                <p class="large">@Model.FriendData.FirstNameView @Model.FriendData.LastNameView</p>
+                <ins></ins>
+
+                @if (Model.IsAvailable) {
+                    <a href="javascript:;" id="btnAra" data-ga="Araniyor" class="dtCall">Tıkla ARA</a>
+                }
+                else
+                {
+                    <section class="error">Arkadaşın bu zaman diliminde aranmak istemiyor.</section>
+                }
+
+            </section>
+        </section>
+
+          <section class="textAreaBottom fIta">TıklaAra ile yapacağınız ilk arama 10 dakika ile sınırlı ve ücretsizdir. Ücretsiz arama hakkınız bittikten sonra yapacağınız aramalar (10 dk ile sınırlıdır), 40 kuruş olarak ücretlendirilir.</section>
+            
+        </section>
+
+        <section id="CallStep2" style="display:none;">
+            <ins class="space35"></ins>
+            
+            <section class="calling">
+
+                <section class="contacts fLeft">
+                    <img src="@Model.UserFb.Data.FbProfilePicture" class="contact1" />
+                    <img src="@Model.FriendData.PictureLink" class="contact2" />
+                </section>
+
+                <section class="callingSuccess fRight fIta">
+                    <b>Aranıyor<img src="@PathHelper.UrlStatic/images/global/callingPoint.gif" /></b><br />
+                    Karşı taraf aramayı kabul ettiğinde, Turkcell sizi arayacak ve aradığınız kişiye bağlayacak.
+                </section>
+                
+            </section>
+
+        </section>
+
+        <section id="CallStepError" class="error" style="display:none;">
+            <ins class="space35"></ins>
+
+            ARAMA ŞU AN İÇİN GERÇEKLEŞTİRİLEMİYOR! <br /> 
+            Lütfen daha sonra tekrar deneyiniz...
+
+        </section>
+
+        <section id="CallStepBusy" class="error" style="display:none;">
+            <ins class="space35"></ins>
+
+            YOĞUNLUK SEBEBİYLE ARAMANIZ GERÇEKLEŞTİRİLEMİYOR! <br /> 
+            Lütfen daha sonra tekrar deneyiniz...
+
+        </section>
+
+    </div>
+</div>

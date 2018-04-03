@@ -1,0 +1,29 @@
+﻿<article class="friend">
+
+    #if (UserId != null && UserId != '' && Msisdn!=null && Msisdn!='' && Msisdn!=undefined)  { #
+        <a class="lProfile ajax" href="/Friend/FriendProfile/#= UserId #" data-ga="FriendDetail_#= FbId #">
+    # } #
+
+            <figure class="fLeft user userMedium">
+                <img src="#= PictureLink #" border="0" />
+            </figure>
+            <p>            
+                    #= FirstNameView # <br /> #= LastNameView #
+            </p>
+
+    #if (UserId != null && UserId != '' && Msisdn!=null && Msisdn!='' && Msisdn!=undefined)  { #
+        </a>   
+    # } #
+    
+    #if (IsClickToCallInvisible == 0 && IsClickToCallBlock == 0)  { #
+    
+        #if (UserId != null && UserId != '' && Msisdn!=null && Msisdn!='' && Msisdn!=undefined)  { #
+             <a class='ajax' href="/TiklaAra/Call/#= UserId #" data-ga="Ara">ara</a>
+        # }
+        else { #
+            <a class='invite' href="javascript:sendRequestToRecipients('#= FbId #');" data-ga="Invite_#= FbId #">davet et</a>
+        # } #
+
+    # } #
+
+</article>

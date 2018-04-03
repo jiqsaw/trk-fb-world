@@ -1,0 +1,138 @@
+﻿@using TurkcellFacebookDunyasi.Com.Helpers
+@using TurkcellFacebookDunyasi.App.Models
+
+@model TurkcellFacebookDunyasi.App.Models.TiklaAraModel
+
+
+ <section class="main">
+            <section class="mainHeader">
+                <aside class="fLeft title">
+                    <h2>Arkadaşlarını Facebook'tan Ara</h2>
+                </aside>
+
+                <aside class="fRight fIta mainTabs" id="ClickToCallPromoteTypes" style="display: none;">
+                    <nav>                        
+                        @*<a href="javascript:;" class="calls active">Cevapsız Aramalar</a>*@
+                        <a href="javascript:;" class="dense" id="aFrequentlyCalled"
+                            data-ga="TiklaAraPromote_Frequentyl" 
+                            data-action="@((int)TurkcellFacebookDunyasi.Core.ClickToCallPromoteModel.PromoteTypes.FrequentlyCalled)">
+                            Sık Görüştüklerim</a>
+
+                        <a href="javascript:;" class="lastCalls" 
+                            data-ga="TiklaAraPromote_LastCalls"
+                            data-action="@((int)TurkcellFacebookDunyasi.Core.ClickToCallPromoteModel.PromoteTypes.LastCalls)">
+                            Son Aramalar</a>
+                    </nav>
+                </aside>
+            </section>
+                
+            <section class="mainContent">
+
+
+
+                <script>
+
+                    var dsFriendsClickToCall;
+
+                    $(function () {
+
+                        $.ajax({
+                            url: '/TiklaAra/PrmoteFriends',
+                            type: "GET",
+                            dataType: 'json',
+                            success: function (response) {
+                                DataLoaded(response);
+                            }
+                        });
+
+                        function DataLoaded(response) {
+
+                            var dataSource = response.clickToCallPrmoteFriends
+                            var hasClickToCallRecords = response.hasClickToCallRecords;
+
+                            var _kTmpFriend = kendo.template($("#tmpFriendsClickToCall").html());
+
+                            dsFriendsClickToCall = new kendo.data.DataSource({
+                                data: dataSource,
+                                schema: {
+                                    model: {
+                                        fields: {
+                                            UserId: {},
+                                            FbId: {},
+                                            FirstNameView: { type: "string" },
+                                            LastNameView: { type: "string" }
+                                        }
+                                    }
+                                },
+
+                                change: function () {
+                                    $("#kGrid").html(kendo.render(_kTmpFriend, this.view()));
+                                    $(".ajax").colorbox();
+                                    $("#kGrid .friend").hide().show('normal');
+                                }
+                            });
+
+                            ClickToCallFriendsFilter("@((int)TurkcellFacebookDunyasi.Core.ClickToCallPromoteModel.PromoteTypes.RandomFriends)")
+                            if (hasClickToCallRecords)
+                                $('#ClickToCallPromoteTypes').show();
+                        }                       
+                    });
+
+                    
+                    //FILTERS
+                    $("#ClickToCallPromoteTypes nav a").click(function () {
+                        var i = $(this).index();
+                        $(".mainTabs>nav>a").removeClass("active");
+                        $(this).addClass("active");
+
+                        ClickToCallFriendsFilter($(this).attr("data-action"));
+                    });
+
+
+                    function ClickToCallFriendsFilter(FilterType) {
+                        var filters = { logic: 'and', filters: [{ field: "PromoteType", operator: "eq", value: eval(FilterType) }] };
+                        dsFriendsClickToCall.filter(filters);
+                    }
+
+                </script>
+
+
+
+
+
+                <script id="tmpFriendsClickToCall" type="text/x-kendo-template">
+
+                    @Html.Partial("FriendKTemplate")
+
+                </script>
+                    
+                <section class="tiklaAraPromote">
+                    <span class=" desc fIta fLightBlue">Turkcell’li arkadaşlarınızı buraya davet ederek Facebook üzerinden cep telefonunuzla konuşabilirsiniz. </span>
+                    <section class="tabItem" id="kGrid">
+
+                        @Html.Action("LoadingSmall", "Global")
+
+                    </section>
+                    
+                </section>
+
+
+
+
+
+                <ins></ins>
+
+                <aside class="mainContentBottom">
+                    <aside class="mainContentBottomInfo fLeft fIta">                        
+                        <p>* İlk aramada 10 dakika ücretsiz. Sonraki her arama 40 kuruş üzerinden ücretlendirilir. </p>
+                    </aside>
+
+                    <aside class="mainContentButton fRight fIta">
+                        <a href="javascript:;" class="pageNav" data-page="TiklaAra" data-ga="TiklaAra">arkadaş listem</a>
+                    </aside>
+                </aside>
+
+            </section>
+
+
+        </section>

@@ -1,0 +1,7 @@
+﻿{
+	"KontorIsteLimitQuery":
+	{
+		"requestCountLimit":"30",
+		"counterAmountLimit":"100"
+	}
+}

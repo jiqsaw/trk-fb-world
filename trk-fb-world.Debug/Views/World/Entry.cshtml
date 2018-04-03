@@ -1,0 +1,131 @@
+﻿@using TurkcellFacebookDunyasi.Com.Helpers
+@using TurkcellFacebookDunyasi.App.Models
+
+<script>
+    $(function () {
+        $(".ajax").colorbox();
+        tipsSlide();
+    });
+
+    function tipsSlide() {
+        $('.ballon').slides({
+            container: 'tip',
+            preload: false,
+            play: 5000,
+            paginition: true,
+            paginationClass: 'alertNav',
+            generatePagination: false,
+            effect: 'fade',
+            animationComplete: function (current) {
+                $('.alertNav li a').removeClass('active');
+                $('.alertNav li').eq(current - 1).children('a').addClass('active');
+            }
+        });
+    }
+</script>
+
+@if (ViewBag.MsisdnFbMatching != true)
+{
+    <script>
+        $.colorbox({ href: "/MsisdnFbMatching" });
+    </script>
+}
+<section class="subContainer">
+
+    <section class="tabContents">
+        <section class="tabContent">
+           
+            @Html.Action("Promote", "TiklaAra")
+            
+            <ins class="space35"></ins>
+
+            @if ((new UserFbManager()).Data.UserType == (int)Parameter.UserType.posp)
+            {
+                <article class="mainContainer fLeft">
+                    <section class="billingInfo">
+                        <h3>FATURA BİLGİLERİM</h3>
+                        <ins></ins>
+                        <section id="invoiceInfo">
+                            <script>
+                                partialViewLoad("invoiceInfo", "/Faturalarim/CurrentInvoiceInfo");
+                            </script>
+                        </section>
+                    </section>
+                </article>
+            }
+            else
+            {
+                <article class="mainContainer fLeft">
+                    <section class="billingInfo">
+                        <h3>TL DURUMUM</h3>
+                        <ins></ins>
+                        <section id="tlStatus">
+                            <script>
+                                partialViewLoad("tlStatus", "/TlIslemlerim/TLStatus");
+                            </script>
+                        </section>
+                        <aside class="title fReg listAll mNoneTop">
+                            <a href="javascript:;" class="pageNav" data-page="TlIslemlerim" data-ga="TlIslemlerim">TL işlemlerim</a>
+                        </aside>
+                    </section>
+                </article>
+            }
+
+            <article class="mainContainer fRight">
+                <section class="specialForYou">
+                    <h3>SİZE ÖZEL ÖNERİLER</h3>
+                    <ins></ins>
+                    <section class="ballon">
+                        @Html.Action("Suggestion", "Offer")
+                    </section>
+                </section>
+                <ins></ins>
+            </article>
+
+            <article class="mainContainer fLeft">
+                <section class="toUsePackage">
+                    <h3>PAKET KULLANIMI</h3>
+                    <ins></ins>
+                    <section id="useOfPackage">
+                        <script>
+                            partialViewLoad("useOfPackage", "/HatOzetim/UseOfPackage/");
+                        </script>
+                    </section>
+                </section>
+            </article>
+
+            <article class="mainContainer fRight" style="min-height:235px;">
+                <section class="birthday">
+                    <section id="birthday"></section>
+                    <script>
+                        partialViewLoad("birthday", "/World/Birthday/");
+                    </script>
+                </section>
+            </article>
+            
+
+            @if ((new UserFbManager()).Data.UserType == (int)Parameter.UserType.posp)
+            {
+                
+            <article class="mainContainer fLeft">
+                <ins></ins>
+                <section class="toUsePackage">
+                    <h3>KONTROL LİMİTİM</h3>
+                    <ins></ins>
+                    <section id="controlLimit">
+                        <script>
+                            partialViewLoad("controlLimit", "/Faturalarim/ControlLimit/");
+                        </script>
+                    </section>
+                </section>
+            </article>
+            }
+
+        </section>
+    </section>
+
+</section>
+
+<script>
+    PageHandler();
+</script>

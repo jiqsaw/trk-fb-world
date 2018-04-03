@@ -1,0 +1,14 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.KontrolLimitimModel
+<script>
+    $(document).ready(function () {
+        RateGenerate('bar11', '@Model.Percentage%');
+    });
+</script>
+<label class="limitTitle">
+    <p class="fLeft">Limit kullanım oranı: %@Model.Percentage </p>
+    <ins></ins>
+    <p class="fRight">@Model.serviceData.CurrentAmount TL / <span>@Model.serviceData.LimitAmount TL</span></p>
+</label>
+<label>
+    <aside id="bar11"></aside>
+</label>

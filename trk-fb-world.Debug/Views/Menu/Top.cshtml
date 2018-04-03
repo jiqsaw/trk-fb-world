@@ -1,0 +1,17 @@
+﻿<section class="tabs fReg">
+    <nav>
+        <a href="javascript:;" class="pageNav pageTab navMainActive" data-page="World/Entry" data-ga="AnaSayfa">ANA SAYFA</a>
+        <a href="javascript:;" class="pageNav pageTab navHatOzetimDefault" data-page="HatOzetim" data-ga="HatOzetim">HAT ÖZETİM</a>
+        @if ((new UserFbManager()).Data.UserType==(int)Parameter.UserType.posp)
+        {
+            <a href="javascript:;" class="pageNav pageTab navFaturalarimDefault" data-page="Faturalarim" data-ga="Faturalarim">FATURALARIM</a>
+        }
+        else
+        {
+            <a href="javascript:;" class="pageNav pageTab navFaturalarimDefault" data-page="TlIslemlerim" data-ga="TLIslemlerim">TL İŞLEMLERİM</a>
+        }
+        <a href="javascript:;" class="pageNav pageTab navTlPaketYukleDefault" data-page="TlPaketYukle" data-ga="TLPaketYukle">TL/PAKET YÜKLE</a>
+        <a href="/Friend/FriendList/?NextUrl=TlGonder/Default" class="pageNav pageTab navKrediGonderDefault ajax" data-ga="TLGonder">TL GÖNDER</a>
+        <a href="/Friend/FriendList/?NextUrl=TlIste/Default" class="navKrediIsteDefault pageTab ajax" id="navCreditRequest" data-ga="TLIste">TL İSTE</a>
+    </nav>
+</section>

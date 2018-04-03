@@ -1,0 +1,8 @@
+﻿{
+    "customerSubscriptions":
+    [
+        {"offerId":null,"serviceName":"Bankadan Fatura Ödeme Talimatı"},
+        {"offerId":"11019","serviceName":"Mithat Bereket'le Gündem"},
+        {"offerId":"602795014","serviceName":"Aile Internet Profili"}
+    ]
+}

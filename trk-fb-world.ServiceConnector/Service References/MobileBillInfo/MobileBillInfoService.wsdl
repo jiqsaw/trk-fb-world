@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://csiws.turkcell.com.tr/" name="MobileBillInfoService" targetNamespace="http://csiws.turkcell.com.tr/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://10.201.232.39:16011/csiws/MobileBillInfoService?xsd=1" namespace="http://csiws.turkcell.com.tr/" />
+    </xsd:schema>
+  </types>
+  <message name="GetInvoceList">
+    <part name="parameters" element="tns:GetInvoceList" />
+  </message>
+  <message name="GetInvoceListResponse">
+    <part name="parameters" element="tns:GetInvoceListResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <portType name="MobileBillInfo">
+    <operation name="GetInvoceList">
+      <input message="tns:GetInvoceList" />
+      <output message="tns:GetInvoceListResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+  </portType>
+  <binding name="MobileBillInfoPortBinding" type="tns:MobileBillInfo">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="GetInvoceList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="MobileBillInfoService">
+    <port name="MobileBillInfoPort" binding="tns:MobileBillInfoPortBinding">
+      <soap:address location="http://10.201.232.39:16011/csiws/MobileBillInfoService" />
+    </port>
+  </service>
+</definitions>

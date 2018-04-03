@@ -1,0 +1,9 @@
+﻿@model List<TurkcellFacebookDunyasi.Core.CustomModels.PanelMenuModel>
+
+@if (Model != null) {
+
+    Html.RenderAction("PanelMenuGroup", "Modul", new { groupDesc = HttpContext.GetGlobalResourceObject("Pages", "grpContent"), AdminModulGroupEn = Parameter.AdminModulGroup.ContentManagement, AdminModulGroupTr = Parameter.AdminModulGroup.IcerikYonetimi });  
+    Html.RenderAction("PanelMenuGroup", "Modul", new { groupDesc = HttpContext.GetGlobalResourceObject("Pages", "grpAdmin"), AdminModulGroupEn = Parameter.AdminModulGroup.Admin, AdminModulGroupTr = Parameter.AdminModulGroup.AdminKullaniciYonetimi });
+    Html.RenderAction("PanelMenuGroup", "Modul", new { groupDesc = HttpContext.GetGlobalResourceObject("Pages", "grpParameter"), AdminModulGroupEn = Parameter.AdminModulGroup.Parameter, AdminModulGroupTr = Parameter.AdminModulGroup.ParametreYonetimi });
+    Html.RenderAction("PanelMenuGroup", "Modul", new { groupDesc = HttpContext.GetGlobalResourceObject("Pages", "grpLog"), AdminModulGroupEn = Parameter.AdminModulGroup.Log, AdminModulGroupTr = Parameter.AdminModulGroup.LogYonetimi });
+}

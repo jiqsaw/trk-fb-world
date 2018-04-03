@@ -1,0 +1,79 @@
+﻿@model IEnumerable<TurkcellFacebookDunyasi.Core.Offer>
+
+@Helper.BodyNav(Html, "Offer", true)
+<ins></ins>
+
+@section Scripts {
+<script type="text/javascript">
+
+    function slOfferTypeOnChange(sender) {
+        var ddl = $("#OfferTypes").data("kendoDropDownList");
+
+        if (grid.length) {
+            gridData = grid.data("kendoGrid");
+
+            var selectedValue = ddl.value();
+
+            if (selectedValue)
+                gridData.dataSource.filter({ field: "OfferTypeCode", operator: "eq", value: parseInt(selectedValue) });
+            else
+                gridData.dataSource.filter({});
+        }
+    }
+
+</script>
+}
+
+<header class="gridToolBar">
+
+    @Html.Partial("HelperControls/GridRefresh")
+
+    @(Html.Kendo().DropDownList()
+            .Name("OfferTypes")
+            .DataTextField("Text")
+            .DataValueField("Value")
+            .OptionLabel(HttpContext.GetGlobalResourceObject("Form", "All").ToString())
+            .DataSource(source => { source.Read(read => { read.Action("GetOfferTypes", "Offer"); }); })          
+            .Events(e => e.Change("slOfferTypeOnChange"))
+    )
+
+    @Html.Partial("HelperControls/GridSearch")
+
+</header>
+
+
+@(Html.Kendo().Grid(Model)
+    .Name(KendoManager.GridName)
+        
+    .Columns(clm =>
+    {
+        clm.Bound(c => c.FileName).ClientTemplate(KendoManager.ClientTemplateOfferImage("FileName")).Title(Helper.Rsrc("Global", "Image").ToString()).Sortable(false).Filterable(false).Width(100);
+        clm.Bound(c => c.Title);
+        clm.Bound(c => c.StartDate).ClientTemplate(KendoManager.ClientTemplateDate("StartDate"));
+        clm.Bound(c => c.EndDate).ClientTemplate(KendoManager.ClientTemplateDate("EndDate"));
+        clm.Bound(c => c.IsActive).ClientTemplate(KendoManager.ClientTemplateCheck("IsActive")).Width(30);
+
+        clm.Command(cmd =>
+        {
+            cmd.Custom("Edit").Text(KendoManager.HtmlEditIcon + Helper.Rsrc("Global", "Edit").ToString()).Click("kGridGoDetail");
+            cmd.Destroy().Text(Helper.Rsrc("Global", "Delete").ToString());
+        });
+    })
+
+    .DataSource(dataSource =>
+        dataSource
+            .Ajax()
+            .ServerOperation(false)
+            .Model(model => model.Id(m => m.Id))
+            .Read(r => r.Action("k_jRead", "Offer"))
+            .Destroy(d => d.Action("k_jDelete", "Offer"))
+            .Events(e => e.Error("kGridOnError"))
+        )
+            
+    .Sortable()
+    .Pageable(KendoManager.pagerSettings)
+    .Events(e => e.DataBound("kGridOnDataBound"))
+    .Reorderable(reorder => reorder.Columns(true))
+    .Resizable(resize => resize.Columns(true))
+    .Filterable(KendoManager.filterSettings)
+    )

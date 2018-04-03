@@ -1,0 +1,21 @@
+﻿@model TurkcellFacebookDunyasi.Admin.Models.ButtonNavModel
+
+
+<a id="aNew" class="k-button" href="@Url.Action(Model.ActionName, Model.RouteValues)">
+    <span id="newIcon" class="k-icon k-i-plus"></span>
+    @HttpContext.GetGlobalResourceObject("Global", "NewItem")
+</a>
+
+
+@*@Ajax.ActionLink(   HttpContext.GetGlobalResourceObject("Global", "NewItem").ToString(), 
+                    "Form", 
+                    null, 
+                    new AjaxOptions { 
+                        InsertionMode = InsertionMode.Replace,
+                        UpdateTargetId = "PageBody",
+                        OnBegin = "ChangePageBegin",
+                        OnComplete = "ChangePageSuccess",
+                        LoadingElementId = "LoadingPage"
+                    }, 
+                    new { @class = "k-button", @id = "aNew" }
+                )*@

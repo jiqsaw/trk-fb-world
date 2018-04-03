@@ -1,0 +1,88 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.ProfileModel        
+<h3 class="colorboxSubHead">"Tıkla Ara" Aranma Durumu</h3>
+        <section class="dText fLeft fIta">
+            
+            <script>
+
+                function removeBlock(FbId) {
+                    var postData = { FbId: FbId };
+                    $.ajax({
+                        url: '/TiklaAra/RemoveBlock',
+                        type: "POST",
+                        data: postData,
+                        dataType: 'json',
+                        success: function (response) {
+                            blockResult(0, FbId);
+                        }
+                    });
+                }
+
+                function block(fbId) {
+                    var postData = { FriendIds: fbId };
+                    $.ajax({
+                        url: '/TiklaAra/UserBlocks',
+                        type: "POST",
+                        data: postData,
+                        dataType: 'json',
+                        success: function (response) {
+                            blockResult(1, fbId);
+                        }
+                    });
+                }
+
+                function blockResult(isType, fbId) {
+                    var template = $("#resultTemplate").text();
+                    if (isType == 1) {
+                        template = template.replace("#-- response --#", "Bu arkadaşım Facebook üzerinden beni arayamaz.");
+                        template = template.replace("#-- link --#", "removeBlock('" + fbId + "')");
+                        template = template.replace("#-- linkClass --#", "fIta refresh ");
+                        template = template.replace("#-- linkText --#", "engeli kaldır");
+                        template = template.replace("#-- insClass --#", "space10");
+                    }
+                    else {
+                        template = template.replace("#-- response --#", "Bu arkadaşım Facebook üzerinden beni arayabilir.");
+                        template = template.replace("#-- link --#", "block('" + fbId + "')");
+                        template = template.replace("#-- linkClass --#", "block fIta");
+                        template = template.replace("#-- linkText --#", "engelle");
+                        template = template.replace("#-- insClass --#", "");
+                    }
+                    $("#userBlockStatus").html(template);
+                }
+
+            </script>
+
+            <script id="resultTemplate" type="text/x-template">
+                #-- response --#
+                <ins class="#-- insClass --#"></ins>
+                <section class="deny2">
+                    <a href="javascript:#-- link --#;" class="#-- linkClass --#">#-- linkText --#</a>
+                </section>  
+            </script>
+
+            <section id="userBlockStatus">
+            @if (Model.UserBlocks.Any(f => f.UserFriendFbId == Model.FriendData.FbId))
+            { 
+                <text> 
+            
+                Bu arkadaşım Facebook üzerinden beni arayamaz.
+                <ins class="space10"></ins>
+                <section class="deny2">
+                    <a href="javascript:removeBlock('@Model.FriendData.FbId');" class="fIta refresh">Engeli Kaldır</a>
+                </section>            
+
+                </text>
+            }
+            else
+            {
+                <text> 
+            
+                Bu arkadaşım Facebook üzerinden beni arayabilir. 
+                <ins></ins>
+                <section class="deny2">
+                    <a href="javascript:block('@Model.FriendData.FbId');" class="block fIta" id="UserType">Engelle</a>
+                </section>            
+
+                </text>
+            }
+            </section>
+        </section>

@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9FD867CE-D6EA-4E6A-9D98-118F04FE30AE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TurkcellFacebookDunyasi.ServiceConnector</RootNamespace>
+    <AssemblyName>TurkcellFacebookDunyasi.ServiceConnector</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.10\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AvailableLimit.cs" />
+    <Compile Include="BaseLoader.cs" />
+    <Compile Include="BillCycleDateList.cs" />
+    <Compile Include="BillCycleQuery.cs" />
+    <Compile Include="BillCycleQueryResponse.cs" />
+    <Compile Include="CallDetail.cs" />
+    <Compile Include="CallDetailsFirstPage.cs" />
+    <Compile Include="CallDetailsQueryResponse.cs" />
+    <Compile Include="CallDetailsSuccessPage.cs" />
+    <Compile Include="ClubList.cs" />
+    <Compile Include="CreditTransfer.cs" />
+    <Compile Include="CreditTransferResponse.cs" />
+    <Compile Include="CurrentInvoiceQuery.cs" />
+    <Compile Include="CurrentInvoiceQueryResponse.cs" />
+    <Compile Include="CustomerClubsQuery.cs" />
+    <Compile Include="CustomerSubscription.cs" />
+    <Compile Include="CustomerSubscriptionsQuery.cs" />
+    <Compile Include="Dummy\MobileBillAnalysis.cs" />
+    <Compile Include="Dummy\MobileBillInfo.cs" />
+    <Compile Include="FacebookOperationsQueryResponse.cs" />
+    <Compile Include="FaturaLimitSubs.cs" />
+    <Compile Include="FaturaLimitSubsResponse.cs" />
+    <Compile Include="FreeServicesQuery.cs" />
+    <Compile Include="FreeUnit.cs" />
+    <Compile Include="Invoice.cs" />
+    <Compile Include="KontorIsteApprovePage.cs" />
+    <Compile Include="KontorIsteLimitQuery.cs" />
+    <Compile Include="KontorIsteLimitQueryResponse.cs" />
+    <Compile Include="KontorIsteQueryResponse.cs" />
+    <Compile Include="Kontormetre.cs" />
+    <Compile Include="KontorMetreQueryResponse.cs" />
+    <Compile Include="Loader.cs" />
+    <Compile Include="PrepaidFreeServicesQuery.cs" />
+    <Compile Include="PrepaidFreeServicesQueryResponse.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FreeServicesQueryResponse.cs" />
+    <Compile Include="Recipient.cs" />
+    <Compile Include="Service References\BigLdapUpdate\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\BigLdap\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\MobileBillAnalysis\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\MobileBillInfo\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\TiklaKonus\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SsoLoginQuery.cs" />
+    <Compile Include="TariffQuery.cs" />
+    <Compile Include="TariffQueryResponse.cs" />
+    <Compile Include="TopCalledNumber.cs" />
+    <Compile Include="TransferCounterEntry.cs" />
+    <Compile Include="UsagePeriod.cs" />
+    <Compile Include="UsagePeriodDisplayQueryResponse.cs" />
+    <Compile Include="WebSmsBalanceQueryResponse.cs" />
+    <Compile Include="WebSmsSendMessageResponse.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LIB\LIB.csproj">
+      <Project>{4a17e724-613d-4d65-84d0-bcc96716943e}</Project>
+      <Name>LIB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TurkcellFacebookDunyasi.Com\TurkcellFacebookDunyasi.Com.csproj">
+      <Project>{70bb7cd2-cc02-425b-aa9e-5ee1f21cdda1}</Project>
+      <Name>TurkcellFacebookDunyasi.Com</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TurkcellFacebookDunyasi.Core\TurkcellFacebookDunyasi.Core.csproj">
+      <Project>{6c4bbb94-da39-4bb6-9933-efd2105e804b}</Project>
+      <Name>TurkcellFacebookDunyasi.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TurkcellFacebookDunyasi.EF\TurkcellFacebookDunyasi.EF.csproj">
+      <Project>{55fe87d4-82a1-4c40-82c3-c19d03c4f2ab}</Project>
+      <Name>TurkcellFacebookDunyasi.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TurkcellFacebookDunyasi.Logger\TurkcellFacebookDunyasi.Logger.csproj">
+      <Project>{8d9a6950-a0f8-4a5d-88ed-5f98cf61419e}</Project>
+      <Name>TurkcellFacebookDunyasi.Logger</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Service References\BigLdapUpdate\TurkcellFacebookDunyasi.ServiceConnector.BigLdapUpdate.personResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BigLdapUpdate\TurkcellFacebookDunyasi.ServiceConnector.BigLdapUpdate.updateEMAILResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BigLdapUpdate\TurkcellFacebookDunyasi.ServiceConnector.BigLdapUpdate.updateFIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BigLdapUpdate\TurkcellFacebookDunyasi.ServiceConnector.BigLdapUpdate.updateMSISDNResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BigLdapUpdate\TurkcellFacebookDunyasi.ServiceConnector.BigLdapUpdate.updatePwdwEmailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BigLdapUpdate\TurkcellFacebookDunyasi.ServiceConnector.BigLdapUpdate.updatePwdwMsisdnResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BigLdapUpdate\TurkcellFacebookDunyasi.ServiceConnector.BigLdapUpdate.updateUSERResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BigLdap\TurkcellFacebookDunyasi.ServiceConnector.BigLdap.email2fbResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BigLdap\TurkcellFacebookDunyasi.ServiceConnector.BigLdap.email2msisdnResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BigLdap\TurkcellFacebookDunyasi.ServiceConnector.BigLdap.fb2emailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BigLdap\TurkcellFacebookDunyasi.ServiceConnector.BigLdap.fb2msisdnResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BigLdap\TurkcellFacebookDunyasi.ServiceConnector.BigLdap.getPersonResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BigLdap\TurkcellFacebookDunyasi.ServiceConnector.BigLdap.msisdn2emailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BigLdap\TurkcellFacebookDunyasi.ServiceConnector.BigLdap.msisdn2fbResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BigLdap\TurkcellFacebookDunyasi.ServiceConnector.BigLdap.personResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BigLdap\TurkcellFacebookDunyasi.ServiceConnector.BigLdap.stringResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BigLdapUpdate\UpdatePersonWsBeanService.wsdl" />
+    <None Include="Service References\BigLdap\GetPersonWsBeanService.wsdl" />
+    <None Include="Service References\MobileBillAnalysis\MobileBillAnalysisService.wsdl" />
+    <None Include="Service References\MobileBillAnalysis\MobileBillAnalysisService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MobileBillAnalysis\TurkcellFacebookDunyasi.ServiceConnector.MobileBillAnalysis.analysisInvoiceLayout.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MobileBillAnalysis\TurkcellFacebookDunyasi.ServiceConnector.MobileBillAnalysis.GetInvoiceAnalysisListResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MobileBillInfo\MobileBillInfoService.wsdl" />
+    <None Include="Service References\MobileBillInfo\MobileBillInfoService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MobileBillInfo\TurkcellFacebookDunyasi.ServiceConnector.MobileBillInfo.GetInvoceListResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MobileBillInfo\TurkcellFacebookDunyasi.ServiceConnector.MobileBillInfo.invoiceList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TiklaKonus\call.wsdl" />
+    <None Include="Service References\TiklaKonus\TurkcellFacebookDunyasi.ServiceConnector.TiklaKonus.balanceItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TiklaKonus\TurkcellFacebookDunyasi.ServiceConnector.TiklaKonus.getCallInformationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TiklaKonus\TurkcellFacebookDunyasi.ServiceConnector.TiklaKonus.getCallInformationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TiklaKonus\TurkcellFacebookDunyasi.ServiceConnector.TiklaKonus.getCampaignInformationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TiklaKonus\TurkcellFacebookDunyasi.ServiceConnector.TiklaKonus.getCampaignInformationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TiklaKonus\TurkcellFacebookDunyasi.ServiceConnector.TiklaKonus.getRemainingBalanceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TiklaKonus\TurkcellFacebookDunyasi.ServiceConnector.TiklaKonus.startCallResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TiklaKonus\TurkcellFacebookDunyasi.ServiceConnector.TiklaKonus.startCallResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\BigLdapUpdate\" />
+    <WCFMetadataStorage Include="Service References\BigLdap\" />
+    <WCFMetadataStorage Include="Service References\MobileBillAnalysis\" />
+    <WCFMetadataStorage Include="Service References\MobileBillInfo\" />
+    <WCFMetadataStorage Include="Service References\TiklaKonus\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TiklaKonus\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TiklaKonus\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TiklaKonus\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BigLdap\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BigLdap\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BigLdap\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BigLdapUpdate\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BigLdapUpdate\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BigLdapUpdate\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MobileBillInfo\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MobileBillInfo\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MobileBillInfo\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MobileBillAnalysis\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MobileBillAnalysis\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MobileBillAnalysis\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

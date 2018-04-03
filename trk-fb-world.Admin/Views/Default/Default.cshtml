@@ -1,0 +1,33 @@
+﻿@*@section Styles {
+    <link rel="stylesheet" type="text/css" href='Styles/main.css' media="all" />            
+}
+
+@section Scripts {
+    
+    <script type="text/javascript" src="/Scripts/app/jquery/plugins/jquery.masonry.min.js"></script>
+
+    <script>
+
+        $(function () {
+
+            $('.left').masonry({
+                itemSelector: '.left section.panel',
+                isAnimated: true
+            });
+
+        });
+
+    </script>
+
+}*@
+
+
+@Helper.BodyNav(Html, "Default", false, false, false)
+
+<section id="dynamic">
+
+    <aside class="panel">
+        @HttpContext.GetGlobalResourceObject("Global", "WelcomeMsg")
+    </aside>
+                        
+</section>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ws.bigldap.ttech.com/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="GetPersonWsBeanService" targetNamespace="http://ws.bigldap.ttech.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://ws.bigldap.ttech.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="email2fb" type="tns:email2fb" />
+      <xs:element name="email2fbResponse" type="tns:email2fbResponse" />
+      <xs:element name="email2msisdn" type="tns:email2msisdn" />
+      <xs:element name="email2msisdnResponse" type="tns:email2msisdnResponse" />
+      <xs:element name="fb2email" type="tns:fb2email" />
+      <xs:element name="fb2emailResponse" type="tns:fb2emailResponse" />
+      <xs:element name="fb2msisdn" type="tns:fb2msisdn" />
+      <xs:element name="fb2msisdnResponse" type="tns:fb2msisdnResponse" />
+      <xs:element name="getPerson" type="tns:getPerson" />
+      <xs:element name="getPersonResponse" type="tns:getPersonResponse" />
+      <xs:element name="msisdn2email" type="tns:msisdn2email" />
+      <xs:element name="msisdn2emailResponse" type="tns:msisdn2emailResponse" />
+      <xs:element name="msisdn2fb" type="tns:msisdn2fb" />
+      <xs:element name="msisdn2fbResponse" type="tns:msisdn2fbResponse" />
+      <xs:complexType name="msisdn2fb">
+        <xs:sequence>
+          <xs:element name="msisdn" type="xs:string" />
+          <xs:element name="appId" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="msisdn2fbResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:stringResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="stringResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:wsResult">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="value" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="wsResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="errorDesc" type="xs:string" />
+          <xs:element minOccurs="0" name="resultCode" type="tns:resultCode" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fb2msisdn">
+        <xs:sequence>
+          <xs:element name="fbookId" type="xs:string" />
+          <xs:element name="appId" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fb2msisdnResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:stringResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="email2fb">
+        <xs:sequence>
+          <xs:element name="email" type="xs:string" />
+          <xs:element name="appId" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="email2fbResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:stringResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="msisdn2email">
+        <xs:sequence>
+          <xs:element name="msisdn" type="xs:string" />
+          <xs:element name="appId" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="msisdn2emailResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:stringResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getPerson">
+        <xs:sequence>
+          <xs:element name="uid" type="xs:string" />
+          <xs:element name="appId" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getPersonResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:personResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="personResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:wsResult">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="person" type="tns:person" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="person">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="authInvalidAttempt" type="xs:string" />
+          <xs:element minOccurs="0" name="email" type="xs:string" />
+          <xs:element minOccurs="0" name="fbookId" type="xs:string" />
+          <xs:element minOccurs="0" name="firstName" type="xs:string" />
+          <xs:element minOccurs="0" name="fullName" type="xs:string" />
+          <xs:element minOccurs="0" name="msisdn" type="xs:string" />
+          <xs:element minOccurs="0" name="password" type="xs:string" />
+          <xs:element minOccurs="0" name="surname" type="xs:string" />
+          <xs:element minOccurs="0" name="tcellUser" type="xs:string" />
+          <xs:element minOccurs="0" name="uid" type="xs:string" />
+          <xs:element minOccurs="0" name="uidType" type="tns:uidType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fb2email">
+        <xs:sequence>
+          <xs:element name="fbookId" type="xs:string" />
+          <xs:element name="appId" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fb2emailResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:stringResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="email2msisdn">
+        <xs:sequence>
+          <xs:element name="email" type="xs:string" />
+          <xs:element name="appId" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="email2msisdnResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:stringResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="resultCode">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="SUCCESS" />
+          <xs:enumeration value="SYSTEM_ERROR" />
+          <xs:enumeration value="PERSON_ALREADY_CREATED" />
+          <xs:enumeration value="PERSON_NOT_FOUND" />
+          <xs:enumeration value="FBOOK_ID_ALREADY_BOUND" />
+          <xs:enumeration value="EMAIL_ALREADY_BOUND" />
+          <xs:enumeration value="PERSON_ALREADY_BOUND" />
+          <xs:enumeration value="VALIDATION_ERR_REQUIRED_PARAMETER_MISSING" />
+          <xs:enumeration value="NOT_AUTHENTICATED" />
+          <xs:enumeration value="ACCOUNT_LOCKED" />
+          <xs:enumeration value="PASSWORD_EXPIRED" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="uidType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="MSISDN" />
+          <xs:enumeration value="EMAIL" />
+          <xs:enumeration value="FBOOKID" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="email2fbResponse">
+    <wsdl:part name="parameters" element="tns:email2fbResponse" />
+  </wsdl:message>
+  <wsdl:message name="msisdn2emailResponse">
+    <wsdl:part name="parameters" element="tns:msisdn2emailResponse" />
+  </wsdl:message>
+  <wsdl:message name="fb2msisdnResponse">
+    <wsdl:part name="parameters" element="tns:fb2msisdnResponse" />
+  </wsdl:message>
+  <wsdl:message name="email2msisdn">
+    <wsdl:part name="parameters" element="tns:email2msisdn" />
+  </wsdl:message>
+  <wsdl:message name="getPerson">
+    <wsdl:part name="parameters" element="tns:getPerson" />
+  </wsdl:message>
+  <wsdl:message name="fb2msisdn">
+    <wsdl:part name="parameters" element="tns:fb2msisdn" />
+  </wsdl:message>
+  <wsdl:message name="msisdn2fbResponse">
+    <wsdl:part name="parameters" element="tns:msisdn2fbResponse" />
+  </wsdl:message>
+  <wsdl:message name="fb2emailResponse">
+    <wsdl:part name="parameters" element="tns:fb2emailResponse" />
+  </wsdl:message>
+  <wsdl:message name="email2msisdnResponse">
+    <wsdl:part name="parameters" element="tns:email2msisdnResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPersonResponse">
+    <wsdl:part name="parameters" element="tns:getPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="msisdn2fb">
+    <wsdl:part name="parameters" element="tns:msisdn2fb" />
+  </wsdl:message>
+  <wsdl:message name="fb2email">
+    <wsdl:part name="parameters" element="tns:fb2email" />
+  </wsdl:message>
+  <wsdl:message name="email2fb">
+    <wsdl:part name="parameters" element="tns:email2fb" />
+  </wsdl:message>
+  <wsdl:message name="msisdn2email">
+    <wsdl:part name="parameters" element="tns:msisdn2email" />
+  </wsdl:message>
+  <wsdl:portType name="GetPersonWs">
+    <wsdl:operation name="msisdn2fb">
+      <wsdl:input name="msisdn2fb" message="tns:msisdn2fb" />
+      <wsdl:output name="msisdn2fbResponse" message="tns:msisdn2fbResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="fb2msisdn">
+      <wsdl:input name="fb2msisdn" message="tns:fb2msisdn" />
+      <wsdl:output name="fb2msisdnResponse" message="tns:fb2msisdnResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="email2fb">
+      <wsdl:input name="email2fb" message="tns:email2fb" />
+      <wsdl:output name="email2fbResponse" message="tns:email2fbResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="msisdn2email">
+      <wsdl:input name="msisdn2email" message="tns:msisdn2email" />
+      <wsdl:output name="msisdn2emailResponse" message="tns:msisdn2emailResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getPerson">
+      <wsdl:input name="getPerson" message="tns:getPerson" />
+      <wsdl:output name="getPersonResponse" message="tns:getPersonResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="fb2email">
+      <wsdl:input name="fb2email" message="tns:fb2email" />
+      <wsdl:output name="fb2emailResponse" message="tns:fb2emailResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="email2msisdn">
+      <wsdl:input name="email2msisdn" message="tns:email2msisdn" />
+      <wsdl:output name="email2msisdnResponse" message="tns:email2msisdnResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GetPersonWsBeanServiceSoapBinding" type="tns:GetPersonWs">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="msisdn2fb">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="msisdn2fb">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="msisdn2fbResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fb2msisdn">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="fb2msisdn">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="fb2msisdnResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="email2fb">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="email2fb">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="email2fbResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="msisdn2email">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="msisdn2email">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="msisdn2emailResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPerson">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getPerson">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getPersonResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="email2msisdn">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="email2msisdn">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="email2msisdnResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fb2email">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="fb2email">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="fb2emailResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GetPersonWsBeanService">
+    <wsdl:port name="GetPersonWsBeanPort" binding="tns:GetPersonWsBeanServiceSoapBinding">
+      <soap:address location="http://10.210.59.12:8080/BigLdapProxy/ws/GetPerson" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

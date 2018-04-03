@@ -1,0 +1,179 @@
+﻿<script>
+
+    $(document).ready(function () {
+       
+        timelineRender();
+
+        monthsVerBarRender();
+        monthsVerBarTriggerToolTip();
+
+        monthEvents();
+
+    });
+
+
+    function timelineRender() {
+        for (var i in dsInvoices) {
+            var objItem = dsInvoices[i];
+
+            _month = objItem.month;
+            _amount = objItem.amount;
+
+            var temp = $("#monthTemplate").html();
+            var pId = i + 1;
+            if (i == activeMonthIndex) {
+                temp = temp.replace("## ACTIVE_CLASS ##", "active");
+                temp = temp.replace("## SMALLCLASS  ##", "smallDataViz");
+            }
+            else {
+                temp = temp.replace("## ACTIVE_CLASS ##", "");
+                temp = temp.replace("## SMALLCLASS  ##", "");
+            }
+
+            temp = temp.replace("## ID ##", "data" + i);
+            temp = temp.replace("## INDEX ##", i);
+            temp = temp.replace("## MONTHNAME ##", _month);
+            temp = temp.replace("## TOPRATE ##", "100%");
+            temp = temp.replace("## HEIGHTRATE ##", "0%");
+            temp = temp.replace("## AMOUNT ##", _amount);
+
+            $(".dataAmount").css("display", "none");
+
+            var monthsCon = $(".timeline nav");
+            monthsCon.html(monthsCon.html() + temp);
+
+        }
+
+    }    
+    
+
+    function monthsVerBarRender() {
+
+        $("#monthsVerBarTrigger").click(function () {
+
+            var timelineH = 0;
+            var timelineNavMarginTop = 0;
+            var monthsVerBarTriggerMarginTop = 0;
+
+            if ($(this).attr("data-expanded") == "false") {
+
+                $(this).attr("data-expanded", "true");
+
+                timelineH = 135;
+                timelineNavMarginTop = -28;
+                monthsVerBarTriggerMarginTop = 108;
+
+                for (var i in dsInvoices) {
+                    var objItem = dsInvoices[i];
+
+                    _month = objItem.month;
+                    _rate = objItem.rate;
+
+                    $(".smallDataViz2").removeClass(".smallDataViz2");
+                    $(".smallDataViz").removeClass("smallDataViz").addClass("smallDataViz2");
+
+                    var topRate = parseInt(100 - _rate);                      
+
+                    $(".dataAmount").show();
+                    monthsBarAnimate(i, _rate, topRate);
+                }
+               
+            }
+            else if ($(this).attr("data-expanded") == "true") {
+
+                $(this).attr("data-expanded", "false");
+
+                timelineH = 25;
+                timelineNavMarginTop = -136;
+                monthsVerBarTriggerMarginTop = 0;
+
+                for (var i in dsInvoices) {
+
+                    $(".smallDataViz2").removeClass(".smallDataViz2");
+                    $(".smallDataViz2").removeClass("smallDataViz2").addClass("smallDataViz");
+
+                    $(".dataAmount").hide();
+                    monthsBarAnimate(i, 0, 100);
+                }
+            }
+
+            $(".timeline").animate({ height: timelineH + 'px' }, 500);
+            $(".timeline nav").animate({ marginTop: timelineNavMarginTop + 'px' }, 500);
+            $("#monthsVerBarTrigger").animate({ marginTop: monthsVerBarTriggerMarginTop + 'px' }, 500);
+
+            
+
+        });
+
+    }
+
+    function monthsBarAnimate(barIndex, _rate, T) {
+        var elementMonth = $("#data" + barIndex).children().children(".month");
+        var elementDataViz = $("#data" + barIndex).children().children().children(".dataViz");
+
+        elementDataViz.animate({ height: _rate + "%" }, _animateSpeed * 500);
+        elementMonth.animate({ top: T + "%" }, _animateSpeed * 500);
+
+        setTimeout(function () {
+            iFrameHeightRender();
+        }, _animateSpeed * 600);
+    }
+
+
+    function monthsVerBarTriggerToolTip() {
+        setTimeout(function () { $(".dataVizTooltip").fadeIn('1000'); }, 1000);
+        setTimeout(function () { $(".dataVizTooltip").fadeOut('2000'); }, 7000);
+        $(".data").live("mouseover", function () { $(".dataVizTooltip").fadeIn('1000'); });
+        $(".data").mouseout(function () { $(".dataVizTooltip").stop().fadeOut('2000'); });
+    }
+
+
+    function monthEvents() {
+
+        $("#months a").click(function () {
+            activeMonthIndex = $(this).attr("data-index");
+            invoiceTabOpen(1);
+            monthSelected();
+            changeMonth();
+        });
+
+    }
+
+    function monthSelected() {
+        $("#months > a").removeClass("active");
+        $("#data" + activeMonthIndex).addClass("active");
+        $(".smallDataViz2").removeClass("smallDataViz2");
+        $(".smallDataViz").removeClass("smallDataViz");
+
+        if ($(".data").attr("data-expanded") == "false")
+            $("#data" + activeMonthIndex).children().children().children(".dataViz").addClass("smallDataViz");
+        else
+            $("#data" + activeMonthIndex).children().children().children(".dataViz").addClass("smallDataViz2");
+    }
+
+
+</script>
+
+
+    <section id="monthTemplate" style="display:none;">
+        <a href="#" data-index="## INDEX ##" id="## ID ##" class="## ACTIVE_CLASS ##">
+            <center>
+            <section class="month" style="top:## TOPRATE ##;">## MONTHNAME ##</section>
+                <section class="conta">
+                <section class="dataViz ## SMALLCLASS  ##" style="height:## HEIGHTRATE ##;">
+                    <section class="dataAmount">## AMOUNT ## TL</section>
+                </section>
+            </section>
+            </center>
+        </a>
+    </section>
+
+    <section class="timeline">
+        <nav id="months">
+        </nav>
+    </section>
+
+    @*<span class="data fRight" data-expanded="false" id="monthsVerBarTrigger"></span>
+    <span class="dataVizTooltip fIta">Fatura Tutarları</span>*@
+
+    <span class="data fRight fReg" data-expanded="false" id="monthsVerBarTrigger">Son 6 Fatura Tutarı</span>

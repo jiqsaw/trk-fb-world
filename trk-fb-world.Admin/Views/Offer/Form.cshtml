@@ -1,0 +1,61 @@
+﻿@model TurkcellFacebookDunyasi.Core.Offer
+
+
+@section scriptsPreRender {
+    <script>
+
+        $(function () {
+            AddValReq('#OfferTypeCode', "@Helper.Rsrc("Notices", "ValOfferTypeReq")");
+        });
+
+    </script>
+}
+
+@Helper.BodyNav(Html, "Offer", true)
+                
+@using (Ajax.BeginForm(null, null, new AjaxOptions { UpdateTargetId = "PageForm", LoadingElementId = "LoadingForm", OnSuccess = "FormOnSuccess" }, new { @id = "PageForm" }))
+{    
+    <aside class="panel main">
+
+        @Html.ValidationMessageFor(model => model.OfferTypeCode)   @Html.LabelFor(model => model.OfferTypeCode)   @Html.DropDownListEnum("OfferTypeCode", typeof(Parameter.OfferTypePosition), (Model == null) ? -1 : Model.OfferTypeCode)
+
+        @Html.ValidationMessageFor(model => model.WindowTypeCode)   @Html.LabelFor(model => model.WindowTypeCode)   @Html.DropDownListEnum("WindowTypeCode", typeof(Parameter.WindowType), (Model == null) ? -1 : Model.WindowTypeCode)
+                       
+        <section class="columns">
+
+            <aside> @Html.LabelFor(model => model.StartDate)    @Html.Kendo().DatePickerFor(model => model.StartDate).Min(DateTime.Today).Events(e => e.Change("kDateRangeStartChange")) </aside>
+            <aside> @Html.LabelFor(model => model.EndDate)      @Html.Kendo().DatePickerFor(model => model.EndDate).Events(e => e.Change("kDateRangeEndChange")) </aside>
+                 
+            <ins></ins>
+        </section>
+        
+        @Html.ValidationMessageFor(model => model.Title)    @Html.LabelFor(model => model.Title)    @Html.EditorFor(model => model.Title)
+        
+        @Html.LabelFor(model => model.Detail)       @Html.EditorFor(model => model.Detail )
+
+        @Html.ValidationMessageFor(model => model.URL)    @Html.LabelFor(model => model.URL)    @Html.TextBoxFor(model => model.URL)                                
+
+        @Html.Partial("Common/FormFooter")
+            
+    </aside>
+    
+    
+    <aside class="panel side">
+        <aside>
+
+            @{Html.RenderPartial("Common/Upload", new TurkcellFacebookDunyasi.Admin.Models.UploadModel {
+                  UploadElementName = "FileName",
+                  FileName = (Model != null) ? Model.FileName : "",
+                  ImageType = TurkcellFacebookDunyasi.Com.Helpers.UrlHelper.Images.Type.contents,
+                  ResizeDefault = false
+              });}
+
+        </aside>
+    </aside>
+    
+    <aside class="panel side">
+
+        @Html.Partial("Common/DataDefaultFields")
+
+    </aside>
+}

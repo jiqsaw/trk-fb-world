@@ -1,0 +1,32 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.CallDetailsModel
+
+<script>
+    $("#PeriodSelector").live("change", function () {
+        var SelectIndex = document.getElementById('PeriodSelector').selectedIndex;
+        $("#PeriodSelectorDetail").attr("data-index", SelectIndex).attr("data-page", "CallDetails/CallDetail/" + SelectIndex);
+    });
+</script>
+
+@if (Model.DateRange.Count > 0)
+{
+<select id="PeriodSelector" style="width:300px">
+    @for (int i = 0; i < Model.DateRange.Count; i++)
+    {
+        if (i != 0)
+        {
+            string PrevDate=LIB.FormatHelper.DateChar(Model.DateRange[i - 1].Day.ToString())+"."+LIB.FormatHelper.DateChar(Model.DateRange[i - 1].Month.ToString())+"."+Model.DateRange[i - 1].Year.ToString();
+            string NextDate = LIB.FormatHelper.DateChar(Model.DateRange[i].Day.ToString()) + "." + LIB.FormatHelper.DateChar(Model.DateRange[i].Month.ToString()) + "." + Model.DateRange[i].Year.ToString();
+            
+        <option value="@PrevDate|@NextDate">@PrevDate - @NextDate</option>
+        }
+    }
+</select>
+    <ins class="space15"></ins>
+    <a href="javascript:;" class="smallLink pageNav fRight" id="PeriodSelectorDetail" data-ga="TlIslemlerim_Detail" data-index="0" data-page="CallDetails/CallDetail/0">DETAYLARI GÖRÜNTÜLE</a>
+
+<script>
+    $(function () {
+        $("select").kendoDropDownList({ autoBind: false });
+    });
+</script>
+}

@@ -1,0 +1,194 @@
+﻿@model TurkcellFacebookDunyasi.Core.ClickToCallPreference
+
+@{
+            
+    string AvailableWeekDayTimeBegin;
+    string AvailableWeekDayTimeEnd;
+    string AvailableWeekEndTimeBegin;
+    string AvailableWeekEndTimeEnd;
+                        
+    if (Model == null) {                                
+        AvailableWeekDayTimeBegin = ConfigManager.GetInstance().AvailableWeekDayTimeBegin;
+        AvailableWeekDayTimeEnd = ConfigManager.GetInstance().AvailableWeekDayTimeEnd;
+        AvailableWeekEndTimeBegin = ConfigManager.GetInstance().AvailableWeekEndTimeBegin;
+        AvailableWeekEndTimeEnd = ConfigManager.GetInstance().AvailableWeekEndTimeEnd;
+    }
+    else
+    {
+        AvailableWeekDayTimeBegin = Model.AvailableWeekDayTimeBegin;
+        AvailableWeekDayTimeEnd = Model.AvailableWeekDayTimeEnd;
+        AvailableWeekEndTimeBegin = Model.AvailableWeekEndTimeBegin;
+        AvailableWeekEndTimeEnd = Model.AvailableWeekEndTimeEnd;
+    }
+}
+
+
+<script>
+
+    $(function () {
+
+        $('#AvailableWeekDayTimeBegin').val('@AvailableWeekDayTimeBegin');
+        $('#AvailableWeekDayTimeEnd').val('@AvailableWeekDayTimeEnd');
+        $('#AvailableWeekEndTimeBegin').val('@AvailableWeekEndTimeBegin');
+        $('#AvailableWeekEndTimeEnd').val('@AvailableWeekEndTimeEnd');
+
+    });
+
+</script>
+
+
+@using (Ajax.BeginForm(null, null, new AjaxOptions { UpdateTargetId = "PageForm", LoadingElementId = "LoadingForm", OnSuccess = "preferenceFormOnSuccess" }, new { @id = "PageForm" }))
+{        
+    
+        @Html.HiddenFor(a => a.Id)
+        @Html.HiddenFor(a => a.UserId)
+        @Html.HiddenFor(a => a.CreateDate)        
+    
+        <h3 class="colorboxSubHead">Gizlilik Modu</h3>
+
+        <section class="rdGroup">           
+            @Html.RadioButtonFor(r => r.IsInvisible, true, new { id="rdInvisibleTrue", @class = "radioFilter"}) <label for="rdInvisibleTrue">Aramaya Kapalı</label>
+            @Html.RadioButtonFor(r => r.IsInvisible, false, new { id="rdInvisibleFalse", @class = "radioFilter"}) <label for="rdInvisibleFalse">Aranabilir</label>
+        </section>
+
+        <ins></ins>
+
+        <h3 class="colorboxSubHead">Aranma Saatleri</h3>
+
+        <section class="hours">
+            <section class="hourTitle">HAFTA İÇİ </section>
+            <section class="hourInput">
+
+                <select name="AvailableWeekDayTimeBegin" id="AvailableWeekDayTimeBegin" style="width:130px">
+                    <option value="00:00">00:00</option>
+                    <option value="01:00">01:00</option>
+                    <option value="02:00">02:00</option>
+                    <option value="03:00">03:00</option>
+                    <option value="04:00">04:00</option>
+                    <option value="05:00">05:00</option>
+                    <option value="06:00">06:00</option>
+                    <option value="07:00">07:00</option>
+                    <option value="08:00">08:00</option>
+                    <option value="09:00">09:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                    <option value="22:00">22:00</option>
+                    <option value="23:00">23:00</option>
+                </select>
+
+                <select name="AvailableWeekDayTimeEnd" id="AvailableWeekDayTimeEnd" style="width:130px">
+                    <option value="00:00">00:00</option>
+                    <option value="01:00">01:00</option>
+                    <option value="02:00">02:00</option>
+                    <option value="03:00">03:00</option>
+                    <option value="04:00">04:00</option>
+                    <option value="05:00">05:00</option>
+                    <option value="06:00">06:00</option>
+                    <option value="07:00">07:00</option>
+                    <option value="08:00">08:00</option>
+                    <option value="09:00">09:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                    <option value="22:00">22:00</option>
+                    <option value="23:00">23:00</option>
+                </select>
+
+            </section>
+        </section>
+        <section class="hours">
+            <section class="hourTitle">HAFTA SONU </section>
+            <section class="hourInput">
+
+                <select name="AvailableWeekEndTimeBegin" id="AvailableWeekEndTimeBegin" style="width:130px">
+                    <option value="00:00">00:00</option>
+                    <option value="01:00">01:00</option>
+                    <option value="02:00">02:00</option>
+                    <option value="03:00">03:00</option>
+                    <option value="04:00">04:00</option>
+                    <option value="05:00">05:00</option>
+                    <option value="06:00">06:00</option>
+                    <option value="07:00">07:00</option>
+                    <option value="08:00">08:00</option>
+                    <option value="09:00">09:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                    <option value="22:00">22:00</option>
+                    <option value="23:00">23:00</option>
+                </select>
+
+                <select name="AvailableWeekEndTimeEnd" id="AvailableWeekEndTimeEnd" style="width:130px">
+                    <option value="00:00">00:00</option>
+                    <option value="01:00">01:00</option>
+                    <option value="02:00">02:00</option>
+                    <option value="03:00">03:00</option>
+                    <option value="04:00">04:00</option>
+                    <option value="05:00">05:00</option>
+                    <option value="06:00">06:00</option>
+                    <option value="07:00">07:00</option>
+                    <option value="08:00">08:00</option>
+                    <option value="09:00">09:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                    <option value="22:00">22:00</option>
+                    <option value="23:00">23:00</option>
+                </select>
+
+            </section>
+        </section>
+
+        <ins></ins>            
+    
+        <img id="LoadingForm" src="@PathHelper.UrlStatic/images/global/loading.gif" style="display: none;" />
+    
+        <input type="submit" value="KAYDET" id="btnAramaKaydet" class="fRight" style="margin-right:30px;" />         
+}
+
+<a href="/TiklaAra/UserBlocks" class="ajax blockListLink fIta" data-ga="TiklaAraEngellediklerim">Engellediklerim</a>
+
+<script>
+    $(function () {
+        PageRender();
+        $("select").kendoDropDownList({ autoBind: false });
+    });    
+</script>
+<ins></ins>

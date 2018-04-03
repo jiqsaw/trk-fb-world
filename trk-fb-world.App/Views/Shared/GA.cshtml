@@ -1,0 +1,41 @@
+﻿@if (ConfigManager.GetInstance().GAEnabled)
+{
+    
+    <script type="text/javascript" src="https://analytics-api-samples.googlecode.com/svn-history/r3/trunk/src/tracking/javascript/v5/social/ga_social_tracking.js"></script>    
+    
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-35714745-7']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>        
+    
+    <script>
+
+        $(function () {
+            $('a').live('mousedown', function () {
+                if ($(this).attr("data-ga") != undefined)
+                    GATracker($(this).attr("data-ga"));
+            });
+        });
+
+        function GATracker(ActionName) {
+            try {
+                if (_gaq != null || _gaq != undefined) {
+                    _gaq.push(['_trackPageview', ActionName]);
+                    console.log("GA: " + ActionName);
+                }
+            }
+            catch (err) { }
+        }
+
+    </script>    
+    
+}

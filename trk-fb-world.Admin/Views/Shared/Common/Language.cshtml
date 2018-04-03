@@ -1,0 +1,12 @@
+﻿@using TurkcellFacebookDunyasi.Com.General
+
+<section class="language">
+
+    @if (GlobalVars.Language != "tr") {
+        <a href="/@LIB.Util.ReturnPageName()?Lng=tr" class="link brown">TR</a>
+    }
+    else if (GlobalVars.Language != "en") {
+        <a href="/@LIB.Util.ReturnPageName()?Lng=en" class="link brown">ENG</a>
+    }
+
+</section>

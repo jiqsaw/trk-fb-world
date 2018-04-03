@@ -1,0 +1,65 @@
+﻿@model IEnumerable<TurkcellFacebookDunyasi.Core.Offer>
+@using TurkcellFacebookDunyasi.Com.Helpers.UrlHelperExtensions
+
+@section scripts
+{    
+    @Scripts.Render("~/bundles/jqueryui")
+
+    <script>
+        $(function () {
+            Sortable("@ViewContext.Controller.ValueProvider.GetValue("controller").RawValue");
+        });
+
+        $(document).ready(function () {
+            $("#OfferTypeCode").change(function data() {
+                location.href = "/Offer/Sortable?OfferType=" + $(this).val();
+            });
+        });
+    </script>
+}
+
+@Helper.BodyNav(Html, "Offer", true)
+
+<section class="panel">
+    @Html.DropDownListEnum("OfferTypeCode", typeof(Parameter.OfferTypePosition),0)
+    
+    @if (Model != null) {
+    <table class="grid">
+        <tr>
+            <td>
+
+                <ol>
+                    <li>
+                        <div>&nbsp;</div>
+                        <div>@TurkcellFacebookDunyasi.Core.App_GlobalResources.rsrcCommon.Image</div>
+                        <div>@TurkcellFacebookDunyasi.Core.App_GlobalResources.rsrcCommon.Title</div>
+                    </li>
+                </ol>
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <ol class="sortable high">
+                    
+                    @foreach (var item in Model.ToList())
+                    {
+                    <li id="@item.Id.ToString()">
+                        <div class="hand"></div>
+                        <div class="withImg">
+                            <a href="@TurkcellFacebookDunyasi.Com.Helpers.PathHelper.Images.Offer(item.FileName, Parameter.ImageSizeNaming.Default).ToFullPath()" class="cb">
+                                <img alt="" src="@TurkcellFacebookDunyasi.Com.Helpers.PathHelper.Images.Offer(item.FileName, Parameter.ImageSizeNaming.Preview).ToFullPath()" style="height: 40px" />
+                            </a>
+                        </div>
+                        <div>@item.Title</div>
+                    </li>                    
+                    }
+                </ol>
+            </td>
+        </tr>
+
+    </table>
+    }
+
+</section>

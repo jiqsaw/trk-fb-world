@@ -1,0 +1,13 @@
+﻿@using TurkcellFacebookDunyasi.App.App_Manager
+
+
+<aside class="profil fLeft">
+    <figure class="fLeft user userMedium">
+        <img src="@((new UserFbManager()).Data.FbProfilePicture)" border="0" />
+    </figure>
+    <aside class="info fRight">
+        <p class="name">@((new UserFbManager()).Data.FbFullName)</p>
+        <p class="gsm">@LIB.FormatHelper.Phone((new UserFbManager()).Data.Msisdn)</p>
+        <a href="@Url.Action("LogOut","Login")">çıkış</a>
+    </aside>
+</aside>

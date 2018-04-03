@@ -1,0 +1,14 @@
+﻿{
+	"customerName":"Senel Kaya",
+	"loginOffer":"true",
+	"isEInvoiceSubscriber":"0",
+	"digitControl":null,
+	"sessionToken":"112233445566",
+	"sid":"ND1hR3FMbh!-1862978502!1362560428877",
+	"result":"-10000",
+	"isPlatinum":"false",
+	"customerType":"flat",
+	"customerMsisdn":"5321528280",
+	"customerPaymentType":"posp",
+	"isGold":"false"
+}

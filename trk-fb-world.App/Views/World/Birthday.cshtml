@@ -1,0 +1,159 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.BirthDayFriendsModel
+
+<script>
+    function BirthdayFormControl() {
+        var ToId = $("#ToIds").val();
+        if (ToId == null || ToId == "" || ToId == "0") {
+            return false;
+        }
+        else { return true; }
+    }
+    $("#rgBirthdayFriends input[type='radio']").live("click", function () {
+        var ToId = $(this).val();
+        $("#ToIds").val(ToId);
+        $("#birthdayResult").html('');
+    });
+
+    $("#btnBirthdaySubmit").live("click", function () {
+
+        var ToId = $("#ToIds").val();
+        var Message = $("#Message").val();
+
+        if (ToId == null || ToId == "" || ToId == "0") {
+            processResult(1, "Lütfen arkadaş seçiniz.", "#birthdayResult");
+        }
+        else if (parseInt(Message.length) < 2) {
+            processResult(1, "Lütfen mesajınızı yazınız.", "#birthdayResult");
+        }
+        else {
+            $("#BirthdayLoadingForm").show();
+            $.ajax({
+                url: "/World/BirthdaySmsSent",
+                dataType: "json",
+                data: { "ToId": ToId },
+                success: function (response) {
+                    $("#BirthdayLoadingForm").hide();
+                    if (response.ToId != "0") {
+                        processResult(3, "Arkadaşınıza mesajınız gönderilmiştir.", "#birthdayResult");
+                        $("#birthdayResult").append("<ins class=\"space15\"></ins>");
+                        var fbIndex = $("#rgBirthdayFriends>#fbFriend_" + ToId + ">input[type='radio']").index();
+
+                        $("#rgBirthdayFriends>.fbFriend>input[type='radio']").eq(parseInt(fbIndex + 1)).attr("checked", "checked").next("label").attr("class", "rd-active");
+                        $("#ToIds").val($("#rgBirthdayFriends>.fbFriend>input[type='radio']").eq(parseInt(fbIndex + 1)).val());
+
+                        $("#fbFriend_" + ToId).hide();
+                        var openedCount = 0;
+                        $("#rgBirthdayFriends>.fbFriend").each(function () {
+                            if ($(this).css("display") != "none") {
+                                openedCount = parseInt(openedCount + 1);
+                            }
+                        });
+
+                        if (openedCount == 0) {
+                            $("#bdayForm").hide();
+                            $("#upcomingBirthdayFriends").fadeIn('slow');
+                            $("#birthdayTitle").html("DOĞUM GÜNÜ YAKLAŞAN ARKADAŞLARIM");
+                        }
+                    }
+                    else {
+                        processResult(1, "İşlem gerçekleşmedi.", "#birthdayResult");
+                    }
+                }
+            });
+
+        }
+    });
+</script>
+<h3 id="birthdayTitle">@ViewBag.Title</h3>
+<ins></ins>
+
+@if (Model.BirthdayFriends.Count > 0)
+{
+    int FbCount=0;
+    if(Model.BirthdayFriends.Count==1)
+    {
+        foreach (var item in Model.BirthdayFriends.ToList())
+        {
+            <input type="hidden" name="ToId" id="ToIds" value="@item.UserId" />
+            @Html.Raw("<section id=\"fbFriend_" + item.UserId + "\" class=\"fbFriend\">");
+            <a href="/Friend/FriendProfile/@item.UserId" class="ajax" data-ga="FriendDetail_@item.FbId">
+            <figure class="fLeft user userMedium">
+                <img src="@item.Picture.Data.Url" border="0" />
+            </figure>
+                    
+            <aside class="userInfo">
+                @item.Name<br />
+                <aside class="fIta">@String.Format("{0:m}", Convert.ToDateTime(LIB.FormatHelper.DateTR(item.FbBirthDay)))</aside>
+            </aside>
+            </a>
+            if(item.Msisdn==null || item.Msisdn==""){ <a class='inviteLink fLeft' href="javascript:sendRequestToRecipients('@item.FbId');" data-ga="Invite_@item.FbId">Davet Et</a> }
+            else  {  <a class='ajax call' href="/TiklaAra/Call/@item.UserId" data-ga="Ara">ara</a> <span class="freeCallOk fLeft fIta">ücretsiz</span> }
+            @Html.Raw("</section>")
+        }
+    }
+    else
+    {
+        <section class="rdGroup" id="rgBirthdayFriends">
+
+        @foreach (var item in Model.BirthdayFriends.ToList())
+        {
+            FbCount = FbCount + 1;
+            if (FbCount == 1) { <input type="hidden" name="ToId" id="ToIds" value="@item.UserId" /> }
+            @Html.Raw("<section id=\"fbFriend_" + item.UserId + "\" class=\"fbFriend\">");
+            if (FbCount == 1) { <input type="radio" name="rb" value="@item.UserId" id="birthdayFriend_@item.UserId" class="radioFilter" checked="checked" /> <label for="birthdayFriend_@item.UserId" class="birthdayFriend"></label> }
+            else { <input type="radio" name="rb" value="@item.UserId" id="birthdayFriend_@item.UserId" class="radioFilter" /> <label for="birthdayFriend_@item.UserId"></label> }
+
+            <a href="/Friend/FriendProfile/@item.UserId" class="ajax birthdayLink" data-ga="FriendDetail_@item.FbId">
+            <figure class="fLeft user userMedium">
+                <img src="@item.Picture.Data.Url" border="0" />
+            </figure>
+                    
+            <aside class="userInfo">
+                @item.Name<br />
+                <aside class="fIta">@String.Format("{0:m}", Convert.ToDateTime(LIB.FormatHelper.DateTR(item.FbBirthDay)))</aside>
+            </aside>
+            </a>            
+            if (item.Msisdn == null || item.Msisdn == "")
+            { <a class='inviteLink fLeft' href="javascript:sendRequestToRecipients('@item.FbId');" data-ga="Invite_@item.FbId">Davet Et</a> }
+            else
+            {  <a class='ajax call' href="/TiklaAra/Call/@item.UserId" data-ga="Ara">ara</a> <span class="freeCallOk fLeft fIta">ücretsiz</span> }
+            <ins></ins>
+            @Html.Raw("</section>");
+        }
+
+        </section>
+    }
+    
+    <section id="birthdayResult"></section>
+    
+    @Html.Partial("BirthdayForm");
+}
+
+<section id="upcomingBirthdayFriends" style="display:@ViewBag.Display;">
+<label class="fIta fLightBlue">Turkcell Hesabım'a giriş yapan arkadaşlarını doğum günlerinde ücretsiz arayabilir veya ücretsiz SMS atarak onları kutlayabilirsin.</label>
+<ins class="space15"></ins>
+    
+@if (Model.UpcomingBirthdayFriends.Count > 0)
+{
+    foreach (var item in Model.UpcomingBirthdayFriends.ToList())
+    {
+        <a href="/Friend/FriendProfile/@item.UserId" class="ajax birthdayLink" data-ga="FriendDetail_@item.FbId">
+        <figure class="fLeft user userMedium">
+            <img src="@item.Picture.Data.Url" border="0" />
+        </figure>
+                    
+        <aside class="userInfo">
+            @item.Name<br />
+            <aside class="fIta">@String.Format("{0:m}", Convert.ToDateTime(LIB.FormatHelper.DateTR(item.FbBirthDay)))</aside>
+            
+        </aside>
+        </a>
+        <ins></ins>
+    }
+}
+</section>
+
+<script>
+    radioChecked();
+    $(".ajax").colorbox();
+</script>

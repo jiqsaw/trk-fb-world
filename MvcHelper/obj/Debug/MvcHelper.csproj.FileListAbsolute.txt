@@ -1,0 +1,16 @@
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\MvcHelper\obj\Debug\MvcHelper.csprojResolveAssemblyReference.cache
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\MvcHelper\bin\Debug\MvcHelper.dll
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\MvcHelper\bin\Debug\MvcHelper.pdb
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\MvcHelper\bin\Debug\Facebook.dll
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\MvcHelper\bin\Debug\LIB.dll
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\MvcHelper\bin\Debug\Microsoft.AspNet.Mvc.Facebook.dll
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\MvcHelper\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\MvcHelper\bin\Debug\System.Web.Http.dll
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\MvcHelper\bin\Debug\System.Net.Http.Formatting.dll
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\MvcHelper\bin\Debug\LIB.pdb
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\MvcHelper\bin\Debug\Facebook.xml
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\MvcHelper\bin\Debug\Newtonsoft.Json.xml
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\MvcHelper\bin\Debug\System.Web.Http.xml
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\MvcHelper\bin\Debug\System.Net.Http.Formatting.xml
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\MvcHelper\obj\Debug\MvcHelper.dll
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\MvcHelper\obj\Debug\MvcHelper.pdb

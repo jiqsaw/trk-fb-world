@@ -1,0 +1,52 @@
+﻿@model TurkcellFacebookDunyasi.Core.Admin
+
+@{
+    Layout = "~/Views/Shared/_LayoutEmpty.cshtml";
+}
+
+@section styles {
+    <link href="/Styles/login.css" rel="stylesheet"/>
+}
+
+@section scripts {    
+     <script src="/Scripts/app/login.js"></script>
+}
+
+<section class="login">
+        
+    <header class="top">                
+        <aside> 
+                    
+            @Html.ActionLink("TurkcellFacebookDunyasi", "Default", "Default", null, new { @class = "logo" })
+            @Html.Partial("Common/Language")
+
+        </aside>
+    </header>
+
+    <section class="panel">
+
+        @if (ViewBag.LoginFailed != null) { 
+            @Html.Partial("Common/Result", new TurkcellFacebookDunyasi.Admin.Models.ResultModel {
+                Type = TurkcellFacebookDunyasi.Admin.Models.ResultModel.ResultType.error,
+                Message = HttpContext.GetGlobalResourceObject("Notices", "LoginFailed").ToString()
+            })
+        }
+
+        @using (Html.BeginForm()) {
+                    
+        <h1>@HttpContext.GetGlobalResourceObject("Global", "LoginTitle")</h1>
+
+        @Html.ValidationMessageFor(p => p.Username) @Html.LabelFor(p => p.Username) @Html.EditorFor(p => p.Username) 
+        @Html.ValidationMessageFor(p => p.Password) @Html.LabelFor(p => p.Password) @Html.EditorFor(p => p.Password) 
+
+        @Html.EditorFor(p => p.RememberMe) @Html.LabelFor(p => p.RememberMe)
+
+        <input class="light" type="submit" value="@HttpContext.GetGlobalResourceObject("Form", "ButtonLogin")" />
+
+        }
+
+    </section>
+
+    <footer class="footer">powered by Wanda Digital</footer>
+
+</section>

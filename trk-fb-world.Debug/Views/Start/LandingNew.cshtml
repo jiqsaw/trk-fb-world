@@ -1,0 +1,263 @@
+﻿@{
+    Layout = null;
+}
+
+@using TurkcellFacebookDunyasi.Com.Helpers
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>        
+    <title>Turkcell Hesabım</title>
+
+    @Html.Partial("_LayoutHead")
+
+</head>
+<body>
+<div id="fb-root"></div>
+
+<script>
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: _appId, // App ID
+            status: true, // check login status
+            cookie: true, // enable cookies to allow the server to access the session
+            xfbml: true,  // parse XFBML
+            channelUrl: '@PathHelper.UrlWeb/channel.html' //custom channel
+        });
+
+        FB.Canvas.setAutoGrow(true);
+
+        FB.Event.subscribe('edge.create', fbLogin);
+
+@if (Convert.ToBoolean(ViewBag.IsPageLiked))
+{ 
+    <text>
+
+        FB.getLoginStatus(function (response) {
+            if (response.status === 'connected') {
+
+                console.log("connected");
+                FbLoginResponse(response);
+
+            } else if (response.status === 'not_authorized') {
+
+                console.log("not_authorized");
+                ShowLanding();
+
+            } else {
+
+                console.log("isn't logged in to Facebook");
+                ShowLanding();
+            }
+        });
+
+    </text>
+}
+else
+{
+    <text>
+        ShowLanding();
+    </text>
+}
+
+
+
+    };
+
+
+    // Load the SDK Asynchronously
+    (function (d) {
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/tr_TR/all.js";
+        ref.parentNode.insertBefore(js, ref);
+    }(document));
+
+    var graphUrl = '/me/?fields=id,name,first_name,last_name,link,username,birthday,location,gender,email,locale,picture.width(100).height(100),friends.fields(name,first_name,last_name,picture.width(100).height(100))';
+
+
+
+    // LOGIN
+    function fbLogin() {
+        FB.login(function (response) {
+
+            FbLoginResponse(response);
+
+        }, { scope: 'email,user_birthday' });
+    }
+
+
+    function FbLoginResponse(response) {
+
+        if (response.authResponse) {
+
+            ShowAppPage();
+
+            FB.api(graphUrl, function (response) {
+
+                var postData = { JsonData: $.toJSON(response) };
+
+                $.ajax({
+                    url: '/Start/FbLogin',
+                    type: "POST",
+                    data: postData,
+                    dataType: 'json',
+                    success: function (response) {
+
+                        goIn();
+
+                    },
+                    error: function (response) {
+
+                        location.href = '/Error/AppOffline';
+
+                    }
+                });
+
+            });
+
+        } else
+            console.log('User cancelled login or did not fully authorize.');
+    }
+
+
+    function goIn() {
+        $('#appPage').load('/Login', function (responseText, textStatus, req) {
+
+
+            $('#appPage').hide().fadeIn('slow', iFrameHeightRender);
+
+        });
+    }
+
+
+    function ShowLanding() {
+        $('#landing').css({ "visibility": "visible" });
+        iFrameHeightRender();
+    }
+
+
+    function ShowAppPage() {
+        $('#landing').fadeOut();
+        $('#appPage').fadeIn('slow', iFrameHeightRender);
+    }
+
+</script>
+
+<section class="wrapper">
+
+    @Html.Partial("Header")
+
+
+    <section id="landing" style="visibility: hidden;">
+
+                <section class="landingPage">
+                    
+                    <section class="lpTitle fIta"> Ücretsiz arama yapabilir, SMS yollayıp,<br />                                              TL gönderip isteyebilir, fatura detaylarınıza ulaşabilirsiniz!</section>
+
+                    <ins class="space45"></ins>
+
+                    <script>
+                        $(function () {
+                            tipsSlide();
+                        });
+
+
+                        function tipsSlide() {
+                            $('.landingTips').slides({
+                                container: 'allTips',
+                                preload: false,
+                                play: 5000,
+                                paginition: true,
+                                paginationClass: 'alertNav',
+                                generatePagination: false,
+                                effect: 'fade',
+                                animationComplete: function (current) {
+                                    $('.alertNav li a').removeClass('active');
+                                    $('.alertNav li').eq(current - 1).children('a').addClass('active');
+                                }
+                            });
+                        }
+                    </script>
+
+                    <section class="fLeft landingTips">
+                        <section class="allTips fIta">
+                            <section class="lpTip">
+                                <img src="@PathHelper.UrlStatic/images/banners/landingBanner1.png" />
+                                <p class="summary">Güncel ve Geçmiş Fatura Bilgilerine ulaş. <br />Fatura Detaylarını Facebook'taki arkadaşların ile eşleştirilmiş şekilde incele.</p>
+                            </section>
+                            <section class="lpTip">
+                                <img src="@PathHelper.UrlStatic/images/banners/landingBanner1.png" />
+                                <p class="summary">Facebook üzerinden cep telefonunuzla arkadaşlarınızla konuşun! Üstelik ilk 30 dakika ücretsiz.</p>
+                            </section>
+                            <section class="lpTip">
+                                <img src="@PathHelper.UrlStatic/images/banners/landingBanner1.png" />
+                                <p class="summary">Facebook üzerinden cep telefonunuzla arkadaşlarınızla konuşun! Üstelik ilk 30 dakika ücretsiz.</p>
+                            </section>
+                        </section>
+                        <ins></ins>
+                        <ul class="alertNav">
+                            <li><a class="active">1</a></li>
+                            <li><a>2</a></li>
+                            <li><a>3</a></li>
+                        </ul>
+                    </section>
+
+                    <ins class="space35"></ins>
+
+                
+                    <section class="fIta lpText">
+                       
+
+                        @if (!Convert.ToBoolean(ViewBag.IsPageLiked))
+                        {
+                        <section id="sectionLike">
+                            <span class="yellowText">Turkcell Hesabım’a giriş yapmak için sayfayı beğenmelisiniz. </span>
+                            <br /><br />
+                            <fb:like href="@Helper.configFb(TurkcellFacebookDunyasi.App.App_Manager.ConfigManager.ConfigNameFb.Facebook_PageAppTabUrl)" send="false" layout="button_count" width="100" show_faces="false"></fb:like>
+                        </section>
+                        }
+                    
+                        else
+                        {
+                        <section id="sectionStart" class="fBoldIta">
+                            <a class="buttonLink bigButton" href="javascript:fbLogin()">GİRİŞ</a>
+                        </section>
+                        }                  
+                  
+                    </section>  
+                    
+                    <ins class="space200"></ins>                              
+                              
+
+                </section> 
+
+    </section>
+    
+
+    <section id="appPage" style="display: none; min-height: 500px">
+        
+        <section class="appStarting fIta">
+
+            @Html.Partial("Loading") <br /> 
+            Giriş yapılıyor...
+        </section>
+
+    </section>
+
+        
+    @Html.Partial("Footer")
+
+    <ins></ins>
+
+</section>
+
+
+
+    @Html.Partial("_Kendo")    
+
+</body>
+</html>

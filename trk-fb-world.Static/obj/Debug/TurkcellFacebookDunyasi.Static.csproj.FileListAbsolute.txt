@@ -1,0 +1,5 @@
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\TurkcellFacebookDunyasi.Static\bin\TurkcellFacebookDunyasi.Static.dll
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\TurkcellFacebookDunyasi.Static\bin\TurkcellFacebookDunyasi.Static.pdb
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\TurkcellFacebookDunyasi.Static\obj\Debug\TurkcellFacebookDunyasi.Static.dll
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\TurkcellFacebookDunyasi.Static\obj\Debug\TurkcellFacebookDunyasi.Static.pdb
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\TurkcellFacebookDunyasi.Static\obj\Debug\TurkcellFacebookDunyasi.Static.csprojResolveAssemblyReference.cache

@@ -1,0 +1,212 @@
+﻿<div id='colorboxContentainer3'>
+    <div id="colorboxContent3">
+        
+		<h2 class="colorboxHeader">Arayanı Engelle</h2>
+
+        <section id="preferenceOptions" style="float:left; clear:none;">
+
+        <script>
+            $(document).ready(function () {
+
+                $("#txtAutoCompFriends").kendoAutoComplete({
+                    minLength: 2,                    
+                    filter: "startswith",
+                    placeholder: "Engellemek istediğin arkadaşlarınız...",
+                    separator: ", ",
+
+                    template: kendo.template($("#tempAutoCompItem").html()),
+                    
+                    dataTextField: "Name",
+                    dataSource: {
+                        type: "json",
+                        transport: {
+                            read: "/User/GetAllFriends"
+                        }
+                    },
+                    select: onAutoCompSelect
+                });
+
+
+
+                $('#btnBlock').click(function () {
+
+                    var friendIds = "";
+                    for (var i = 0; i < arrSelectedFriends.length; i++) {
+                        friendIds += arrSelectedFriends[i].FbId
+                        if (i != arrSelectedFriends.length - 1)
+                            friendIds += ",";
+                    }
+
+                    var postData = { FriendIds: friendIds };                    
+                    $.ajax({
+                        url: '/TiklaAra/UserBlocks',
+                        type: "POST",
+                        data: postData,
+                        dataType: 'json',
+                        success: function (response) {
+                            
+                            BlockListLoad();
+
+                        }
+                    });
+                    
+                });
+                
+                BlockListLoad();
+
+            });
+
+
+            function BlockListLoad() {
+                $('#blockList').load("/TiklaAra/UserBlockList", function () {
+                    setTimeout(function () {
+                        $(".nano2").nanoScroller({ alwaysVisible: true });
+                    }, 500);
+                });
+            }
+
+
+            var arrSelectedFriends = new Array();
+
+            function onAutoCompSelect(e) {
+
+                var dt = kendo.stringify(this.dataItem(e.item.index()));
+                var item = $.evalJSON(dt);
+                
+                if (hasFbId(item.FbId)) {
+
+                    var objSelectedFriend = { FbId: item.FbId, Name: item.Name };
+
+                    arrSelectedFriends[arrSelectedFriends.length] = objSelectedFriend;
+                    selectedFriendsRender();
+                }
+            }
+
+            function selectedFriendsRender() {
+
+                if (arrSelectedFriends.length > 0) {
+                    var tmpHtmlItem = $('#tmpSelectedFriend').html();
+                    var htmlBinding = "";
+                    for (var i = 0; i < arrSelectedFriends.length; i++) {
+                        htmlBinding += tmpHtmlItem.replace("#NAME#", arrSelectedFriends[i].Name).replace("#FBID#", arrSelectedFriends[i].FbId);
+                    }
+
+                    $('.selectedFriendList').html(htmlBinding);
+                    $('#selectedFriendListContainer').show();
+
+                    $(this).colorbox.resize();
+                }
+                else {
+                    $('.selectedFriendList').html("");
+                    $('#selectedFriendListContainer').hide();
+                }
+            }
+
+            function removeSelected(FbId) {
+                arrSelectedFriends = $.grep(arrSelectedFriends,
+                   function (o, i) { return o.FbId === FbId; },
+                   true);
+
+                selectedFriendsRender();
+            }
+
+            function hasFbId(FbId) {                
+                for (var i = 0; i < arrSelectedFriends.length; i++) {
+                    if (arrSelectedFriends[i].FbId == FbId)
+                        return false;
+                }
+                return true;
+            }
+
+
+            function removeBlock(FbId) {
+                var postData = { FbId: FbId };
+                $.ajax({
+                    url: '/TiklaAra/RemoveBlock',
+                    type: "POST",
+                    data: postData,
+                    dataType: 'json',
+                    success: function (response) {
+                        BlockListLoad();
+                    }
+                });
+            }
+        </script>
+
+
+        <ins class="space15"></ins>
+
+        <section class="specialText fLeft" style="position: relative; height: 42px;">
+            <input id="txtAutoCompFriends" type="text" style="width:378px; height: 31px;" />
+            <span class="searchBtn searchBtn2" style="top: 0; right: 10px;"></span>
+        </section>
+
+        <script id="tempAutoCompItem" type="text/x-kendo-tmpl">
+
+            <article class="friendAutoCompItem">
+                <figure class="fLeft user userMedium">
+                    <img src="${ data.PictureLink }" class="userSmall" alt="${ data.FirstName }" />
+                </figure>
+                
+                ${ data.FirstNameView } <br /> ${ data.LastNameView }
+            </article>
+                
+            <ins></ins>
+
+        </script>
+
+        <ins></ins>
+
+        <div id="tmpSelectedFriend" style="display: none;">
+            <p>#NAME# <a href="javascript:removeSelected('#FBID#');" class="fIta refresh">(çıkar)</a> </p>
+        </div>
+
+        <div id="selectedFriendListContainer" class="fLeft" style="display: none;">
+
+            <ins></ins>
+
+            <div class="selectedFriendList">
+            </div>
+
+            <ins></ins> <br />
+
+            <a href="javascript:;" class="buttonLink fLeft" id="btnBlock">Seçtiklerimi Engelle</a>
+            
+            <ins></ins>
+
+        </div>
+
+        <ins></ins>
+
+        <h3 class="colorboxSubHead">Engellediğiniz Arkadaşlarınız</h3>
+
+        <section class="friendBox">
+            <section class="_top"></section>
+            <section class="_cont">
+
+                <section id="friendAll" class="nano2" style="height: 230px;">
+                    <section id="blockList" class="content">
+                        
+                        <img src="@PathHelper.UrlStatic/images/icons/loading.gif" />                                                              
+
+                    </section>
+                </section>
+                <ins></ins>
+
+            </section>
+            <section class="_bot"></section>
+        </section>
+
+        <ins class="space35"></ins>
+
+            <a href="/TiklaAra/Preferences" class="ajax buttonLink leftButton" data-ga="TiklaAraTercihler">Tercihler</a>
+        </section>
+        <ins></ins>
+                
+    </div>
+    <ins></ins>
+</div>
+<ins></ins>
+<script>
+    $(".ajax").colorbox();
+</script>

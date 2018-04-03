@@ -1,0 +1,32 @@
+﻿@model IList<TurkcellFacebookDunyasi.App.Models.EnCokArananlarMergeModel>
+
+@if (Model.Count > 0) {
+    foreach (var mergeModelData in Model)
+    {
+        if(mergeModelData.FbId != null)
+        {                      
+            <article class="friend topCalledProfile" style="display: block;">
+                <a class="lProfile ajax cboxElement" href="/Friend/FriendProfile/@mergeModelData.UserId" data-ga="FriendDetail_@mergeModelData.FbId">
+                    <figure class="fLeft user userMedium">
+                        <img src="@mergeModelData.PictureLink" border="0">
+                    </figure>
+                    <p>            
+                            @String.Format("{0} {1}",mergeModelData.FirstNameView,mergeModelData.LastNameView)
+                    </p>
+                </a>
+                @if ((!mergeModelData.IsClickToCallInvisible) && (!mergeModelData.IsClickToCallBlock))  {
+                <a class="ajax cboxElement" href="/TiklaAra/Call/@mergeModelData.UserId" data-ga="Ara">ara</a>
+                }
+            </article>
+        }else
+        {
+            <article class="topCalled">@ProjectUtil.MaskMsisdn(mergeModelData.Msisdn)</article>
+        }
+        <ins class="lineTransparent"></ins>
+    
+    }
+}
+else
+{
+    <p class="fIta">Bu döneme ait görüşmeniz bulunmamaktadır.</p>
+}

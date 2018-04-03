@@ -1,0 +1,16 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.PaketServisModel
+
+@if (Model.serviceData.Services.ToList().Count > 0) {
+<label class="detailText">
+    <ul>
+        @foreach (var item in Model.serviceData.Services.ToList())
+        {
+            <li>@item.ServiceName</li>
+        }
+    </ul>
+</label>
+}
+else
+{
+    <text>PAKET ve SERVİS aboneliğiniz bulunmamaktadır. </text> 
+}

@@ -1,0 +1,49 @@
+﻿@using TurkcellFacebookDunyasi.Com.Helpers
+
+<script>
+    function preferenceFormOnSuccess() {
+        $('#preferenceOptions').hide();
+        $('#preferenceResult').css("display", "block");
+    }
+</script>
+
+
+<div id='colorboxContentainer3'>
+    <div id="colorboxContent3">
+        
+		<h2 class="colorboxHeader">Aranma Tercihleri</h2>
+
+        <section id="preferenceOptions">
+
+        
+            <section class="information fIta fLeft top35">
+                <img src="@PathHelper.UrlStatic/images/icons/information.png" /> <p>Ayarlarınızı gözden geçirerek aranma kriterlerinizi değiştirebilirsiniz.</p>
+            </section>       
+
+            <ins></ins>    
+
+            @Html.Action("PreferencesForm", "TiklaAra")
+
+            <ins></ins>
+
+        </section>
+
+        <section id="preferenceResult" style="display:none;">
+            <ins class="space35"></ins>
+            <section class="success">
+                <br /> Tercihleriniz başarılı bir şekilde kaydedilmiştir.. <br /> <ins class="space35"></ins>
+            </section>
+            <ins class="space35"></ins>
+            <a href="/TiklaAra/Preferences" class="ajax buttonLink leftButton" data-ga="TiklaAraTercihler">Tercihler</a>
+            <ins></ins>
+        </section>
+        
+    </div>
+</div>
+<ins class="space35"></ins>
+<br />
+<script>
+    $(function () {
+        $(".ajax").colorbox();
+    });
+</script>

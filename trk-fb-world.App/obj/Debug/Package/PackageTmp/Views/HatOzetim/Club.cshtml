@@ -1,0 +1,22 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.KlubumModel
+
+@if (Model.serviceData.Clubs.ToList().Count > 0) {
+    <label class="detailText">
+        <ul>
+            @foreach (var item in Model.serviceData.Clubs.ToList())
+            {
+                <li>@item.Club</li>
+            }
+        </ul>
+    </label>
+    <aside class="title fReg listAll">
+        <a href="https://csi.turkcell.com.tr/csi/clubActivate?csiEntranceId=0301&ref=1" class="csiLink" data-ga="KlupDegistir">Değiştir</a>
+    </aside>
+}
+else
+{
+        <text>Kulüp aboneliğiniz bulunmamaktadır.</text>
+        <aside class="title fReg listAll">
+            <a href="https://csi.turkcell.com.tr/csi/clubActivate?csiEntranceId=0301&ref=1" class="csiLink" data-ga="KlupAboneOl">Abone Ol</a>
+        </aside>
+}

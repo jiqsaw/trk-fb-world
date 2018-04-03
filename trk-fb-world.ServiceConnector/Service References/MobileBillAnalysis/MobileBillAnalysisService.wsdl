@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://csiws.turkcell.com.tr/" name="MobileBillAnalysisService" targetNamespace="http://csiws.turkcell.com.tr/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://10.201.232.39:16011/csiws/MobileBillAnalysisService?xsd=1" namespace="http://csiws.turkcell.com.tr/" />
+    </xsd:schema>
+  </types>
+  <message name="GetInvoiceAnalysisList">
+    <part name="parameters" element="tns:GetInvoiceAnalysisList" />
+  </message>
+  <message name="GetInvoiceAnalysisListResponse">
+    <part name="parameters" element="tns:GetInvoiceAnalysisListResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <portType name="MobileBillAnalysis">
+    <operation name="GetInvoiceAnalysisList">
+      <input message="tns:GetInvoiceAnalysisList" />
+      <output message="tns:GetInvoiceAnalysisListResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+  </portType>
+  <binding name="MobileBillAnalysisPortBinding" type="tns:MobileBillAnalysis">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="GetInvoiceAnalysisList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="MobileBillAnalysisService">
+    <port name="MobileBillAnalysisPort" binding="tns:MobileBillAnalysisPortBinding">
+      <soap:address location="http://10.201.232.39:16011/csiws/MobileBillAnalysisService" />
+    </port>
+  </service>
+</definitions>

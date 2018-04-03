@@ -1,0 +1,63 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.UserFbFriendModel
+
+@using TurkcellFacebookDunyasi.Com.Helpers
+
+<script>
+    $(document).ready(function () {
+        $("select").kendoDropDownList();
+    });
+    function friendSelected() {
+        
+    }
+</script>
+<div id='colorboxContentainer3'>
+    <div id="colorboxContent3">
+		<h2 class="colorboxHeader">Arkadaşından TL İste</h2>              
+
+        <section id="krediIsteForm">
+
+            <section id="response"></section>
+
+            <section class="information fIta" style="margin: 31px 0; width: 350px;">
+                TL talebiniz arkadaşınıza SMS olarak bildirilecektir.<br />
+                Talebiniz kabul edildiği takdirde tarafınıza yine SMS olarak bildirilecektir.
+            </section>
+            
+            <ins></ins>
+            @using (Ajax.BeginForm(new AjaxOptions { UpdateTargetId = "krediIsteForm", LoadingElementId = "LoadingForm", Url = "/TlIste/Default" }))
+            {
+                <input type="hidden" name="ToId" id="ToId" value="@Model.FbId" />
+                <input type="hidden" name="Msisdn" id="Msisdn" value="@Model.Msisdn" />
+
+                <aside class="colorboxFormText _padTop">TL Talep Ettiğiniz Arkadaşınız</aside>
+
+                
+                <article class="friend friendSmall">
+                    <figure class="fLeft user userMedium">
+                        <img src="@Model.Picture.Data.Url" border="0" id="frImage" />
+                    </figure>
+                    <p id="frName">@Model.FirstNameView<br />@Model.LastNameView</p>
+                </article>
+
+                <span class="link linkMargin" id="linkChange"><a href="/Friend/FriendList/?NextUrl=TlIste/Default" class="ajax">Değiştir</a></span>
+
+                <aside class="colorboxFormText">Talep Ettiğiniz TL Miktarı</aside>
+                @Html.DropDownList("Amount", (SelectList)ViewBag.TransferAmounts)
+                                
+                <ins></ins>
+
+                <aside class="button">
+                    <input type="submit" name="btnKrediIste" id="btnKrediIste" value="GÖNDER" />
+                    <section id="LoadingForm" class="fRight ajaxFormLoadLb">@Html.Action("LoadingSmall","Global")</section>
+                </aside>
+
+            }
+        </section>
+
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".ajax").colorbox();
+    });
+</script>

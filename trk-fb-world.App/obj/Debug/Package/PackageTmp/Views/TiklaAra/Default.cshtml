@@ -1,0 +1,176 @@
+﻿@model TiklaAraModel
+
+@using TurkcellFacebookDunyasi.Com.Helpers
+@using TurkcellFacebookDunyasi.App.Models
+
+<script>
+    tooltipsy();
+
+    var dsFriendsClickToCall;
+
+    $(function () {
+
+        var _kTmpFriend = kendo.template($("#tmpFriendsClickToCall").html());
+
+        dsFriendsClickToCall = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: "/User/GetAllFriends",
+                    dataType: "json"
+                }
+            },
+
+            schema: {
+                model: {
+                    fields: {
+                        UserId: {},
+                        FbId: {},
+                        FirstNameView: { type: "string" },
+                        LastNameView: { type: "string" },
+                        Name: { type: "string" }
+                    }
+                }
+            },
+
+            change: function () {
+                $("#friendsClickToCall").html(kendo.render(_kTmpFriend, this.view()));
+                $(".nano").nanoScroller({ alwaysVisible: true });
+                $(".ajax").colorbox();
+                //$("#friendsClickToCall").hide().slideDown('fast', 'easeOutQuad');
+            }
+        });
+
+
+        //FILTERS
+        @if (!Model.ShowFilterAll) { <text>
+        $('#rdAll').hide();
+        $('#rdAll').next("label").hide();
+        </text> 
+        }
+        else{
+        <text>$('.invoiceFilter').addClass('top');</text>
+        <text>$('#clickToCallSpace').show();</text>
+        }
+
+        @if (!Model.HasIncomingCall)
+        { <text>
+        $('#rdIncoming').hide();
+        $('#rdIncoming').next("label").hide();
+        </text> 
+        }
+        else
+        {
+        <text>$('.invoiceFilter').addClass('top');</text>
+        <text>$('#clickToCallSpace').show();</text>
+        }
+
+        @if (!Model.HasOutgoingCall)
+        { <text>
+        $('#rdOutGoing').hide();
+        $('#rdOutGoing').next("label").hide();
+        </text> 
+        }
+        else
+        {
+        <text>$('.invoiceFilter').addClass('top');</text>
+        <text>$('#clickToCallSpace').show();</text>
+        }
+
+        $('#rdClickToCallFriendGroup input').click(function () { ClickToCallFriendsFilter($(this).attr("data-action")); });
+
+        $("#txtFriendSearch").on("keyup", function (e) {
+            kGridSearch(dsFriendsClickToCall, e);
+
+            if ($('#rdAll').attr("checked") != "checked") {
+                $('#rdAll').click(); $('#rdAll').click();
+            }
+
+        });
+        // ------------ //
+
+        $('#rdAll').click();
+
+    });
+
+
+    function ClickToCallFriendsFilter(FilterType) {
+
+        if (FilterType == 'All') {
+            dsFriendsClickToCall.filter({});
+            dsFriendsClickToCall.sort({});
+        }
+        else {
+            var filters = { logic: 'and', filters: [{ field: FilterType, operator: "gt", value: 0 }] };
+
+            var sort = { field: FilterType, dir: "desc" };
+
+            dsFriendsClickToCall.filter(filters);
+            dsFriendsClickToCall.sort(sort);
+        }
+    }
+
+</script>
+
+<section class="subContainer">
+
+    <section class="tabContents">
+        <section class="tabContent">
+            
+            <h2>ARKADAŞLARINI TIKLA ARA</h2>
+
+            <section class="fRight" style="margin-top:-50px">
+                <a href="/TiklaAra/HowItWorks" class="ajax pinkButton" data-ga="TiklaAraNasilCalisir"> <img src="@PathHelper.UrlStatic/images/icons/help.png" /> NASIL ÇALIŞIR</a>
+                <a href="/TiklaAra/Preferences" class="ajax blueButton ttB" title="Tercihler" data-ga="TiklaAraTercihler"> <img src="@PathHelper.UrlStatic/images/icons/setting.png" /></a>
+            </section>
+
+
+
+                <ins class="space35" id="clickToCallSpace" style="display:none;"></ins>
+
+
+            
+                <section class="invoiceDetailHeader fLeft">
+                    <section class="invoiceAmount callRadio">
+                        <section class="rdGroup" id="rdClickToCallFriendGroup">
+                            <input type="radio" name="rb" value="3" id="rdAll" data-action="All" class="radioFilter" checked="checked" /> <label for="rdAll">Tümü</label>
+                            <input type="radio" name="rb" value="2" id="rdOutGoing" data-action="OutGoingCallCount" class="radioFilter" /> <label for="rdOutGoing">Sık Konuştuklarım</label>
+                            <input type="radio" name="rb" value="1" id="rdIncoming" data-action="InComingCallCount" class="radioFilter" /> <label for="rdIncoming">Sık Arayanlar</label>
+                        </section>
+                    </section>
+                    
+                    <section class="invoiceFilter specialText">
+                        <input id="txtFriendSearch" type="text" placeholder="Arkadaşlarını Ara..." style="width:230px" />
+                        <span class="searchBtn"></span>
+                    </section>
+                </section>
+
+            <ins></ins>
+
+            
+            <section class="friendBox2">
+                <section class="_top"></section>
+                <section class="_cont">
+
+                    <script id="tmpFriendsClickToCall" type="text/x-kendo-template">
+
+                        @Html.Partial("FriendKTemplate")
+
+                    </script>
+                    
+                    <section class="friendContainer nano" style="display:block; height: 500px;">
+                        <section class="content" id="friendsClickToCall">
+      
+                            Arkadaş listeniz yükleniyor...
+
+                        </section>
+                    </section>
+                    
+
+
+                    </section>
+                <section class="_bot"></section>
+            </section>
+        </section>
+    </section>
+
+</section>

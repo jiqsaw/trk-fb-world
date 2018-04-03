@@ -1,0 +1,4 @@
+Feyyaz bir de son arananlar, cevapsýzlar gibi bilgileri çekerken kullandýðýmýz servis_name ve service_number bilgilerini þu þekilde deðiþtirmemiz gerekecek prodda:
+csi_facebook
+7570101
+ 

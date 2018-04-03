@@ -1,0 +1,16 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.KlubumModel
+
+@if (Model.serviceData.Clubs.ToList().Count > 0) {
+    <label class="detailText">
+        <ul>
+            @foreach (var item in Model.serviceData.Clubs.ToList())
+            {
+                <li>@item.Club</li>
+            }
+        </ul>
+    </label>
+}
+else
+{
+        <text>Kulüp aboneliğiniz bulunmamaktadır.</text>
+}

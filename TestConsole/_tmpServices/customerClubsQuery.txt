@@ -1,0 +1,11 @@
+﻿{
+	"clubList":
+	[
+		{
+			"clubId":1,
+			"clubDesc":"gnçtrkcll",
+			"rankId":1,
+			"rankDesc":"Standart"
+		}
+	]
+}

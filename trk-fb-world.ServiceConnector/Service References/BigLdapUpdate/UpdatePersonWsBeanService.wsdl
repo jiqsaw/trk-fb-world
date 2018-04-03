@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ws.bigldap.ttech.com/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="UpdatePersonWsBeanService" targetNamespace="http://ws.bigldap.ttech.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://ws.bigldap.ttech.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="updateEMAIL" type="tns:updateEMAIL" />
+      <xs:element name="updateEMAILResponse" type="tns:updateEMAILResponse" />
+      <xs:element name="updateFID" type="tns:updateFID" />
+      <xs:element name="updateFIDResponse" type="tns:updateFIDResponse" />
+      <xs:element name="updateMSISDN" type="tns:updateMSISDN" />
+      <xs:element name="updateMSISDNResponse" type="tns:updateMSISDNResponse" />
+      <xs:element name="updatePwdwEmail" type="tns:updatePwdwEmail" />
+      <xs:element name="updatePwdwEmailResponse" type="tns:updatePwdwEmailResponse" />
+      <xs:element name="updatePwdwMsisdn" type="tns:updatePwdwMsisdn" />
+      <xs:element name="updatePwdwMsisdnResponse" type="tns:updatePwdwMsisdnResponse" />
+      <xs:element name="updateUSER" type="tns:updateUSER" />
+      <xs:element name="updateUSERResponse" type="tns:updateUSERResponse" />
+      <xs:complexType name="updateFID">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="msisdn" type="xs:string" />
+          <xs:element minOccurs="0" name="email" type="xs:string" />
+          <xs:element minOccurs="0" name="fbookId" type="xs:string" />
+          <xs:element name="newFbookId" type="xs:string" />
+          <xs:element name="appId" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateFIDResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:personResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="personResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:wsResult">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="person" type="tns:person" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="wsResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="errorDesc" type="xs:string" />
+          <xs:element minOccurs="0" name="resultCode" type="tns:resultCode" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="person">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="authInvalidAttempt" type="xs:string" />
+          <xs:element minOccurs="0" name="email" type="xs:string" />
+          <xs:element minOccurs="0" name="fbookId" type="xs:string" />
+          <xs:element minOccurs="0" name="firstName" type="xs:string" />
+          <xs:element minOccurs="0" name="fullName" type="xs:string" />
+          <xs:element minOccurs="0" name="msisdn" type="xs:string" />
+          <xs:element minOccurs="0" name="password" type="xs:string" />
+          <xs:element minOccurs="0" name="surname" type="xs:string" />
+          <xs:element minOccurs="0" name="tcellUser" type="xs:string" />
+          <xs:element minOccurs="0" name="uid" type="xs:string" />
+          <xs:element minOccurs="0" name="uidType" type="tns:uidType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateMSISDN">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="msisdn" type="xs:string" />
+          <xs:element minOccurs="0" name="email" type="xs:string" />
+          <xs:element minOccurs="0" name="fbookId" type="xs:string" />
+          <xs:element name="newMsisdn" type="xs:string" />
+          <xs:element name="appId" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateMSISDNResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:personResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updatePwdwEmail">
+        <xs:sequence>
+          <xs:element name="email" type="xs:string" />
+          <xs:element name="newPassword" type="xs:string" />
+          <xs:element name="appId" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updatePwdwEmailResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:personResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateEMAIL">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="msisdn" type="xs:string" />
+          <xs:element minOccurs="0" name="email" type="xs:string" />
+          <xs:element minOccurs="0" name="fbookId" type="xs:string" />
+          <xs:element name="newEmail" type="xs:string" />
+          <xs:element name="appId" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateEMAILResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:personResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateUSER">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="msisdn" type="xs:string" />
+          <xs:element minOccurs="0" name="email" type="xs:string" />
+          <xs:element minOccurs="0" name="fbookId" type="xs:string" />
+          <xs:element minOccurs="0" name="firstName" type="xs:string" />
+          <xs:element minOccurs="0" name="surname" type="xs:string" />
+          <xs:element name="appId" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateUSERResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:personResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updatePwdwMsisdn">
+        <xs:sequence>
+          <xs:element name="msisdn" type="xs:string" />
+          <xs:element name="newPassword" type="xs:string" />
+          <xs:element name="appId" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updatePwdwMsisdnResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:personResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="uidType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="MSISDN" />
+          <xs:enumeration value="EMAIL" />
+          <xs:enumeration value="FBOOKID" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="resultCode">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="SUCCESS" />
+          <xs:enumeration value="SYSTEM_ERROR" />
+          <xs:enumeration value="PERSON_ALREADY_CREATED" />
+          <xs:enumeration value="PERSON_NOT_FOUND" />
+          <xs:enumeration value="FBOOK_ID_ALREADY_BOUND" />
+          <xs:enumeration value="EMAIL_ALREADY_BOUND" />
+          <xs:enumeration value="PERSON_ALREADY_BOUND" />
+          <xs:enumeration value="VALIDATION_ERR_REQUIRED_PARAMETER_MISSING" />
+          <xs:enumeration value="NOT_AUTHENTICATED" />
+          <xs:enumeration value="ACCOUNT_LOCKED" />
+          <xs:enumeration value="PASSWORD_EXPIRED" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="updatePwdwEmail">
+    <wsdl:part name="parameters" element="tns:updatePwdwEmail" />
+  </wsdl:message>
+  <wsdl:message name="updateUSERResponse">
+    <wsdl:part name="parameters" element="tns:updateUSERResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateEMAILResponse">
+    <wsdl:part name="parameters" element="tns:updateEMAILResponse" />
+  </wsdl:message>
+  <wsdl:message name="updatePwdwEmailResponse">
+    <wsdl:part name="parameters" element="tns:updatePwdwEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="updatePwdwMsisdnResponse">
+    <wsdl:part name="parameters" element="tns:updatePwdwMsisdnResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateMSISDNResponse">
+    <wsdl:part name="parameters" element="tns:updateMSISDNResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateUSER">
+    <wsdl:part name="parameters" element="tns:updateUSER" />
+  </wsdl:message>
+  <wsdl:message name="updateMSISDN">
+    <wsdl:part name="parameters" element="tns:updateMSISDN" />
+  </wsdl:message>
+  <wsdl:message name="updateEMAIL">
+    <wsdl:part name="parameters" element="tns:updateEMAIL" />
+  </wsdl:message>
+  <wsdl:message name="updateFID">
+    <wsdl:part name="parameters" element="tns:updateFID" />
+  </wsdl:message>
+  <wsdl:message name="updatePwdwMsisdn">
+    <wsdl:part name="parameters" element="tns:updatePwdwMsisdn" />
+  </wsdl:message>
+  <wsdl:message name="updateFIDResponse">
+    <wsdl:part name="parameters" element="tns:updateFIDResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UpdatePersonWs">
+    <wsdl:operation name="updateFID">
+      <wsdl:input name="updateFID" message="tns:updateFID" />
+      <wsdl:output name="updateFIDResponse" message="tns:updateFIDResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateMSISDN">
+      <wsdl:input name="updateMSISDN" message="tns:updateMSISDN" />
+      <wsdl:output name="updateMSISDNResponse" message="tns:updateMSISDNResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updatePwdwEmail">
+      <wsdl:input name="updatePwdwEmail" message="tns:updatePwdwEmail" />
+      <wsdl:output name="updatePwdwEmailResponse" message="tns:updatePwdwEmailResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateEMAIL">
+      <wsdl:input name="updateEMAIL" message="tns:updateEMAIL" />
+      <wsdl:output name="updateEMAILResponse" message="tns:updateEMAILResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateUSER">
+      <wsdl:input name="updateUSER" message="tns:updateUSER" />
+      <wsdl:output name="updateUSERResponse" message="tns:updateUSERResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updatePwdwMsisdn">
+      <wsdl:input name="updatePwdwMsisdn" message="tns:updatePwdwMsisdn" />
+      <wsdl:output name="updatePwdwMsisdnResponse" message="tns:updatePwdwMsisdnResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UpdatePersonWsBeanServiceSoapBinding" type="tns:UpdatePersonWs">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="updateFID">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="updateFID">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateFIDResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateMSISDN">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="updateMSISDN">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateMSISDNResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePwdwEmail">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="updatePwdwEmail">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updatePwdwEmailResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateEMAIL">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="updateEMAIL">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateEMAILResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePwdwMsisdn">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="updatePwdwMsisdn">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updatePwdwMsisdnResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateUSER">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="updateUSER">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateUSERResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UpdatePersonWsBeanService">
+    <wsdl:port name="UpdatePersonWsBeanPort" binding="tns:UpdatePersonWsBeanServiceSoapBinding">
+      <soap:address location="http://10.210.59.12:8080/BigLdapProxy/ws/UpdatePerson" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

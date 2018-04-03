@@ -1,0 +1,11 @@
+.friend { width: 200px !important; }
+.friend a { margin-right:5px !important; }
+.main .mainContent .mainContentBottom { margin-top:0px !important; height:55px !important;}
+.main .mainContent .mainContentBottom .mainContentBottomInfo { margin-left:-720px !important; }
+.main .mainHeader { height:40px !important; }
+.main .mainContent { margin-top:10px; }
+.tabs nav a.navKrediGonder, .tabs nav a.navKrediGonderActive { padding-top:10px !important; padding-bottom:8px; }
+.tabs nav a.navKrediGonder span, .tabs nav a.navKrediGonderActive span { margin-top:1px !important; }
+
+.tabs nav a.navKrediIste, .tabs nav a.navKrediIsteActive { padding-top:10px !important; padding-bottom:8px; }
+.tabs nav a.navKrediIste span, .tabs nav a.navKrediIsteActive span { margin-top:1px !important; }

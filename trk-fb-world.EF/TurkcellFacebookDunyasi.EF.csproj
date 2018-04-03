@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{55FE87D4-82A1-4C40-82C3-C19D03C4F2AB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TurkcellFacebookDunyasi.EF</RootNamespace>
+    <AssemblyName>TurkcellFacebookDunyasi.EF</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminAuthRepository.cs" />
+    <Compile Include="AdminRepository.cs" />
+    <Compile Include="ClickToCallFreeRepository.cs" />
+    <Compile Include="ClickToCallPreferenceRespository.cs" />
+    <Compile Include="TransactionLogRepository.cs" />
+    <Compile Include="TransferAmountRepository.cs" />
+    <Compile Include="RepositoryDefault.cs" />
+    <Compile Include="UserFbRepository.cs" />
+    <Compile Include="ClickToCallUserBlockRespository.cs" />
+    <Compile Include="UserInviteRepository.cs" />
+    <Compile Include="UserRequestTLRepository.cs" />
+    <Compile Include="UserSentTLRepository.cs" />
+    <Compile Include="ClickToCallRepository.cs" />
+    <Compile Include="UserSmsRepository.cs" />
+    <Compile Include="WebServiceLogRepository.cs" />
+    <Compile Include="WebServiceRepository.cs" />
+    <Compile Include="ModulRepository.cs" />
+    <Compile Include="OfferRepository.cs" />
+    <Compile Include="TurkcellFacebookDunyasiDb.cs" />
+    <Compile Include="Bases\BaseDbContext.cs" />
+    <Compile Include="FaqRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LIB\LIB.csproj">
+      <Project>{4a17e724-613d-4d65-84d0-bcc96716943e}</Project>
+      <Name>LIB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TurkcellFacebookDunyasi.Com\TurkcellFacebookDunyasi.Com.csproj">
+      <Project>{70bb7cd2-cc02-425b-aa9e-5ee1f21cdda1}</Project>
+      <Name>TurkcellFacebookDunyasi.Com</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TurkcellFacebookDunyasi.Core\TurkcellFacebookDunyasi.Core.csproj">
+      <Project>{6c4bbb94-da39-4bb6-9933-efd2105e804b}</Project>
+      <Name>TurkcellFacebookDunyasi.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

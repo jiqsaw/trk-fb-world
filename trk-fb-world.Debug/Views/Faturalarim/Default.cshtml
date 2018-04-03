@@ -1,0 +1,98 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.FaturalarimModel
+
+<script>
+  
+    var dsInvoices = @Html.Raw(Model.jsObjectData)
+
+    @*
+    var dsInvoices = [
+            { 'invoiceNumber': '1235687', 'period': '03',    'month': 'Kasım 2012', 'rate': '10', 'amount': '12,30', 'invoiceDate': '2012-12-25T00:00:00+02:00', 'paymentLastDate': '10.07.2013' },
+            { 'invoiceNumber': '1235687', 'period': '02',    'month': 'Kasım 2012', 'rate': '20', 'amount': '13,30', 'invoiceDate': '2012-12-25T00:00:00+02:00', 'paymentLastDate': '10.06.2013' },
+            { 'invoiceNumber': '1235687', 'period': '01',    'month': 'Kasım 2012', 'rate': '30', 'amount': '14,30', 'invoiceDate': '2012-12-25T00:00:00+02:00', 'paymentLastDate': '10.05.2013' },
+            { 'invoiceNumber': '1235687', 'period': '12',    'month': 'Kasım 2012', 'rate': '10', 'amount': '15,30', 'invoiceDate': '2012-12-25T00:00:00+02:00', 'paymentLastDate': '10.04.2013' },
+            { 'invoiceNumber': '1235687', 'period': '11',    'month': 'Kasım 2012', 'rate': '20', 'amount': '16,30', 'invoiceDate': '2012-12-25T00:00:00+02:00', 'paymentLastDate': '10.03.2013' },
+            { 'invoiceNumber': '1235687', 'period': '10',    'month': 'Kasım 2012', 'rate': '10', 'amount': '17,30', 'invoiceDate': '2012-12-25T00:00:00+02:00', 'paymentLastDate': '10.02.2013' }]
+    *@
+
+    var activeMonthIndex = dsInvoices.length - 1;
+    var selectedInvoiceNumber = dsInvoices[activeMonthIndex].invoiceNumber;
+    var selectedInvoiceDate = dsInvoices[activeMonthIndex].invoiceDate;
+
+    function changeMonth() {
+
+        invoiceInfoCall();
+        invoiceAnalysisCall();
+        topCalledNumbersCall();
+    }
+
+</script>
+
+<section class="subContainer">
+
+
+    @Html.Action("Timeline", "Faturalarim")
+
+
+    <section class="tabContents">
+        <section class="tabContent">
+
+            <!-- FATURA DETAYI -->
+            <section class="invoiceTabs" id="tabCont" style="display:block">
+
+                <section id="invoiceContainer" style="overflow:hidden; width:750px; height:550px; float:left;">
+
+                    <section id="invoiceTabCont" style="width:1520px; height:550px; float:left;">
+
+                        <section class="invoiceTab" style="margin-left: -1510px;">
+
+                            <section id="invoiceDetail">
+                            </section>
+                            
+                        </section>
+
+                        <section class="invoiceTab" style="display: block; margin-left: 0px;">
+
+                            @Html.Partial("InvoiceInfo")
+
+                            @Html.Partial("InvoiceAnalysis")
+
+                            @Html.Partial("TopCalledNumbers")
+                            
+                            <ins></ins>
+
+                        </section>
+
+                        <section class="invoiceTab">
+
+                            <section id="analysisDetail">
+                            </section>
+
+                        </section>
+
+                    </section>
+
+                </section>
+
+                <section class="invoicePoints">
+                    <nav>
+                        <a href="javascript:invoiceTabOpen(0);" class="ttT" data-index="0" data-ga="Faturalarim_Detail" data-load-page="/CallDetails/CallDetail/" title="Fatura Detayları"></a>
+                        <a href="javascript:invoiceTabOpen(1);" class="active ttT" data-ga="Faturalarim_Default" title="Fatura Bilgileri"></a>
+                        @*<a href="javascript:invoiceTabOpen(2);" class="ttT" data-ga="Faturalarim_Analysis" title="Fatura Analizi"></a>*@
+                    </nav>
+                </section>
+
+            </section>
+            
+
+        </section>
+    </section>
+
+</section>
+
+<ins></ins>
+
+<script>
+    $(function () {
+        changeMonth();
+    });
+</script>

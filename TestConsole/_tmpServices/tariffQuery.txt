@@ -1,0 +1,7 @@
+﻿{
+    "TariffQuery":{
+        "tariffDesc":"Gold Tarife",
+        "advPackName":"GOLD PAKET 4GB DATA",
+        "disPackNumbers":""
+    }
+}

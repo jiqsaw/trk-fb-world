@@ -1,0 +1,90 @@
+﻿@model TurkcellFacebookDunyasi.Core.Admin
+
+@Helper.BodyNav(Html, "AdminUserList")
+
+@section scripts {
+
+    <script>
+        $(function () {
+            $('#FullAuth').click(FullAuthCtrl);
+
+            FullAuthCtrl();
+        });
+
+        function FullAuthCtrl() {
+            ($('#FullAuth').is(":checked")) ? $('.modulList').fadeOut('fast') : $('.modulList').fadeIn('fast');
+        }
+
+    </script>
+    
+}
+                
+@using (Ajax.BeginForm(null, null, new AjaxOptions { UpdateTargetId = "PageForm", LoadingElementId = "LoadingForm", OnSuccess = "FormOnSuccess" }, new { @id = "PageForm" }))
+{    
+    <aside class="panel main">
+                
+        @Html.ValidationMessageFor(m => m.Username)        @Html.LabelFor(m => m.Username)    @Html.TextBoxFor(m => m.Username)
+        @Html.ValidationMessageFor(m => m.Password)        @Html.LabelFor(m => m.Password)    @Html.EditorFor(m => m.Password)
+        @Html.ValidationMessageFor(m => m.FirstName)       @Html.LabelFor(m => m.FirstName)   @Html.EditorFor(m => m.FirstName)
+        @Html.ValidationMessageFor(m => m.LastName)        @Html.LabelFor(m => m.LastName)    @Html.EditorFor(m => m.LastName)
+            
+        @Html.LabelFor(m => m.Description)    @Html.EditorFor(m => m.Description)
+        
+        @if (Model != null)
+        {    
+            @Html.ValidationMessageFor(m => m.LastLoginDate)        @Html.LabelFor(m => m.LastLoginDate)    @Html.TextBoxFor(m => m.LastLoginDate, new { @readonly = "readonly" })        
+        }                
+
+        <br />
+
+        @Html.EditorFor(m => m.FullAuth) @Html.LabelFor(m => m.FullAuth)
+
+        <br /><br /> <ins></ins> <br />
+        
+        @if (ViewBag.AdminAuths == null) { Html.RenderAction("Default", "Modul"); }
+        else { Html.RenderAction("Default", "Modul", new { AdminAuths = (IEnumerable<TurkcellFacebookDunyasi.Core.AdminAuth>)ViewBag.AdminAuths }); }
+
+        @Html.Partial("Common/FormFooter")
+            
+    </aside>
+    
+    
+    <aside class="panel side">
+        <aside>
+
+            @{Html.RenderPartial("Common/Upload", new TurkcellFacebookDunyasi.Admin.Models.UploadModel {
+                  UploadElementName = "FileName",
+                  FileName = (Model != null) ? Model.FileName : "",
+                  ImageType = TurkcellFacebookDunyasi.Com.Helpers.UrlHelper.Images.Type.adminusers,
+                  ResizeDefault = true,
+                  ResizeDefaultW = Parameter.ImageSizes.AdminUser_Default_W,
+                  NotRequired = true,
+                  NotLiveImg=true
+              });}
+
+        </aside>
+    </aside>
+    
+    <aside class="panel side">
+
+        <section class="displayNone">
+    
+            @if (Model != null) {
+                @Html.TextBoxFor(model => model.CreateDate)
+            }
+
+        </section>
+
+        @if (Model != null) {
+            <aside>
+                <h3> @Html.LabelFor(model => model.CreateDate)  </h3> <p>  @Html.DisplayFor(model => model.CreateDate) </p>
+                <h3> @Html.LabelFor(model => model.ModifyDate)  </h3> <p>  @Html.DisplayFor(model => model.ModifyDate) </p>
+            </aside>
+        }
+
+        <aside>
+            <p class="checkbox"> @Html.EditorFor(model => model.IsActive) @Html.LabelFor(model => model.IsActive) </p>
+        </aside>
+
+    </aside>
+}

@@ -1,0 +1,142 @@
+﻿@using TurkcellFacebookDunyasi.Com.Helpers
+
+<script>
+    var friendCounter = 0;
+
+    $(function () {
+        $("#form0").validationEngine();
+    });
+
+    function addFriends(userId, fbId, firstName, lastName, pictureLink, msisdn) {
+        $.colorbox.close();
+        var template = $("#templateAddFriend").html();
+        var toIds = $("#ToIds").val();
+
+        if (toIds.indexOf("," + userId + ",") == -1) {
+
+            var newIds = toIds + "," + userId + ",";
+            newIds = newIds.replace(',,', ',');
+            $("#ToIds").val(newIds);
+
+            var msisdns = $("#ToMsisdns").val();
+            if (msisdns == "") {
+                $("#ToMsisdns").val(msisdn);
+            } else {
+                $("#ToMsisdns").val(msisdns + "," + msisdn);
+            }
+
+            template = template.replace("#= pictureLink #", pictureLink);
+            template = template.replace("#= FirstName #", firstName);
+            template = template.replace("#= LastName #", lastName);
+
+            $('#toFriends').prepend(template);
+            friendCounter = friendCounter + 1;
+            if (friendCounter > 8) {
+                $("#addFriendLink").fadeOut();
+            }
+        }
+        $("#process").hide('normal');
+    }
+    function FormControl() {
+        var ToIds = $("#ToIds").val();
+        if (ToIds == "") {
+            processResult(1, "Lütfen en az 1 arkadaş seçimi yapınız.", "#process");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>
+
+<section id="templateAddFriend" style="display:none;">
+    <article class="friend friendSmall">
+        <figure class="fLeft user userMedium">
+            <img src="#= pictureLink #" border="0" id="frImage" />
+        </figure>
+        <p id="frName">#= FirstName #<br>#= LastName #</p>
+    </article>
+</section>
+
+<section class="subContainer">
+    
+
+    <section class="tabContents">
+        <section class="tabContent">
+            <h2>Arkadaşına SMS GÖNDER</h2>
+            
+            <section id="form">
+            @using (Ajax.BeginForm(new AjaxOptions { UpdateTargetId = "form", LoadingElementId = "LoadingForm", Url = "/SmsGonder/Default", OnBegin = "return FormControl()" }))
+            {
+                <section id="process"></section>
+
+                <input type="hidden" name="ToIds" id="ToIds" />
+                <input type="hidden" name="ToMsisdns" id="ToMsisdns" />
+
+                <section class="information2 fIta">
+                   · Aynı gün içerisinde Turkcelllilere göndereceğiniz 1 kısa mesajdan sonraki 15 mesaj ücretsizdir.<br />
+                   · Aynı anda en fazla 50 adet ücretli SMS gönderebilirsiniz.
+                </section> 
+                <aside>
+                    <label>Kime</label>
+                    <label class="sendFriends">
+
+                        <div id="toFriends">
+                        </div>
+
+                        <article class="friend friendSmall" id="addFriendLink">
+                            <a href="/Friend/FriendList/?NextUrl=SmsGonder" class="add lProfile ajax fIta">
+                                <figure class="fLeft user userMedium">
+                                    <img src="@PathHelper.UrlStatic/images/icons/userAdd.jpg" border="0" />
+                                </figure>
+                                <p>Arkadaşını Ekle</p>
+                            </a>
+                        </article>
+
+                     
+                    </label>
+                </aside>
+                <aside>
+                    <label for="txtMessage">Mesaj</label>
+                    <label class="sendFriends">
+                    <textarea name="Message" id="Message" style="width: 557px; height: 155px;" class="validate[required]" maxlength="@ConfigManager.GetInstance().SmsCharLength" onKeyUp="MaxCharacter('Message','charLeft',@ConfigManager.GetInstance().SmsCharLength)"></textarea>
+                    </label>
+                </aside>
+                <aside>
+                    <section class="containerButton" style="width: 696px;">
+                        <input type="submit" id="btnSmsGonder" name="btnSmsGonder" value="GÖNDER" style="float:right;" />
+                        <section id="LoadingForm" class="fRight ajaxFormLoad">@Html.Action("LoadingSmall","Global")</section>
+                    </section>
+                </aside>
+
+            
+            <ins></ins>
+            
+            <section class="charLefts" id="smsRemaining">
+                <article class="left fLeft">
+                    <span class="char" id="charLeft">@ConfigManager.GetInstance().SmsCharLength</span>
+                    <span class="text fIta">Kalan Karakter Sayısı</span>
+                </article>
+                <article class="left fRight" id="remainingBalance">
+                </article>
+                <script>
+                    partialViewLoad("remainingBalance", "/SmsGonder/RemainingBalance", false);
+                </script> 
+            </section>
+            }
+            </section>
+
+            <section class="information3 fIta">
+                <img src="@PathHelper.UrlStatic/images/icons/info2.png" />
+                Herhangi bir Turkcell kampanyasından kazanılan ücretsiz kısa mesajlar, Ekonomik Mesaj Paketleri ve konuşma dakikaları ile birlikte sms kullanım hakkı içeren paketlerdeki sms haklarınız Webmesaj ve Akıllı Mesaj kapsamında dahil değildir. 
+            </section>
+
+        </section>
+    </section>
+
+</section>
+<script>
+    $(document).ready(function () {
+        $(".ajax").colorbox();
+    });
+</script>

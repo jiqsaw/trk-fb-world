@@ -1,0 +1,12 @@
+.login { width: 380px; }
+.login a { float: left; }
+.login .link { float: right; }
+
+form input[type=submit] { float: right; }
+form input[type=checkbox] { margin-right: 5px; }
+form label { display: inline-block; }
+
+
+header.top { -moz-box-shadow: 2px 2px 5px #bfbdbd; -webkit-box-shadow: 2px 2px 5px #bfbdbd; box-shadow: 2px 2px 5px #bfbdbd; }
+header.top aside { padding: 15px 20px; }
+header.top .language { margin: 0 !important; }

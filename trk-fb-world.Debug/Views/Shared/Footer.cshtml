@@ -1,0 +1,33 @@
+﻿<footer>    
+
+   <aside class="fReg">
+
+        <a href="javascript:share();" class="fb" data-ga="Share">PAYLAŞ</a>
+        
+        <a href="javascript:sendRequestViaMultiFriendSelector();" class="in" data-ga="FriendsInvite">ARKADAŞLARINI DAVET ET</a>        
+
+        <nav>
+            <a href="javascript:;" class="tbutton" data-ga="Security">GÜVENLİK
+                <section class="tooltip fReg" id="t1">
+	                Turkcell Web Siteleri'nde güvenli işlem yapabilmenizi sağlamak için uluslararası bir güvenlik standartı olan SSL kullanmaktadır.
+	            </section>
+            </a>
+            <span></span>
+
+            <a href="/Global/TermsOfUse" class="ajax" data-ga="TermsOfUse">KULLANIM KOŞULLARI</a>
+
+            @if (SessionManager.GetInstance().IsSsoLogin) {
+
+            <span></span>
+                    
+            <a href="javascript:;" id="faq" data-ga="Faq">SIKÇA SORULAN SORULAR</a>
+            
+            }
+        </nav>
+
+    </aside>
+       
+</footer>
+
+<section class="faqContainer fReg">
+</section>

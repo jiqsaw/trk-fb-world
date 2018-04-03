@@ -1,0 +1,23 @@
+﻿.contentLanguage { float: left !important; }
+.contentLanguage header { color: #9c9090; font-style: italic; float: left; padding-right: 8px; margin-top: 8px; height: auto; display: none; }
+.contentLanguage a { float: left; padding: 10px 5px; font-size: 12px; margin: 0 1px; color: #8d8d8d; }
+.contentLanguage a:hover, .contentLanguage a.selected { background: #800000; color: #FFF; border-radius: 4px; -moz-border-radius: 4px; webkit-border-radius: 4px; }
+.contentLanguage a.selected { pointer-events: none; cursor: default; }
+
+#VideoContainer { margin-bottom: 10px; }
+#VideoContainer iframe { width: 490px !important; }
+
+
+.modulList {  }
+.modulList h1 { float: left; }  
+.modulList a.checkAll { float: right; margin-top: 5px; text-decoration: underline; }
+.modulList aside { float: left; margin: 0 10px 10px 0; width: 220px; }
+.modulList .group { display: block; width: 100%; }
+.modulList .group label { font-weight: bold; font-size: 1.1em; }
+
+
+
+/* FLUID  */
+/*.container { width: 96% !important; }
+.left { width: 15%; margin-right: 2%; }
+.content { min-width: 760px; width: 83%; }*/

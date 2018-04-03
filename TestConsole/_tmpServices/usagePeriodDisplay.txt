@@ -1,0 +1,1 @@
+﻿{"UsagePeriod":{"serviceRemovalDate":"23.11.2013 00:00:00", "bothWayBaringDate":"23.11.2013 00:00:00", "oneWayBaringDate":"23.11.2013 00:00:00","counterRechargeDate":"23.11.2013 00:00:00"}}

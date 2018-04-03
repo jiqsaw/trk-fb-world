@@ -1,0 +1,28 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.CallDetailsModel
+<script>
+    $("#PeriodSelector").live("change", function () {
+        var SelectIndex = document.getElementById('PeriodSelector').selectedIndex;
+        $("#PeriodSelectorDetail").attr("data-index", SelectIndex).attr("data-ga", "CallDetails/CallDetail/" + SelectIndex);
+    });
+</script>
+
+@if (Model.DateRange.Count > 0)
+{
+<select id="PeriodSelector" style="width:255px; float:left;">
+    @for (int i = 0; i < Model.DateRange.Count; i++)
+    {
+        if (i != 0)
+        {
+            string PrevDate=LIB.FormatHelper.DateChar(Model.DateRange[i - 1].Day.ToString())+"."+LIB.FormatHelper.DateChar(Model.DateRange[i - 1].Month.ToString())+"."+Model.DateRange[i - 1].Year.ToString();
+            string NextDate = LIB.FormatHelper.DateChar(Model.DateRange[i].Day.ToString()) + "." + LIB.FormatHelper.DateChar(Model.DateRange[i].Month.ToString()) + "." + Model.DateRange[i].Year.ToString();
+            
+        <option value="@PrevDate|@NextDate">@PrevDate - @NextDate</option>
+        }
+    }
+</select>
+<script>
+    $(function () {
+        $("select").kendoDropDownList({ autoBind: false });
+    });
+</script>
+}

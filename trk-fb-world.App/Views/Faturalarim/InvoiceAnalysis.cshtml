@@ -1,0 +1,84 @@
+﻿<script>
+   
+    function invoiceAnalysisCall() {
+
+        @*var dataSourceUrl = '/Offline/Private/invoiceAnalysis.txt?v=' + getSelectedInvoiceDate();*@
+        var dataSourceUrl = '/Faturalarim/GeInvoiceAnalysisData/?InvoiceDate=' + getSelectedInvoiceDate();
+
+        $("#chartInvoiceAnalysis").kendoChart({
+            theme: "highContrast",
+            dataSource: {
+                transport: {
+                    read: {
+                        url: dataSourceUrl,
+                        dataType: "json"
+                    }
+                },
+
+                filter: {
+                    logic: 'and',
+                    filters: [{ field: "Rate", operator: "gt", value: 0 }]
+                }
+            },
+            filterable: true,
+            series: [{
+                type: "pie",
+                connectors: false,
+                labels: {
+                    visible: true,
+                    format: '{0}%',
+                    font: '16px turkcellsaturameditaregular',
+                    distance: 10,
+                    template: "#=kendo.format('{0:p}', percentage) #"
+                },
+                field: "Rate",
+                categoryField: "Description",
+                explodeField: "explode",
+                animation: {
+                    duration: 1500
+                }
+
+            }],
+
+            chartArea: {
+                width: 400,
+                padding: 0,
+                margin: { top: -5, left: -45 },
+                background: ""
+            },          
+
+            legend: {
+                labels: {
+                    font: "normal normal 17px/25px turkcellsaturameditaregular",
+                    color: '#c5cff2'                    
+                },
+                margin: 0,
+                padding: 0,
+                offsetX: -40,
+                offsetY: 0,
+                position: 'bottom',                 
+                visible: true
+            }
+        });
+    }
+
+</script>
+
+
+<article class="mainContainer fRight">
+    <section class="specialForYou">
+        <h3>FATURA ANALİZİ</h3>
+        <ins></ins>
+
+        <section id="invoiceAnalysis">
+
+            <div class="pieChart-wrapper">
+                <div id="chartInvoiceAnalysis"> <!-- Pie Chart  --> </div>
+            </div>
+
+            <label class="fReg listAll displayNone">
+                <a href="javascript:;" class="fRight">Detayları Görüntüle</a>
+            </label>
+        </section>
+    </section>
+</article>

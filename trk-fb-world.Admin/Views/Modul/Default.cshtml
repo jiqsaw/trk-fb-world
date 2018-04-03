@@ -1,0 +1,104 @@
+﻿@model IEnumerable<TurkcellFacebookDunyasi.Core.Modul> 
+
+    <script>
+
+        $(function () {
+            $('.modulList aside input[type=checkbox][data-role=group]').click(function () {
+
+                var subItems = $('.modulList aside input[type=checkbox][data-parent=' + $(this).attr("id") + ']');
+                    
+                ($(this).is(":checked")) ?
+                    $(subItems).attr("checked", "checked") :
+                    $(subItems).removeAttr("checked");
+
+            });
+
+            $('.modulList aside input[type=checkbox]').click(function () {
+                var langEqItem = $('.modulList aside input[type=checkbox][data-order=' + $(this).attr("data-order") + ']');
+
+                ($(this).is(":checked")) ?
+                    $(langEqItem).attr("checked", "checked") :
+                    $(langEqItem).removeAttr("checked");
+
+
+                if ((!($(this).hasClass("group"))) && (!($(this).is(":checked"))))
+                    $(this).parent().prevAll(".group").first().children("input[type=checkbox]").removeAttr("checked");
+            });
+
+            $('.modulList br, .modulList hr').first().remove();
+
+
+
+            @if (ViewBag.AdminAuths != null)
+            {
+                IEnumerable<TurkcellFacebookDunyasi.Core.AdminAuth> AdminAuths = (IEnumerable<TurkcellFacebookDunyasi.Core.AdminAuth>)ViewBag.AdminAuths;
+                
+                foreach (var item in AdminAuths.ToList())
+                {
+                    <text>$(".modulList input[type=checkbox]#@item.ModulId").attr("checked", "checked");
+            $(".modulList input[type=checkbox]#@item.ModulId").parent().next('.displayNone').children("input[type=checkbox]").attr("checked", "checked");
+            </text>
+                }
+                
+            }
+
+
+
+        });
+
+        var allChecked = false;
+        function SelectAllModuls() {
+            if (!allChecked) {
+                $('.modulList input[type=checkbox]').attr("checked", "checked");
+                allChecked = true;
+            }
+            else {
+                $('.modulList input[type=checkbox]').removeAttr("checked");
+                allChecked = false;
+            }
+        }
+
+    </script>
+
+
+
+
+<section class="modulList">
+
+    <h1>@Helper.Rsrc("Global", "Authorization")</h1>
+
+    <a class="checkAll" href="javascript:SelectAllModuls()">@Helper.Rsrc("Global", "CheckAll")</a>
+
+@foreach (var item in Model.ToList())
+{
+    if (item.Language == GlobalVars.LanguageCode) {
+        if (item.ParentId == 0) { <ins></ins><hr /><br /> }
+    }
+    
+    <aside class="@if (item.Language != GlobalVars.LanguageCode) { <text>displayNone</text> }else if (item.ParentId == 0) { <text>group</text>}">
+
+        @if (item.ParentId == 0)
+        {
+            <input  type="checkbox" 
+                id="@item.Id"
+                name="chAuth" value="@item.Id" data-role="group"
+                /> 
+                <label for="@item.Id">@item.Description</label><ins></ins>
+        }
+
+            @foreach(var subItem in Model.Where(p=>p.ParentId==item.Id).ToList()){
+                <input  type="checkbox" 
+                id="@subItem.Id"
+                name="chAuth" value="@subItem.Id" data-parent="@subItem.ParentId"
+                /> 
+                <label for="@subItem.Id" style="opacity: 0.5 !important;">@subItem.Description</label>
+            }
+           
+                        
+        
+
+    </aside>   
+    
+}
+
+</section>

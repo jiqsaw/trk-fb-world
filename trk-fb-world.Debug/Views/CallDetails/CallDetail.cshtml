@@ -1,0 +1,180 @@
+﻿@using TurkcellFacebookDunyasi.Com.Helpers
+@model TurkcellFacebookDunyasi.App.Models.FaturalarimModel
+
+<script>
+
+    @if (new UserFbManager().Data.UserType == (int)Parameter.UserType.posp)
+    {
+        <text>
+        var sourceUrl = "/CallDetails/GetCallDetails/" + dsInvoices[activeMonthIndex].period;
+        </text>
+    }
+    else
+    {
+        <text>
+        var sourceUrl = "/CallDetails/GetPrepCallDetails/@ViewBag.ActiveMonthIndex";
+        </text>    
+    }
+                
+
+    $(function () {                
+        
+        $("#gridCallDetails").kendoGrid({
+
+            dataSource: {
+                transport: {
+                    read: {
+                        url: sourceUrl,
+                        dataType: "json"
+                    }
+                },
+
+                schema: {
+                    model: {
+                        fields: {                            
+                            DateDisplay: { type: "string" },
+                            OpAddress: { type: "string" },
+                            Amount: { type: "string" },
+                            DataVolume: { type: "string" },
+                            Description: { type: "string" },
+
+                            UserId: {},
+                            FbId: {},
+                            IsClickToCallInvisible: { },
+                            IsClickToCallBlock: { },
+                            FirstNameView: { type: "string" },
+                            LastNameView: { type: "string" },
+                            PictureLink: { type: "string" }
+                        }
+                    }
+                },
+                pageSize: 10
+            },
+
+            rowTemplate: kendo.template($("#rowTemplate").html()),
+
+            sortable: true,
+            pageable: {
+                input: true,
+                numeric: false
+            },
+            columns: [
+                { field: "DateDisplay", title: "TARİH", sortable: false, width: 100  },
+                { field: "OpAddress", title: "ARANAN KİŞİ", sortable: false, width: 220 },
+                { field: "Amount", title: "BİRİM(Adet/Sn/Kb)" },
+                { field: "DataVolume", title: "TUTAR(TL)" },
+                { field: "Description", title: "AÇIKLAMA" }
+            ],
+
+            change: function () {
+                //$(".nano").nanoScroller({ alwaysVisible: true });
+                $(".ajax").colorbox();
+            }
+        });
+
+        $("#txtFilter").on("keyup", function (e) {
+
+            var dsGrid = $("#gridCallDetails").data('kendoGrid').dataSource;
+            kGridSearch(dsGrid, e);
+        });
+    });
+
+
+    @if (new UserFbManager().Data.UserType == (int)Parameter.UserType.posp)
+    {
+        <text>
+        invoiceInfoCall();
+
+        function invoiceInfoCall() {
+            
+            var amount = dsInvoices[activeMonthIndex].amount;
+            $('#invoiceDetailAmount').text(amount + " TL");
+        }
+        </text>
+    }
+
+</script>
+
+
+
+<script id="rowTemplate" type="text/x-kendo-tmpl">
+
+    <tr>
+        <td>#: DateDisplay #</td>
+        <td>
+            #if (UserId != null && UserId != '')  { #
+                            
+                <a class="lProfile ajax" href="/Friend/FriendProfile/#= UserId #" data-ga="FriendDetail_#= FbId #">
+
+                    <figure class="fLeft user userMedium">
+                        <img src="#: PictureLink #" border="0" />
+                    </figure>
+
+                    <p class="friendName"> #: FirstNameView # <br /> #: LastNameView # </p>
+
+                </a>
+
+                #if ((!IsClickToCallInvisible) && (!IsClickToCallBlock))  { #    
+                    <a class='friendCall ajax cboxElement' href="/TiklaAra/Call/#: UserId #" data-ga="Ara">ara</a>
+                # } #
+
+            # }
+
+            else { #
+
+                #: OpAddress #    
+
+            # } #
+
+        </td>
+        <td>#: Amount #</td>
+        <td>#: DataVolume #</td>
+        <td>#: Description #</td>
+    </tr>
+
+</script>
+
+<section class="subContainer">
+    
+    <section class="tabContents">
+        <section class="tabContent">
+
+<section class="invoiceDetailHeader fLeft">
+
+    <section class="invoiceAmount">
+        @if (new UserFbManager().Data.UserType == (int)Parameter.UserType.posp)
+        {
+        <text>Fatura Tutarı: </text>  <b id="invoiceDetailAmount"></b>
+        }
+        @if (new UserFbManager().Data.UserType == (int)Parameter.UserType.prep)
+        {
+        <text>Kullanım Detayı</text>
+        }
+    </section>
+
+    <section class="invoiceFilter specialText top">
+        <input id="txtFilter" type="text" placeholder="Filtrele..." style="width:230px" />
+        <span class="searchBtn"></span>
+    </section>
+
+</section>
+           
+<ins></ins>
+
+<div id="gridCallDetails" class="k-grid k-widget">
+
+
+
+</div>
+
+@if (new UserFbManager().Data.UserType == (int)Parameter.UserType.posp)
+{
+<a href="javascript:;" class="invoiceBack pageNav fIta" data-page="Faturalarim" data-ga="Faturalarim" data-page="Faturalarim">Fatura Bilgileri</a>
+}
+@if (new UserFbManager().Data.UserType == (int)Parameter.UserType.prep)
+{
+<a href="javascript:;" class="invoiceBack pageNav fIta" data-page="TlIslemlerim" data-ga="TlIslemlerim" data-page="TlIslemlerim">TL İşlemlerim</a>
+}
+            </section>
+        </section>
+    </section>

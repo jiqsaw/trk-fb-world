@@ -1,0 +1,8 @@
+﻿@(Html.Kendo().DropDownList()
+        .Name("slPlaces")
+        .DataTextField("PlaceName")
+        .DataValueField("Id")
+        .OptionLabel(HttpContext.GetGlobalResourceObject("Form", "All").ToString())
+                .DataSource(source => { source.Read(read => { read.Action("GetCities", "Place"); }); })          
+        .Events(e => e.Change(@<text>function(e) { kSlGridFilterChange(e, 'slPlaces', 'PlaceId') } </text>))
+)

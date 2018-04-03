@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://csiws.turkcell.com.tr/" targetNamespace="http://csiws.turkcell.com.tr/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Exception" type="tns:Exception" />
+  <xs:element name="GetInvoiceAnalysisList" type="tns:GetInvoiceAnalysisList" />
+  <xs:element name="GetInvoiceAnalysisListResponse" type="tns:GetInvoiceAnalysisListResponse" />
+  <xs:complexType name="GetInvoiceAnalysisList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Msisdn" type="xs:string" />
+      <xs:element minOccurs="0" name="invoiceDate" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetInvoiceAnalysisListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:analysisInvoiceLayout" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="analysisInvoiceLayout">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:operationResult">
+        <xs:sequence>
+          <xs:element name="graphicMap">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="entry">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="key" type="xs:string" />
+                      <xs:element minOccurs="0" name="value" type="xs:double" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="hasLevel1ID4Des" type="xs:boolean" />
+          <xs:element name="invoiceAmount" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="level1List" nillable="true" type="tns:invoiceLevel1" />
+          <xs:element name="net" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="operationResult">
+    <xs:sequence>
+      <xs:element name="resultCode" type="xs:int" />
+      <xs:element minOccurs="0" name="resultDescription" type="xs:string" />
+      <xs:element minOccurs="0" name="value" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="invoiceLevel1">
+    <xs:sequence>
+      <xs:element name="amount" type="xs:double" />
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:string" />
+      <xs:element minOccurs="0" name="itemType" type="tns:invoiceItemTypeEnum" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="level2List" nillable="true" type="tns:invoiceLevel2" />
+      <xs:element name="level2Map">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="entry">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="key" type="xs:string" />
+                  <xs:element minOccurs="0" name="value" type="tns:invoiceLevel2" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="level3List" nillable="true" type="tns:invoiceLevel3" />
+      <xs:element name="subLevelSize" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="invoiceLevel2">
+    <xs:sequence>
+      <xs:element name="amount" type="xs:double" />
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="detailList" nillable="true" type="tns:invoiceLevel2Detail" />
+      <xs:element minOccurs="0" name="id" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="invoiceLevel2Detail">
+    <xs:sequence>
+      <xs:element name="amount" type="xs:double" />
+      <xs:element minOccurs="0" name="cur_ins" type="xs:string" />
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+      <xs:element name="packageDuration" type="xs:double" />
+      <xs:element minOccurs="0" name="tot_ins" type="xs:string" />
+      <xs:element name="totalDuration" type="xs:double" />
+      <xs:element minOccurs="0" name="unit" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="invoiceLevel3">
+    <xs:sequence>
+      <xs:element name="amount" type="xs:double" />
+      <xs:element minOccurs="0" name="cur_ins" type="xs:string" />
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+      <xs:element minOccurs="0" name="tot_ins" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Exception">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="invoiceItemTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TYPE_1" />
+      <xs:enumeration value="TYPE_2" />
+      <xs:enumeration value="TYPE_3" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

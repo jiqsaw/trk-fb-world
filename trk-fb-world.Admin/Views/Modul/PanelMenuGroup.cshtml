@@ -1,0 +1,18 @@
+﻿@model TurkcellFacebookDunyasi.Admin.Models.PanelMenuGroupModel
+
+@if (Model.List.Count > 0) {
+
+<section class="panel">
+    <h2>@Model.GroupDescription</h2>
+    <nav>
+        
+        @foreach (var item in Model.List.ToList())
+        {
+            <a href="@item.AdminPath">@item.Description</a>    
+                if (item.IsSubEndItem) { <hr /> }
+        }
+
+    </nav>
+</section>
+    
+}

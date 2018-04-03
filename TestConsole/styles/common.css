@@ -1,0 +1,40 @@
+﻿aside, nav, article, figure {
+	display: block;
+}
+.fLeft{float:left;}
+.fRight{float:right;}
+.overHidden{overflow:hidden;}
+.marginMiddle{margin:0 auto;}
+.displayNone{display:none;}
+.noBorder{border:none;}
+.selected{cursor:default;}
+.underLine {text-decoration:underline;}
+span.clearFix, ins {display:block; clear:both; width:100%; height:0; line-height:0px; margin:0px; padding:0px;}
+
+.clear:after {
+    content: ".";
+    display: block
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clear {display: inline-block;}
+/*IE-mac de bu bolumu sakla \ */
+* html .clear {height: 1%;}
+.clear {display: block;}
+/* IE-mac bu bolumu saklam artik */
+
+header, section, footer
+{
+    clear: both;
+    display: block;
+}
+
+.disable
+{
+    pointer-events: none; 
+    cursor: default;    
+}
+
+.dBlock { display:block; }

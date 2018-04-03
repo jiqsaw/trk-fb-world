@@ -1,0 +1,132 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.ProfileModel
+
+<script>
+    $(document).ready(function () {
+        $("select").kendoDropDownList();
+        radioChecked();
+        $(".nano2").nanoScroller({ alwaysVisible: true });
+        $(".ajax").colorbox();
+    });
+</script>
+
+<style>
+    .nano2 { width: 100%; height: 290px; }
+</style>
+<div id='colorboxContentainer3'>
+    <div id="colorboxContent3">
+        <section id="ayarlar">
+        <section class="fLeft profil">
+            <h2 class="colorboxHeader">@Model.FriendData.Name</h2> <br />
+            <figure class="fLeft user userLarge">
+                <img src="@Model.FriendData.Picture.Data.Url" border="0" />
+            </figure>
+            <section class="fRight profileDetail fBoldIta">
+
+
+                @if ((!Model.FriendData.IsClickToCallBlock) && (!Model.FriendData.IsClickToCallInvisible) && (Model.FriendData.Msisdn!=null)) {
+                    
+                <a href="/TiklaAra/Call/@Model.FriendData.UserId" class="ajax dtCall" data-ga="Ara">Tıkla ARA</a>
+                    
+                }
+                
+                
+                <ins></ins>
+                <a href="javascript:TopPageOpen('SmsGonder?u=@Model.FriendData.UserId');" class="dtSmsSend">SMS Gönder</a>
+            </section>
+        </section>
+
+        <section class="fLeft" style="margin-top:20px;">
+            <a href="/TlGonder/Default?UserId=@Model.FriendData.UserId" class="ajax pinkButton2">TL Gönder</a>
+            <a href="/TlIste/Default?UserId=@Model.FriendData.UserId" class="ajax pinkButton2">TL İste</a>
+        </section>
+
+
+
+        @Html.Partial("../TiklaAra/SingleUserBlock")
+
+        <h3 class="colorboxSubHead2 fLeft">
+            @if ((new UserFbManager()).Data.UserType == (int)Parameter.UserType.prep)
+            { <text>Görüşme Geçmişi</text> }
+            else
+            {<text>Fatura Geçmişi</text>}
+        </h3>
+        <section class="fRight fDdl">
+            
+                @if ((new UserFbManager()).Data.UserType == (int)Parameter.UserType.posp)
+                {
+                    
+                    <script>
+
+                        var selectedPeriod;
+
+                        function friendProfilePospMonthChange() {
+                            partialViewLoad("callDetailsContent", "/CallDetails/FriendCallDetailPosp?Period=" + selectedPeriod + "&userId=@Model.FriendData.FbId");
+                        }
+
+                    </script>
+                    
+                    @Html.Partial("../Faturalarim/MonthSelector")                    
+                    
+                }
+        </section>
+            @if ((new UserFbManager()).Data.UserType == (int)Parameter.UserType.prep)
+                {
+                <ins></ins>
+                <section class="fLeft profilePeriodSelector" id="datePeriodSelector">
+                    <script>
+                        partialViewLoad("datePeriodSelector", "/TlIslemlerim/FriendPeriodSelector/@Model.FriendData.FbId");
+                    </script>
+                    </section>
+            <ins></ins>    
+                }
+
+
+        <section class="friendBox" style="margin-top:0px !important;">
+            <section class="_top"></section>
+            <section class="_cont" style="height:290px;">
+                <section class="nano2">
+                    <section  class="content" id="callDetailsContent">
+                            @if ((new UserFbManager()).Data.UserType == (int)Parameter.UserType.prep)
+                            {
+                                <script>
+                                    partialViewLoad("callDetailsContent", "/CallDetails/FriendCallDetail?dateRangeId=0&userId=@Model.FriendData.FbId");
+                                </script>
+                            }
+
+                    </section>
+               
+                </section>
+
+            </section>
+            <section class="_bot"></section>
+        </section>
+
+        <ins></ins>
+
+        </section>
+
+        <ins></ins>
+
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            var typeCall = 1;
+            var typeMessage = 2;
+
+            $(".ajax").colorbox();
+
+            PageHandler();
+        }, 500);
+       
+        setTimeout(function () {
+            var html = $("#_cont").html();
+            $("#_cont").html('');
+            $("#_cont").html(html);
+            $(".nano2").nanoScroller({ alwaysVisible: true });
+        }, 1000);
+
+        
+    });
+</script>

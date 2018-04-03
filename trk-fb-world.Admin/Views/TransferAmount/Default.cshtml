@@ -1,0 +1,49 @@
+﻿@model IEnumerable<TurkcellFacebookDunyasi.Core.TransferAmount>
+
+@Helper.BodyNav(Html, "TransferAmount", true)
+<ins></ins>
+
+@section Scripts {
+}
+
+<header class="gridToolBar">
+
+    @Html.Partial("HelperControls/GridRefresh")
+
+    @Html.Partial("HelperControls/GridSearch")
+
+</header>
+
+
+@(Html.Kendo().Grid(Model)
+    .Name(KendoManager.GridName)
+        
+    .Columns(clm =>
+    {
+        clm.Bound(c => c.TlTransferAmount);
+        clm.Bound(c => c.IsActive).ClientTemplate(KendoManager.ClientTemplateCheck("IsActive")).Width(30);
+
+        clm.Command(cmd =>
+        {
+            cmd.Custom("Edit").Text(KendoManager.HtmlEditIcon + Helper.Rsrc("Global", "Edit").ToString()).Click("kGridGoDetail");
+            cmd.Destroy().Text(Helper.Rsrc("Global", "Delete").ToString());
+        });
+    })
+
+    .DataSource(dataSource =>
+        dataSource
+            .Ajax()
+            .ServerOperation(false)
+            .Model(model => model.Id(m => m.Id))
+            .Read(r => r.Action("k_jRead", "TransferAmount"))
+            .Destroy(d => d.Action("k_jDelete", "TransferAmount"))
+            .Events(e => e.Error("kGridOnError"))
+        )
+            
+    .Sortable()
+    .Pageable(KendoManager.pagerSettings)
+    .Events(e => e.DataBound("kGridOnDataBound"))
+    .Reorderable(reorder => reorder.Columns(true))
+    .Resizable(resize => resize.Columns(true))
+    .Filterable(KendoManager.filterSettings)
+    )

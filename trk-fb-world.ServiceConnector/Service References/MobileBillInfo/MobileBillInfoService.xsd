@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://csiws.turkcell.com.tr/" targetNamespace="http://csiws.turkcell.com.tr/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Exception" type="tns:Exception" />
+  <xs:element name="GetInvoceList" type="tns:GetInvoceList" />
+  <xs:element name="GetInvoceListResponse" type="tns:GetInvoceListResponse" />
+  <xs:complexType name="GetInvoceList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Msisdn" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetInvoceListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:invoiceList" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="invoiceList">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:operationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="coverid" type="xs:string" />
+          <xs:element name="currentInvoiceAmount" type="xs:double" />
+          <xs:element name="hasKtf" type="xs:boolean" />
+          <xs:element minOccurs="0" name="invoicelist" type="tns:arrayOfInvoice" />
+          <xs:element minOccurs="0" name="ncst" type="xs:string" />
+          <xs:element name="unPaidInvoice" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="operationResult">
+    <xs:sequence>
+      <xs:element name="resultCode" type="xs:int" />
+      <xs:element minOccurs="0" name="resultDescription" type="xs:string" />
+      <xs:element minOccurs="0" name="value" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="arrayOfInvoice">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="invoice" nillable="true" type="tns:invoice" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="invoice">
+    <xs:sequence>
+      <xs:element name="invoiceAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="invoiceDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="invoiceNumber" type="xs:string" />
+      <xs:element name="invoiceOpen" type="xs:boolean" />
+      <xs:element name="invoiceType" type="xs:long" />
+      <xs:element name="isPaid" type="xs:boolean" />
+      <xs:element name="notInHobimList" type="xs:boolean" />
+      <xs:element name="notReadyDisplay" type="xs:boolean" />
+      <xs:element minOccurs="0" name="paymentLastDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="period" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Exception">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

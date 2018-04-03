@@ -1,0 +1,32 @@
+﻿@model TurkcellFacebookDunyasi.Core.Faq
+
+@Helper.BodyNav(Html, "Faq")
+                
+
+@section Scripts {
+
+
+}
+
+
+
+@using (Ajax.BeginForm(null, null, new AjaxOptions { UpdateTargetId = "PageForm", LoadingElementId = "LoadingForm", OnSuccess = "FormOnSuccess" }, new { @id = "PageForm" }))
+{    
+    <aside class="panel main">
+
+        @Html.ValidationMessageFor(m => m.Title)    @Html.LabelFor(m => m.Title)    @Html.EditorFor(m => m.Title)
+        
+        @Html.ValidationMessageFor(m => m.Content)      @Html.LabelFor(m => m.Content)                
+        @Html.Partial("HelperControls/HtmlEditor", new TurkcellFacebookDunyasi.Admin.Models.HtmlEditorModel { Expression = "Content", ErrorMessageRsrcKey = "ValFaqContentReq", Value = (Model != null) ? Model.Content : "" })
+       
+
+        @Html.Partial("Common/FormFooter")
+            
+    </aside>
+    
+    <aside class="panel side">
+
+        @Html.Partial("Common/DataDefaultFields")
+
+    </aside>
+}

@@ -1,0 +1,3 @@
+﻿.body .content { display: none; }
+.body .left { width: 100%; }
+.body .left .panel { float: left; display: inline-block; clear: inherit; width: 190px; margin-right: 15px; }

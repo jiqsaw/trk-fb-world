@@ -1,0 +1,13 @@
+﻿{
+ sender:"5323308474",
+ message: "My Message",
+ recipients: [
+ {msisdn: "5321528280", status: "delivered", charge: "free"},
+ {msisdn: "5321000000", status: "delivered", charge: "none"},
+ {msisdn: "5358881131", status: "error", charge: "free"},
+ {msisdn: "5322000000", status: "error", charge: "charged"},
+ {msisdn: "5323000000", status: "delivered", charge: "charged"},
+ {msisdn: "5323000000", status: "delivered", charge: "partly-charged"}
+ ],
+ balance: 3
+}

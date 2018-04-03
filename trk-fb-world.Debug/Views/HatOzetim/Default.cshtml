@@ -1,0 +1,70 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.HatOzetimModel
+
+<section class="subContainer">
+    
+    <section class="tabContents">
+        <section class="tabContent">
+           
+            <h2>Hat Özetim</h2>
+
+            <article class="mainContainer fLeft">
+                <section class="tariffInfo">
+                    <h3>TARİFE BİLGİNİZ</h3>
+                    <ins></ins>
+                    <section id="tariffInfo"></section>
+                    <script>
+                        partialViewLoad("tariffInfo", "/HatOzetim/TariffInfo");
+                    </script>
+
+                    <section class="bottomShadow"></section>
+                </section>
+            </article>
+
+            <article class="mainContainer fRight">
+                <section class="remaining">
+                    <h3>KALAN KULLANIM</h3>
+                    <ins></ins>
+                    
+                    <section id="remaining">
+                        <script>
+                            partialViewLoad("remaining", "/HatOzetim/Remaining");
+                        </script>
+                    </section>
+                </section>
+            </article>
+
+            <article class="mainContainer fLeft">
+                <section class="tariffInfo">
+                    <h3>KULÜBÜM</h3>
+                    <ins></ins>
+
+                    <section id="club">
+                        <script>
+                            partialViewLoad("club", "/HatOzetim/Club");
+                        </script>
+                    </section>
+                    
+                    <section class="bottomShadow"></section>
+                </section>
+            </article>
+
+
+            <article class="mainContainer fLeft">
+                <section class="tariffInfo">
+                    <h3>PAKET ve SERVİS ABONELİKLERİM</h3>
+                    <ins></ins>
+                    
+                    <section id="servicePackages">
+                        <script>
+                            partialViewLoad("servicePackages", "/HatOzetim/ServicePackages");
+                        </script>
+                    </section>
+
+                    <section class="bottomShadow"></section>
+                </section>
+            </article>
+
+        </section>
+    </section>
+
+</section>

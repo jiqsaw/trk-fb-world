@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="App_Code/Helper.cshtml">
+      <publishTime>03/13/2013 01:26:32</publishTime>
+    </File>
+    <File Include="App_GlobalResources/Global.resx">
+      <publishTime>04/10/2013 00:37:27</publishTime>
+    </File>
+    <File Include="App_GlobalResources/Global.tr.resx">
+      <publishTime>04/10/2013 00:37:24</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>02/12/2013 13:17:26</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>02/12/2013 13:19:39</publishTime>
+    </File>
+    <File Include="bin/Facebook.dll">
+      <publishTime>02/12/2013 13:17:26</publishTime>
+    </File>
+    <File Include="bin/Kendo.Mvc.dll">
+      <publishTime>06/21/2012 16:22:28</publishTime>
+    </File>
+    <File Include="bin/LIB.dll">
+      <publishTime>04/02/2013 06:35:58</publishTime>
+    </File>
+    <File Include="bin/LIB.pdb">
+      <publishTime>04/02/2013 06:35:58</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Mvc.Facebook.dll">
+      <publishTime>02/12/2013 13:17:27</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>02/12/2013 13:17:25</publishTime>
+    </File>
+    <File Include="bin/MvcHelper.dll">
+      <publishTime>04/02/2013 06:35:59</publishTime>
+    </File>
+    <File Include="bin/MvcHelper.pdb">
+      <publishTime>04/02/2013 06:35:59</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>02/12/2013 13:17:25</publishTime>
+    </File>
+    <File Include="bin/StructureMap.dll">
+      <publishTime>07/02/2012 19:19:58</publishTime>
+    </File>
+    <File Include="bin/StructureMap.pdb">
+      <publishTime>07/02/2012 19:19:58</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>02/12/2013 13:17:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>02/12/2013 13:17:25</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>02/12/2013 13:17:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>02/12/2013 13:17:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>02/12/2013 13:17:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>02/12/2013 13:17:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>08/17/2012 12:22:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>02/12/2013 13:17:25</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>02/12/2013 13:17:25</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>02/12/2013 13:17:25</publishTime>
+    </File>
+    <File Include="bin/tr-TR/TurkcellFacebookDunyasi.Com.resources.dll">
+      <publishTime>05/02/2013 03:14:59</publishTime>
+    </File>
+    <File Include="bin/tr-TR/TurkcellFacebookDunyasi.Core.resources.dll">
+      <publishTime>05/02/2013 03:14:59</publishTime>
+    </File>
+    <File Include="bin/TurkcellFacebookDunyasi.App.dll">
+      <publishTime>05/05/2013 02:03:21</publishTime>
+    </File>
+    <File Include="bin/TurkcellFacebookDunyasi.App.pdb">
+      <publishTime>05/05/2013 02:03:21</publishTime>
+    </File>
+    <File Include="bin/TurkcellFacebookDunyasi.Com.dll">
+      <publishTime>05/02/2013 03:14:58</publishTime>
+    </File>
+    <File Include="bin/TurkcellFacebookDunyasi.Com.pdb">
+      <publishTime>05/02/2013 03:14:58</publishTime>
+    </File>
+    <File Include="bin/TurkcellFacebookDunyasi.Core.dll">
+      <publishTime>05/02/2013 03:14:59</publishTime>
+    </File>
+    <File Include="bin/TurkcellFacebookDunyasi.Core.pdb">
+      <publishTime>05/02/2013 03:14:59</publishTime>
+    </File>
+    <File Include="bin/TurkcellFacebookDunyasi.EF.dll">
+      <publishTime>05/02/2013 03:15:00</publishTime>
+    </File>
+    <File Include="bin/TurkcellFacebookDunyasi.EF.pdb">
+      <publishTime>05/02/2013 03:15:00</publishTime>
+    </File>
+    <File Include="bin/TurkcellFacebookDunyasi.Logger.dll">
+      <publishTime>05/02/2013 03:15:00</publishTime>
+    </File>
+    <File Include="bin/TurkcellFacebookDunyasi.Logger.pdb">
+      <publishTime>05/02/2013 03:15:00</publishTime>
+    </File>
+    <File Include="bin/TurkcellFacebookDunyasi.ServiceConnector.dll">
+      <publishTime>05/05/2013 01:14:22</publishTime>
+    </File>
+    <File Include="bin/TurkcellFacebookDunyasi.ServiceConnector.pdb">
+      <publishTime>05/05/2013 01:14:22</publishTime>
+    </File>
+    <File Include="bin/TurkcellFacebookDunyasi.ServiceManager.dll">
+      <publishTime>05/05/2013 01:14:23</publishTime>
+    </File>
+    <File Include="bin/TurkcellFacebookDunyasi.ServiceManager.pdb">
+      <publishTime>05/05/2013 01:14:23</publishTime>
+    </File>
+    <File Include="bin/TurkcellFacebookDunyasi.Static.dll">
+      <publishTime>04/10/2013 01:35:10</publishTime>
+    </File>
+    <File Include="bin/TurkcellFacebookDunyasi.Static.pdb">
+      <publishTime>04/10/2013 01:35:10</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>02/12/2013 13:17:26</publishTime>
+    </File>
+    <File Include="channel.html">
+      <publishTime>03/13/2013 01:26:32</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>03/13/2013 01:26:32</publishTime>
+    </File>
+    <File Include="FbScripts/fbApiFuncs.js">
+      <publishTime>03/22/2013 01:42:17</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>03/13/2013 01:26:30</publishTime>
+    </File>
+    <File Include="Offline/Private/invoiceAnalysis.txt">
+      <publishTime>03/21/2013 00:15:58</publishTime>
+    </File>
+    <File Include="Offline/Private/TiklaAraYogunluk.aspx">
+      <publishTime>05/02/2013 01:43:55</publishTime>
+    </File>
+    <File Include="Offline/Private/TokenGenerator.aspx">
+      <publishTime>04/04/2013 01:30:35</publishTime>
+    </File>
+    <File Include="Offline/Private/WebServiceList.aspx">
+      <publishTime>04/05/2013 03:48:44</publishTime>
+    </File>
+    <File Include="Offline/Private/WebServiceTestTool/Code.aspx">
+      <publishTime>03/31/2013 07:07:37</publishTime>
+    </File>
+    <File Include="Offline/Private/WebServiceTestTool/Default.htm">
+      <publishTime>03/31/2013 23:14:07</publishTime>
+    </File>
+    <File Include="Offline/Private/WebServiceTestTool/Output.aspx">
+      <publishTime>04/07/2013 01:21:30</publishTime>
+    </File>
+    <File Include="Offline/Private/WebServiceTestTool/Scripts/jquery.js">
+      <publishTime>03/31/2013 02:18:12</publishTime>
+    </File>
+    <File Include="Offline/Private/WebServiceTestTool/Scripts/Script.js">
+      <publishTime>03/31/2013 04:56:56</publishTime>
+    </File>
+    <File Include="Offline/Private/WebServiceTestTool/Styles/Style.css">
+      <publishTime>03/31/2013 05:44:53</publishTime>
+    </File>
+    <File Include="Offline/Private/WebServiceTestTool/WsdlTest.aspx">
+      <publishTime>04/01/2013 23:39:29</publishTime>
+    </File>
+    <File Include="Offline/UnderConstruction/Default.htm">
+      <publishTime>03/13/2013 01:26:30</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>03/13/2013 01:26:30</publishTime>
+    </File>
+    <File Include="robots.txt">
+      <publishTime>03/13/2013 01:26:30</publishTime>
+    </File>
+    <File Include="Views/CallDetails/CallDetail.cshtml">
+      <publishTime>05/05/2013 00:52:41</publishTime>
+    </File>
+    <File Include="Views/CallDetails/FriendCallDetail.cshtml">
+      <publishTime>05/05/2013 00:52:57</publishTime>
+    </File>
+    <File Include="Views/CallDetails/TopCalledNumbers.cshtml">
+      <publishTime>05/03/2013 18:59:37</publishTime>
+    </File>
+    <File Include="Views/Error/AppOffline.cshtml">
+      <publishTime>04/12/2013 02:14:24</publishTime>
+    </File>
+    <File Include="Views/Error/Internal.cshtml">
+      <publishTime>05/03/2013 18:59:37</publishTime>
+    </File>
+    <File Include="Views/Faq/Default.cshtml">
+      <publishTime>03/28/2013 10:37:07</publishTime>
+    </File>
+    <File Include="Views/Faturalarim/AnalysisDetail.cshtml">
+      <publishTime>04/01/2013 01:51:10</publishTime>
+    </File>
+    <File Include="Views/Faturalarim/ControlLimit.cshtml">
+      <publishTime>05/03/2013 18:59:37</publishTime>
+    </File>
+    <File Include="Views/Faturalarim/CurrentInvoiceInfo.cshtml">
+      <publishTime>04/03/2013 04:29:39</publishTime>
+    </File>
+    <File Include="Views/Faturalarim/Default.cshtml">
+      <publishTime>05/05/2013 01:57:47</publishTime>
+    </File>
+    <File Include="Views/Faturalarim/InvoiceAnalysis.cshtml">
+      <publishTime>04/22/2013 03:26:45</publishTime>
+    </File>
+    <File Include="Views/Faturalarim/InvoiceInfo.cshtml">
+      <publishTime>04/05/2013 01:23:04</publishTime>
+    </File>
+    <File Include="Views/Faturalarim/MonthSelector.cshtml">
+      <publishTime>03/28/2013 10:37:06</publishTime>
+    </File>
+    <File Include="Views/Faturalarim/Timeline.cshtml">
+      <publishTime>04/03/2013 04:29:39</publishTime>
+    </File>
+    <File Include="Views/Faturalarim/TopCalledNumbers.cshtml">
+      <publishTime>04/22/2013 03:28:24</publishTime>
+    </File>
+    <File Include="Views/Friend/FriendList.cshtml">
+      <publishTime>04/18/2013 00:36:01</publishTime>
+    </File>
+    <File Include="Views/Friend/FriendProfile.cshtml">
+      <publishTime>04/18/2013 00:36:01</publishTime>
+    </File>
+    <File Include="Views/Global/LoadingSmall.cshtml">
+      <publishTime>03/21/2013 23:45:31</publishTime>
+    </File>
+    <File Include="Views/Global/PartialError.cshtml">
+      <publishTime>04/11/2013 11:55:36</publishTime>
+    </File>
+    <File Include="Views/Global/TermsOfUse.cshtml">
+      <publishTime>05/01/2013 01:19:30</publishTime>
+    </File>
+    <File Include="Views/HatOzetim/Club.cshtml">
+      <publishTime>04/26/2013 19:02:57</publishTime>
+    </File>
+    <File Include="Views/HatOzetim/Default.cshtml">
+      <publishTime>05/03/2013 18:59:37</publishTime>
+    </File>
+    <File Include="Views/HatOzetim/Remaining.cshtml">
+      <publishTime>05/02/2013 03:09:57</publishTime>
+    </File>
+    <File Include="Views/HatOzetim/ServicePackages.cshtml">
+      <publishTime>03/17/2013 17:20:33</publishTime>
+    </File>
+    <File Include="Views/HatOzetim/TariffInfo.cshtml">
+      <publishTime>04/26/2013 19:02:33</publishTime>
+    </File>
+    <File Include="Views/HatOzetim/UseOfPackage.cshtml">
+      <publishTime>05/02/2013 03:10:34</publishTime>
+    </File>
+    <File Include="Views/Login/CorporateCustomerError.cshtml">
+      <publishTime>04/04/2013 01:56:26</publishTime>
+    </File>
+    <File Include="Views/Login/Default.cshtml">
+      <publishTime>04/12/2013 02:20:24</publishTime>
+    </File>
+    <File Include="Views/Login/Error.cshtml">
+      <publishTime>04/04/2013 12:18:00</publishTime>
+    </File>
+    <File Include="Views/Login/LogOut.cshtml">
+      <publishTime>03/21/2013 23:11:08</publishTime>
+    </File>
+    <File Include="Views/Login/SsoResult.cshtml">
+      <publishTime>05/01/2013 01:54:16</publishTime>
+    </File>
+    <File Include="Views/Login/TimeOut.cshtml">
+      <publishTime>03/13/2013 01:56:39</publishTime>
+    </File>
+    <File Include="Views/Menu/BigModul.cshtml">
+      <publishTime>04/22/2013 03:03:33</publishTime>
+    </File>
+    <File Include="Views/Menu/Top.cshtml">
+      <publishTime>05/05/2013 01:47:11</publishTime>
+    </File>
+    <File Include="Views/MsisdnFbMatching/Default.cshtml">
+      <publishTime>04/22/2013 03:42:34</publishTime>
+    </File>
+    <File Include="Views/Offer/General.cshtml">
+      <publishTime>05/01/2013 01:19:30</publishTime>
+    </File>
+    <File Include="Views/Offer/Startup.cshtml">
+      <publishTime>05/01/2013 01:19:30</publishTime>
+    </File>
+    <File Include="Views/Offer/Suggestion.cshtml">
+      <publishTime>05/01/2013 01:19:30</publishTime>
+    </File>
+    <File Include="Views/Shared/Footer.cshtml">
+      <publishTime>03/28/2013 10:37:07</publishTime>
+    </File>
+    <File Include="Views/Shared/FriendKTemplate.cshtml">
+      <publishTime>04/15/2013 03:28:07</publishTime>
+    </File>
+    <File Include="Views/Shared/GA.cshtml">
+      <publishTime>05/02/2013 02:26:07</publishTime>
+    </File>
+    <File Include="Views/Shared/Header.cshtml">
+      <publishTime>04/05/2013 00:30:19</publishTime>
+    </File>
+    <File Include="Views/Shared/Loading.cshtml">
+      <publishTime>03/17/2013 04:25:00</publishTime>
+    </File>
+    <File Include="Views/Shared/OpenGraphMetas.cshtml">
+      <publishTime>03/13/2013 01:26:31</publishTime>
+    </File>
+    <File Include="Views/Shared/Result.cshtml">
+      <publishTime>03/20/2013 18:06:48</publishTime>
+    </File>
+    <File Include="Views/Shared/SmsResult.cshtml">
+      <publishTime>05/05/2013 02:26:56</publishTime>
+    </File>
+    <File Include="Views/Shared/UserInfo.cshtml">
+      <publishTime>04/11/2013 11:55:37</publishTime>
+    </File>
+    <File Include="Views/Shared/_Kendo.cshtml">
+      <publishTime>05/03/2013 18:59:37</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>04/12/2013 00:51:28</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutHead.cshtml">
+      <publishTime>04/02/2013 16:08:06</publishTime>
+    </File>
+    <File Include="Views/Shared/_Scripts.cshtml">
+      <publishTime>05/05/2013 01:16:32</publishTime>
+    </File>
+    <File Include="Views/Shared/_Styles.cshtml">
+      <publishTime>05/03/2013 18:59:37</publishTime>
+    </File>
+    <File Include="Views/SmsGonder/Default.cshtml">
+      <publishTime>04/22/2013 03:03:33</publishTime>
+    </File>
+    <File Include="Views/SmsGonder/RemainingBalance.cshtml">
+      <publishTime>03/28/2013 10:37:07</publishTime>
+    </File>
+    <File Include="Views/Start/Default.cshtml">
+      <publishTime>04/12/2013 02:09:37</publishTime>
+    </File>
+    <File Include="Views/Start/Landing.cshtml">
+      <publishTime>04/04/2013 23:45:32</publishTime>
+    </File>
+    <File Include="Views/Start/LandingNew.cshtml">
+      <publishTime>04/01/2013 23:10:39</publishTime>
+    </File>
+    <File Include="Views/TiklaAra/Call.cshtml">
+      <publishTime>05/02/2013 01:53:50</publishTime>
+    </File>
+    <File Include="Views/TiklaAra/Default.cshtml">
+      <publishTime>04/11/2013 11:55:36</publishTime>
+    </File>
+    <File Include="Views/TiklaAra/HowItWorks.cshtml">
+      <publishTime>04/03/2013 04:47:50</publishTime>
+    </File>
+    <File Include="Views/TiklaAra/Preferences.cshtml">
+      <publishTime>04/22/2013 03:03:33</publishTime>
+    </File>
+    <File Include="Views/TiklaAra/PreferencesForm.cshtml">
+      <publishTime>04/15/2013 02:55:20</publishTime>
+    </File>
+    <File Include="Views/TiklaAra/Promote.cshtml">
+      <publishTime>04/04/2013 23:45:32</publishTime>
+    </File>
+    <File Include="Views/TiklaAra/RemainingBalance.cshtml">
+      <publishTime>04/09/2013 23:40:38</publishTime>
+    </File>
+    <File Include="Views/TiklaAra/SingleUserBlock.cshtml">
+      <publishTime>04/03/2013 04:29:38</publishTime>
+    </File>
+    <File Include="Views/TiklaAra/UserBlockList.cshtml">
+      <publishTime>04/03/2013 04:29:38</publishTime>
+    </File>
+    <File Include="Views/TiklaAra/UserBlocks.cshtml">
+      <publishTime>04/15/2013 02:23:27</publishTime>
+    </File>
+    <File Include="Views/TlGonder/Default.cshtml">
+      <publishTime>04/03/2013 04:29:39</publishTime>
+    </File>
+    <File Include="Views/TlIslemlerim/Default.cshtml">
+      <publishTime>05/05/2013 01:56:13</publishTime>
+    </File>
+    <File Include="Views/TlIslemlerim/DetailPeriodSelector.cshtml">
+      <publishTime>03/28/2013 10:37:07</publishTime>
+    </File>
+    <File Include="Views/TlIslemlerim/FriendPeriodSelector.cshtml">
+      <publishTime>03/22/2013 16:02:18</publishTime>
+    </File>
+    <File Include="Views/TlIslemlerim/KrediIsteLimit.cshtml">
+      <publishTime>03/25/2013 01:39:25</publishTime>
+    </File>
+    <File Include="Views/TlIslemlerim/PeriodSelector.cshtml">
+      <publishTime>04/05/2013 02:19:50</publishTime>
+    </File>
+    <File Include="Views/TlIslemlerim/TLStatus.cshtml">
+      <publishTime>04/04/2013 01:30:34</publishTime>
+    </File>
+    <File Include="Views/TlIste/Default.cshtml">
+      <publishTime>04/04/2013 23:45:32</publishTime>
+    </File>
+    <File Include="Views/TlPaketYukle/Default.cshtml">
+      <publishTime>04/18/2013 00:36:01</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>03/13/2013 01:26:30</publishTime>
+    </File>
+    <File Include="Views/World/Birthday.cshtml">
+      <publishTime>05/05/2013 02:19:23</publishTime>
+    </File>
+    <File Include="Views/World/BirthdayForm.cshtml">
+      <publishTime>04/03/2013 04:29:37</publishTime>
+    </File>
+    <File Include="Views/World/Default.cshtml">
+      <publishTime>03/13/2013 01:26:30</publishTime>
+    </File>
+    <File Include="Views/World/Entry.cshtml">
+      <publishTime>05/02/2013 03:12:44</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>03/13/2013 01:26:30</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>05/05/2013 02:24:08</publishTime>
+    </File>
+    <File Include="Web.config.prod.xml">
+      <publishTime>05/05/2013 00:56:20</publishTime>
+    </File>
+    <File Include="Web.config.test.xml">
+      <publishTime>05/05/2013 00:56:49</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

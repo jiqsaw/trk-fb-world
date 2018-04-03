@@ -1,0 +1,150 @@
+﻿@model TurkcellFacebookDunyasi.Admin.Models.UploadModel
+@using TurkcellFacebookDunyasi.Com.Helpers.UrlHelperExtensions
+@using TurkcellFacebookDunyasi.Com.Helpers
+
+<script>
+
+    var fu = null;
+
+    $(function () {           
+        fu = $("#@Model.UploadElementName");
+
+        @if (!Model.NotRequired) { <text>
+        $('form').submit(CheckFileUpload);
+        </text> }
+
+        @if (Model.FileName != "")
+        {<text>
+        
+        fu.val("@Model.FileName");
+
+        var srcBig = "@Model.srcBig.ToString()"        
+        var srcPreview = "@Model.srcPreview.ToString()"
+        
+        SetUploadedImage(srcBig, srcPreview);
+            
+        </text>}
+
+    });
+
+    function CheckFileUpload() {
+        if (fu.val() != "") return true;
+        else {
+            ShowFileUploadValError("@HttpContext.GetGlobalResourceObject("Notices", "ValFileUploadReq").ToString()")
+            return false;
+        }
+    }
+
+    function ShowFileUploadValError(msg) {
+        $("#fileVal").html(msg);
+        $("#fileVal").show();
+    }
+
+
+    function FilUploadCheckExt(e) {
+        var ext = String(e.files[0].extension).toLowerCase();
+        return !((ext != ".jpg") && (ext != ".png") && (ext != ".gif") && (ext != ".png"))
+    }
+
+    function FilUploadCheckSize(e) {
+        var size = e.files[0].size;
+        size = Math.ceil(size / 1024); //as KB
+
+        return (size < @ConfigManager.GetInstance().UploadDefaultMaxKB);
+    }
+
+    function kUploadOnSelect(e) {
+        if (!FilUploadCheckExt(e)) {
+            ShowFileUploadValError("@HttpContext.GetGlobalResourceObject("Notices", "ValFileUploadType").ToString()");
+            e.preventDefault();
+        }
+        else if (!FilUploadCheckSize(e)) {
+            ShowFileUploadValError("@HttpContext.GetGlobalResourceObject("Notices", "ValFileUploadSize").ToString()");
+            e.preventDefault();
+        }
+
+        $('#uploadImg').hide();
+    }    
+
+    function kUploadOnSuccess(e) {
+        if (e.response.savedFileName != null) {
+            $('#fileVal').hide();
+            fu.val(e.response.savedFileName);
+            SetUploadedImage(e.response.savedBig, e.response.pathPreview);
+        }
+    }
+
+    function SetUploadedImage(srcBig, srcPreview) {       
+
+        if (srcPreview == "") {
+            srcPreview = "/images/app_utils/noimage.jpg";
+            srcBig = "javascript:;"
+            $('#uploadImg').removeClass("cb").removeClass("cboxElement");
+        }
+
+        $('#uploadImg').attr("href", srcBig);
+
+        $('#uploadImg img').attr("src", srcPreview);
+
+        $('#uploadImg').show();
+    }
+
+    function kUploadOnRemove(e) {
+        $('#uploadImg').hide();
+        fu.val("");
+        //$('#fileVal').show();        
+    }
+
+    function kUploadOnUpload(e) { }
+    function kUploadOnError(e) { }
+    function kUploadOnComplete(e) { }
+    function kUploadOnCancel(e) { }
+
+</script>
+
+<span class="formVal" id="fileVal" style="display: none;"></span>
+
+<label>@HttpContext.GetGlobalResourceObject("Global", "Image")<i>@HttpContext.GetGlobalResourceObject("Global", "MaxUploadSize")</i></label>
+
+<a id="uploadImg" class="cb cboxElement" href="#" style="display: none;"><img src="#" /></a>
+
+<input type="hidden" id="@Model.UploadElementName" name="@Model.UploadElementName" value="@((Model.FileName == "") ? ViewBag.savedFileName : Model.FileName) " />
+
+@(Html.Kendo().Upload()
+    .Name("FileUpload")
+    .Messages(m => m
+        .Cancel(HttpContext.GetGlobalResourceObject("Kendo", "UploadCancel").ToString())
+        .DropFilesHere(HttpContext.GetGlobalResourceObject("Kendo", "UploadDropFiles").ToString())
+        .Remove(HttpContext.GetGlobalResourceObject("Kendo", "UploadRemove").ToString())
+        .Retry(HttpContext.GetGlobalResourceObject("Kendo", "UploadRetry").ToString())
+        .Select(HttpContext.GetGlobalResourceObject("Kendo", "UploadSelect").ToString())
+        .StatusFailed(HttpContext.GetGlobalResourceObject("Kendo", "UploadStatusFailed").ToString())
+        .StatusUploaded(HttpContext.GetGlobalResourceObject("Kendo", "UploadStatusUploaded").ToString())
+        .StatusUploading(HttpContext.GetGlobalResourceObject("Kendo", "UploadStatusUploading").ToString())
+        .UploadSelectedFiles(HttpContext.GetGlobalResourceObject("Kendo", "UploadSelectedFiles").ToString())
+    )
+    .Async(a => a
+        .Save("PhotoUpload", "Upload", new { 
+            ImageType = Model.ImageType, 
+            ResizeDefault = Model.ResizeDefault,
+            ResizeDefaultW = (int)Model.ResizeDefaultW,
+            ResizeDefaultH = (int)Model.ResizeDefaultH,
+            NotLiveImg = Model.NotLiveImg
+        })
+        .Remove("PhotoRemove", "Upload", new { 
+            ImageType = Model.ImageType,
+            NotLiveImg = Model.NotLiveImg
+        })
+        .AutoUpload(true)
+    )
+    .Multiple(false)
+    .Events(events => events
+        .Cancel("kUploadOnCancel")
+        .Complete("kUploadOnComplete")
+        .Error("kUploadOnError")
+        .Remove("kUploadOnRemove")
+        .Select("kUploadOnSelect")
+        .Success("kUploadOnSuccess")
+        .Upload("kUploadOnUpload")
+    )
+    )

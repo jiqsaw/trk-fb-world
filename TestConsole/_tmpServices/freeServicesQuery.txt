@@ -1,0 +1,97 @@
+﻿{
+   "FreeServicesQuery":{
+      "freeUnits":[
+         {
+            "getCampaignName":"GOLD PAKET 4GB DATA",
+            "getDeactivationDate":"25 Şubat 2013",
+            "getAvailableBalance":"3.437 MB",
+            "getActivationDate":"25 Ocak 2013",
+            "getCreditUnit":"",
+            "getZoneTypeDesc":"Internetışüğöç",
+            "getCreditUnit2":"MB",
+            "getCurrPeriodBalance2":"4.096",
+            "getAvailableBalance2":"3.437",
+            "getUnitRate":"1024",
+            "getUnitTypeDesc":"DATA"
+         },
+         {
+            "getCampaignName":"GOLD PAKET 4GB DATA",
+            "getDeactivationDate":"25 Şubat 2013",
+            "getAvailableBalance":"3.437 MB",
+            "getActivationDate":"25 Ocak 2013",
+            "getCreditUnit":"",
+            "getZoneTypeDesc":"Internet",
+            "getCreditUnit2":"MB",
+            "getCurrPeriodBalance2":"4.096",
+            "getAvailableBalance2":"3.437",
+            "getUnitRate":"1024",
+            "getUnitTypeDesc":"DATA"
+         },
+         {
+            "getCampaignName":"GOLD PLUS 2000SMS HERYONE KMP",
+            "getDeactivationDate":"25 Şubat 2013",
+            "getAvailableBalance":"1.969 SMS",
+            "getActivationDate":"25 Ocak 2013",
+            "getCreditUnit":"",
+            "getZoneTypeDesc":"SMSHeryone",
+            "getCreditUnit2":"SMS",
+            "getCurrPeriodBalance2":"2.000",
+            "getAvailableBalance2":"1.969",
+            "getUnitRate":"",
+            "getUnitTypeDesc":"SMS/MMS"
+         },
+         {
+            "getCampaignName":"GOLD PLUS KMP",
+            "getDeactivationDate":"25 Şubat 2013",
+            "getAvailableBalance":"4.928 dk",
+            "getActivationDate":"25 Ocak 2013",
+            "getCreditUnit":"",
+            "getZoneTypeDesc":"Turkcelllilerle",
+            "getCreditUnit2":"dk",
+            "getCurrPeriodBalance2":"5.000",
+            "getAvailableBalance2":"4.928",
+            "getUnitRate":"",
+            "getUnitTypeDesc":"SES"
+         },
+         {
+            "getCampaignName":"GOLD PLUS KMP",
+            "getDeactivationDate":"25 Şubat 2013",
+            "getAvailableBalance":"1.987 dk",
+            "getActivationDate":"25 Ocak 2013",
+            "getCreditUnit":"",
+            "getZoneTypeDesc":"Heryone",
+            "getCreditUnit2":"dk",
+            "getCurrPeriodBalance2":"2.000",
+            "getAvailableBalance2":"1.987",
+            "getUnitRate":"",
+            "getUnitTypeDesc":"SES"
+         },
+         {
+            "getCampaignName":"HAFTADA 2GUNBEDAVA-CM-CMT 06:00-18:00 arasi",
+            "getDeactivationDate":"21 Şubat 2013",
+            "getAvailableBalance":"8.618 dk",
+            "getActivationDate":"21 Ocak 2013",
+            "getCreditUnit":"",
+            "getZoneTypeDesc":"Turkcelllilerle",
+            "getCreditUnit2":"dk",
+            "getCurrPeriodBalance2":"8.640",
+            "getAvailableBalance2":"8.618",
+            "getUnitRate":"",
+            "getUnitTypeDesc":"SES"
+         },
+         {
+            "getCampaignName":"PLATINUM YURTDISI SMS",
+            "getDeactivationDate":"17 Şubat 2013",
+            "getAvailableBalance":"30 SMS",
+            "getActivationDate":"17 Ocak 2013",
+            "getCreditUnit":"",
+            "getZoneTypeDesc":"",
+            "getCreditUnit2":"SMS",
+            "getCurrPeriodBalance2":"30",
+            "getAvailableBalance2":"30",
+            "getUnitRate":"",
+            "getUnitTypeDesc":"SMS/MMS"
+         }
+      ]
+   }
+}

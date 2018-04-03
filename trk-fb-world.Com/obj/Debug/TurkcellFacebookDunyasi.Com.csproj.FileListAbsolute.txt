@@ -1,0 +1,12 @@
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\TurkcellFacebookDunyasi.Com\bin\Debug\TurkcellFacebookDunyasi.Com.dll
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\TurkcellFacebookDunyasi.Com\bin\Debug\TurkcellFacebookDunyasi.Com.pdb
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\TurkcellFacebookDunyasi.Com\bin\Debug\tr-TR\TurkcellFacebookDunyasi.Com.resources.dll
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\TurkcellFacebookDunyasi.Com\bin\Debug\LIB.dll
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\TurkcellFacebookDunyasi.Com\bin\Debug\LIB.pdb
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\TurkcellFacebookDunyasi.Com\obj\Debug\TurkcellFacebookDunyasi.Com.csprojResolveAssemblyReference.cache
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\TurkcellFacebookDunyasi.Com\obj\Debug\TurkcellFacebookDunyasi.Com.Enums.rsrcEnumDisplays.resources
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\TurkcellFacebookDunyasi.Com\obj\Debug\TurkcellFacebookDunyasi.Com.Enums.rsrcEnumDisplays.tr-TR.resources
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\TurkcellFacebookDunyasi.Com\obj\Debug\TurkcellFacebookDunyasi.Com.csproj.GenerateResource.Cache
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\TurkcellFacebookDunyasi.Com\obj\Debug\tr-TR\TurkcellFacebookDunyasi.Com.resources.dll
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\TurkcellFacebookDunyasi.Com\obj\Debug\TurkcellFacebookDunyasi.Com.dll
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\TurkcellFacebookDunyasi.Com\obj\Debug\TurkcellFacebookDunyasi.Com.pdb

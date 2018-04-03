@@ -1,0 +1,30 @@
+﻿@model TurkcellFacebookDunyasi.Core.BaseEntity
+
+<section class="displayNone">
+    
+    @if (Model != null) {
+       
+    
+        @Html.TextBoxFor(model => model.CreateDate)
+        @Html.EditorFor(model => model.CreatedBy)
+        
+        @Html.EditorFor(model => model.Order)
+    }
+
+            
+</section>
+
+
+
+@if (Model != null) {
+    <aside>
+        <h3> @Html.LabelFor(model => model.CreateDate)  </h3> <p>  @Html.DisplayFor(model => model.CreateDate) </p>
+        <h3> @Html.LabelFor(model => model.CreatedBy)   </h3> <p>  @Html.DisplayFor(model => model.CreatedByName) </p>
+        <h3> @Html.LabelFor(model => model.ModifyDate)  </h3> <p>  @Html.DisplayFor(model => model.ModifyDate) </p>
+        <h3> @Html.LabelFor(model => model.ModifiedBy)  </h3> <p>  @Html.DisplayFor(model => model.ModifiedByName) </p>
+    </aside>
+}
+
+<aside>
+    <p class="checkbox"> @Html.EditorFor(model => model.IsActive) @Html.LabelFor(model => model.IsActive) </p>
+</aside>

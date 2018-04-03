@@ -1,0 +1,26 @@
+﻿F ----------------------
+UserBlocks Çoklu Kayıt
+
+Sql injection
+Log Wsdl Request
+iFrame beyazlık sorunu
+canvasTo -  iFrameHeightRefresh
+
+
+H
+GlobalException different naming
+Top 5 log farklı naming
+User invites
+logs
+Transfer Amounts
+Log AppName
+
+
+M ----------------------
+Fatura chart renklerinde pembe öncelikten alınacak
+Char columns ları static yazalım
+fatura detayı grid son sayfada az kayıt olabiliyor, iFrame height olayı
+
+
+-----------
+fatura detayı slider

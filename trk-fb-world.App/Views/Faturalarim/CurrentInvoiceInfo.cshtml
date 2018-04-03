@@ -1,0 +1,8 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.InvoiceInfoModel
+
+<label id="lblInvoiceAmount">Güncel Fatura Tutarı:</label> <span class="big">@Model.serviceData.OpenAmount</span><span class="fLeft curr"> TL</span>
+<ins></ins>
+<label>Fatura Kesim Tarihi:</label> <span>@String.Format("{0:dd.MM.yyyy}", Model.serviceData.LastBillCycleDate)</span>
+<aside class="title fReg listAll mNoneTop">
+    <a href="javascript:;" class="pageNav" data-page="Faturalarim" data-ga="Faturalarim">Geçmiş Faturalarım</a>
+</aside>

@@ -1,0 +1,1 @@
+﻿ {"KontorIsteApprovePage":{"_transferCounterEntry":{"getToMsisdn":"5376429934","getCounterAmount":"15"}}}

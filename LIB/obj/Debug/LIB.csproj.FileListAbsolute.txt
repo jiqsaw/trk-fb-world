@@ -1,0 +1,4 @@
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\LIB\bin\Debug\LIB.dll
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\LIB\bin\Debug\LIB.pdb
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\LIB\obj\Debug\LIB.dll
+D:\Projects\Turkcell Facebook Dünyası\Source\TurkcellFacebookDunyasi\LIB\obj\Debug\LIB.pdb

@@ -1,0 +1,63 @@
+﻿/* ---------- Dropdown ---------- */
+
+.k-list-container.k-state-border-down,.k-dropdown-wrap.k-state-border-down,.k-picker-wrap.k-state-border-down,.k-numeric-wrap.k-state-border-down{border-bottom:0; padding-bottom:2px !important; }
+
+.k-dropdown-wrap {background: url("../images/form/txt_bg.gif") repeat-x #132C5C !important; border: 3px solid #3160C1 !important; box-shadow: 4px 7px 8px -7px #000000 !important;}
+.k-dropdown-wrap .k-input {color: #FFFFFF !important; font-size: 24px !important; height: 27px !important; margin-top: -4px !important; font-family:"turkcellsaturabolregular",Arial; cursor:default; }
+.k-icon { background: url('../images/icons/d-arrow.png') no-repeat; height: 28px; margin-right: -2px; width: 32px; }
+:hover.k-icon {background-position:0 0 !important;}
+.k-state-hover .k-i-arrow-s, .k-button:hover .k-i-arrow-s, .k-textbox:hover .k-i-arrow-s, .k-button:active .k-i-arrow-s{background-position:0 0 !important;}
+.k-list-container {background: #132C5C !important; border-bottom: 3px solid #3160C1 !important; border-left: 3px solid #3160C1 !important; border-right: 3px solid #3160C1 !important; margin-top: -4px; color:#ffffff !important; position:relative; z-index:1 !important; font-size:20px !important; }
+.k-state-selected { background:url('../images/global/kendoDropSelect.gif') repeat-x #b20657 !important; border:#860944 1px solid !important;}
+:hover.k-state-selected { color:#ffffff !important;}
+li.k-state-hover { background:url('../images/global/kendoDropHover.gif') repeat-x #0e1e3e !important; border:1px solid #0e1e3e !important; color:#ffffff !important; }
+.k-state-selected.k-state-hover { background:url('../images/global/kendoDropSelect.gif') repeat-x #b20657 !important; border:#860944 1px solid !important;}
+
+
+/* ---------- Grid --------- */
+.k-grid, .k-grid-footer, .k-grid-header .k-header, .k-grid-header-wrap, .k-grid-header, .k-grid td, .k-grid td.k-state-selected, .k-grid-footer-wrap, .k-pager-wrap, .k-pager-wrap .k-link, .k-pager-refresh, .k-pager-input .k-textbox { border:none !important; background-color: transparent !important; background-image: none !important;}
+.k-block, .k-widget { background-color: transparent !important; }
+.k-grid-header { background-color:none !important; }
+div.k-grid-header, div.k-grid-footer { border: 0px !important; }
+div.k-grid-header .k-header { color: #FFD800; padding: 7px 11px 9px 11px; }
+.k-alt, .k-separator { background:transparent !important; }
+.k-grid-content { overflow:hidden; height: auto !important; }
+.k-grid-header { background:url("../images/global/tableHeaderBg.png") repeat-x !important; color:#ffd800; font-size:16px;}
+.k-link:link, .k-link:visited { color: #ffd800;}
+.k-grid-filter .k-icon {background:url('../images/icons/d-arrow.png') no-repeat !important; height:17px !important; width:20px !important; background-position: -10px 0 !important;}
+.k-link .k-i-arrow-n {background:url('../images/icons/d-arrow.png') no-repeat !important; margin: 13px -25px 0 0 !important; height:20px !important;}
+.k-grid-header .k-header .k-link {margin: -1px -0.6em -0.4em !important; min-height: 23px !important;}
+.k-grid-content table td { border-bottom:1px solid #1b55c6 !important; height:60px; color:#b0c8f8; font-size:14px; font-family:"turkcellsaturaregular",Arial; text-align:left;}
+.k-grid-content table th { text-align:left !important; }
+.k-alt { background:url('../images/global/k-altBg.png') !important; }
+.k-grid-content table td:first-child,.k-grid-content table td:last-child { font-size:16px; font-family:"turkcellsaturaregular",Arial;}
+.k-grid-content table td:nth-child(2) { font-family: "turkcellsaturabolita",Arial; color:#ffffff; font-size:20px;}
+.k-grid-content table td:nth-child(3), .k-grid-content table td:nth-child(4) {font-size:18px;}
+.k-grid-header .k-header { text-align: left !important;}
+.k-pager-wrap { background: url("../images/global/pagerBg.gif") repeat scroll 0 0 transparent !important; color: #FFFFFF; font-size: 14px; height: 33px; overflow: hidden !important;}
+.k-pager-wrap a.k-link .k-i-seek-w, .k-pager-wrap a.k-link .k-i-arrow-w  { background: url('../images/global/pagerArrow.png') no-repeat !important; height: 29px !important; width: 29px !important; }
+.k-pager-wrap a.k-link .k-i-seek-w  { background-position:-29px 0 !important; }
+.k-pager-wrap a.k-link .k-i-arrow-e, .k-pager-wrap a.k-link .k-i-seek-e { background: url('../images/global/pagerArrow.png') no-repeat !important; height: 29px !important; width: 29px !important; background-position:-87px 0px !important; }
+.k-pager-wrap a.k-link .k-i-seek-e { background-position:-58px 0 !important; }
+.k-pager-wrap a.k-link.k-state-disabled .k-i-seek-w, .k-pager-wrap a.k-link.k-state-disabled .k-i-arrow-w, .k-pager-wrap a.k-link.k-state-disabled .k-i-arrow-e, .k-pager-wrap a.k-link.k-state-disabled .k-i-seek-e  { opacity:0.6; }
+.k-pager-input, .k-pager-sizes { padding: 6px 17px !important;}
+.k-pager-wrap .k-textbox, .k-pager-wrap .k-widget { background: #172E67 !important; color: #FFFFFF !important; margin: -0.3em 0.4em 0; text-align: center;}
+.k-pager-info { padding: 4px 16px !important; font-family:"turkcellsaturaregular",Arial;}
+.k-icon, .k-column-menu .k-sprite { opacity: 0.7; }
+.k-state-active, .k-state-active:hover, .k-active-filter { background-color:transparent !important; }
+
+._cont .k-grid-header { background:transparent !important;  border-bottom:1px solid #1c56c7 !important;}
+._cont .k-pager-wrap { display:none; }
+._cont .k-grid-content table td { height:28px !important; }
+._cont .k-grid-content table td:nth-child(2) { font-size:16px !important; font-family:"turkcellsaturaregular",Arial !important; color:#b0c8f8 !important; }
+._cont .k-grid-content table td:first-child, .k-grid-content table td:last-child { font-size:16px !important; }
+.k-grid-header .k-link>.k-icon{ position: absolute; top: -4px; margin-left: -6px !important; }
+.k-grid-header .k-icon.k-i-arrow-s { background:url('../images/icons/s-arrow.png') no-repeat !important; top: 8px !important; }
+.k-dropdown span, .k-header span { margin-top: 0px !important; }
+
+/*----------- Auto Complete ---------*/
+.k-autocomplete {border:none !important; padding:0 6px 0 0 !important;}
+.k-autocomplete { background:none !important; }
+.k-autocomplete .k-input {padding:0px !important;}
+.k-autocomplete .k-input { border:3px solid #3160c1 !important; }
+

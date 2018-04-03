@@ -1,0 +1,21 @@
+﻿@model IEnumerable<TurkcellFacebookDunyasi.Core.Offer>
+
+<section class="offers">
+
+    @if (Model != null)
+    {
+        foreach (var item in Model.ToList())
+        {
+            <aside class="f_menu fReg" id="offer_@item.Id">
+                @{string link = "javascript:;";}
+                @if(item.URL!=null || item.URL!=""){ link=item.URL; }
+                <a href="@link" target="@((Parameter.WindowType)item.WindowTypeCode)" data-ga="@link">
+                    <img src="@PathHelper.Images.Offer(item.FileName,Parameter.ImageSizeNaming.Original)" border="0" />
+                    <ins></ins>
+                    <span>@item.Title</span><br />
+                    @Html.Raw(LIB.StringHelper.Nl2Br(item.Detail))
+                </a>
+            </aside>
+        }
+    }
+</section>

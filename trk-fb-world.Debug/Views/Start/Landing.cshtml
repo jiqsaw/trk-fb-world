@@ -1,0 +1,120 @@
+﻿@using TurkcellFacebookDunyasi.Com.Helpers
+
+@*        <section class="landingPage">
+                    
+            <section class="lpTitle">Farklı bir dünyaya girmeye hazır mısınız? </section>
+                
+            <section class="fIta lpText">
+                Facebook üzerinden arama yapabilir, SMS yollayıp, <br />TL gönderip isteyebilir, fatura detaylarınıza ulaşabilirsiniz. <br />
+                Daha birçok özellik ve avantaj bu dünyada. <br /> <br />
+
+               @* @if (!Convert.ToBoolean(ViewBag.IsPageLiked))
+                {
+                <section id="sectionLike">
+                    <span class="yellowText">Turkcell Facebook Dünyası’na giriş yapmak için sayfayı beğenmelisiniz. </span>
+                    <br /><br />
+                    <fb:like href="@Helper.configFb(TurkcellFacebookDunyasi.App.App_Manager.ConfigManager.ConfigNameFb.Facebook_PageAppTabUrl)" send="false" layout="button_count" width="100" show_faces="false"></fb:like>
+                </section>
+                }
+                    
+                else
+                {
+                <section id="sectionStart" class="fBoldIta">
+                    <a class="buttonLink" href="javascript:fbLogin()">GİRİŞ</a>
+                </section>
+                }                 
+                  
+            </section>                                
+                
+            <img src="@PathHelper.UrlStatic/images/global/landing.png" />                      
+
+        </section> 
+
+
+*@
+
+
+
+
+
+                <section class="landingPage">
+                    
+                    <section class="lpTitle fIta"> Ücretsiz arama yapabilir, SMS yollayıp,<br />                                              TL gönderip isteyebilir, fatura detaylarınıza ulaşabilirsiniz!</section>
+
+                    <ins class="space45"></ins>
+
+                    <script>
+                        $(function () {
+                            tipsSlide();
+                        });
+
+
+                        function tipsSlide() {
+                            $('.landingTips').slides({
+                                container: 'allTips',
+                                preload: false,
+                                play: 5000,
+                                paginition: true,
+                                paginationClass: 'alertNav',
+                                generatePagination: false,
+                                effect: 'fade',
+                                animationComplete: function (current) {
+                                    $('.alertNav li a').removeClass('active');
+                                    $('.alertNav li').eq(current - 1).children('a').addClass('active');
+                                }
+                            });
+                        }
+                    </script>
+
+                    <section class="fLeft landingTips">
+                        <section class="allTips fIta">
+                            <section class="lpTip">
+                                <img src="@PathHelper.UrlStatic/images/banners/landingBanner1.png" />
+                                <p class="summary">Güncel ve Geçmiş Fatura Bilgilerine ulaş. <br />Fatura Detaylarını Facebook'taki arkadaşların ile eşleştirilmiş şekilde incele.</p>
+                            </section>
+                            <section class="lpTip">
+                                <img src="@PathHelper.UrlStatic/images/banners/landingBanner1.png" />
+                                <p class="summary">Facebook üzerinden cep telefonunuzla arkadaşlarınızla konuşun! Üstelik ilk 30 dakika ücretsiz.</p>
+                            </section>
+                            <section class="lpTip">
+                                <img src="@PathHelper.UrlStatic/images/banners/landingBanner1.png" />
+                                <p class="summary">Facebook üzerinden cep telefonunuzla arkadaşlarınızla konuşun! Üstelik ilk 30 dakika ücretsiz.</p>
+                            </section>
+                        </section>
+                        <ins></ins>
+                        <ul class="alertNav">
+                            <li><a class="active">1</a></li>
+                            <li><a>2</a></li>
+                            <li><a>3</a></li>
+                        </ul>
+                    </section>
+
+                    <ins class="space35"></ins>
+
+                
+                    <section class="fIta lpText">
+                       
+
+                        @if (!Convert.ToBoolean(ViewBag.IsPageLiked))
+                        {
+                        <section id="sectionLike">
+                            <span class="yellowText">Turkcell Hesabım'a giriş yapmak için sayfayı beğenmelisiniz. </span>
+                            <br /><br />
+                            <fb:like href="@Helper.configFb(TurkcellFacebookDunyasi.App.App_Manager.ConfigManager.ConfigNameFb.Facebook_PageAppTabUrl)" send="false" layout="button_count" width="100" show_faces="false"></fb:like>
+                        </section>
+                        }
+                    
+                        else
+                        {
+                        <section id="sectionStart" class="fBoldIta">
+                            <a class="buttonLink bigButton" href="javascript:fbLogin()">GİRİŞ</a>
+                        </section>
+                        }
+                            
+                  
+                    </section>  
+                    
+                    <ins class="space200"></ins>                              
+                              
+
+                </section> 

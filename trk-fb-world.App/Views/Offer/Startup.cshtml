@@ -1,0 +1,60 @@
+﻿@using TurkcellFacebookDunyasi.Com.Helpers
+
+@model IEnumerable<TurkcellFacebookDunyasi.Core.Offer>
+
+
+<script>
+    $(function () {
+        tipsSlide();
+    });
+
+    function tipsSlide() {
+        $('.tips').slides({
+            container: 'allTips',
+            preload: false,
+            play: 5000,
+            paginition: true,
+            paginationClass: 'alertNav',
+            generatePagination: false,
+            effect: 'fade',
+            animationComplete: function (current) {
+                $('.container .tips ul li a').removeClass('active');
+                $('.container .tips ul li').eq(current - 1).children('a').addClass('active');
+            }
+        });
+    }
+</script>
+
+
+@if (Model != null)
+{
+    <section class="allTips fIta">
+    @{int imageType = Convert.ToInt32(Parameter.OfferType.Startup)-1;}
+    @foreach (var item in Model.ToList())
+    {
+    <section class="tip">
+        <article class="functionBanner">
+            <img src="@PathHelper.Images.Offer(item.FileName,Parameter.ImageSizeNaming.Original)" />
+            <p class="title">@item.Title</p>
+            <p class="summary fReg">@Html.Raw(LIB.StringHelper.Nl2Br(item.Detail))
+                @if(item.URL!=null || item.URL!=string.Empty || item.URL!=""){
+                    <text> <a href="@item.URL" target="@((Parameter.WindowType)item.WindowTypeCode)" data-ga="@item.URL">Detaylı Bilgi</a></text>
+                }
+            </p>
+        </article>
+    </section>
+    
+    }
+    </section>
+    <ins></ins>
+    <ul class="alertNav">
+        @{int _count = 0;}
+        @foreach(var item in Model.ToList())
+        {
+            _count++;
+            
+            if (_count == 1) { <li><a class="active">@item.Id</a></li> }
+            else { <li><a>@item.Id</a></li> }
+        }
+    </ul>
+}

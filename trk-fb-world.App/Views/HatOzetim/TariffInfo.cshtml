@@ -1,0 +1,15 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.HatOzetimModel
+
+<label class="tariffLabel">
+    <span class="fLeft">Mevcut Tarifeniz:</span>
+    <b class="tariffName">
+        @Model.serviceData.TariffDesc
+        @if (!String.IsNullOrEmpty(Model.serviceData.AdvPackName.Trim())) {
+            <text> / <br /> @Model.serviceData.AdvPackName</text>  
+        }
+    </b>
+</label>
+
+<section class="title fReg listAll fLeft tariffLink">
+    <a href="https://csi.turkcell.com.tr/csi/tariffQuery?csiEntranceId=0301" data-ga="PaketServisAl" class="csiLink">Değiştir</a>
+</section>

@@ -1,0 +1,189 @@
+﻿@{
+    Layout = null;
+}
+
+@using TurkcellFacebookDunyasi.Com.Helpers
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>        
+    <title>Turkcell Hesabım</title>
+
+    @Html.Partial("_LayoutHead")
+
+</head>
+<body>
+
+<div id="fb-root"></div>
+
+<script>    
+
+    window.fbAsyncInit = function () {
+        FB._secure = true;
+        FB.init({
+            appId: _appId, // App ID
+            status: true, // check login status
+            cookie: true, // enable cookies to allow the server to access the session
+            xfbml: true,  // parse XFBML
+            channelUrl: '@PathHelper.UrlWeb/channel.html' //custom channel
+        });
+
+        FB.Canvas.setAutoGrow(true);        
+
+        FB.Event.subscribe('edge.create', fbLogin);
+
+@if (Convert.ToBoolean(ViewBag.IsPageLiked))
+{ 
+    <text>
+    
+        FB.getLoginStatus(function (response) {
+            if (response.status === 'connected') {
+
+                console.log("connected");
+                FbLoginResponse(response);
+
+            } else if (response.status === 'not_authorized') {
+
+                console.log("not_authorized");
+                ShowLanding();
+
+            } else {
+
+                console.log("isn't logged in to Facebook");
+                ShowLanding();
+            }
+        });
+
+    </text>
+}
+else
+{
+    <text>
+        ShowLanding();
+    </text>
+}
+
+    };
+
+
+    // Load the SDK Asynchronously
+    (function (d) {
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/tr_TR/all.js";
+        ref.parentNode.insertBefore(js, ref);
+    }(document));
+
+    var graphUrl = '/me/?return_ssl_resources=1&fields=id,name,first_name,last_name,link,username,birthday,location,gender,email,locale,picture.width(100).height(100),friends.fields(name,first_name,last_name,picture.width(100).height(100))';
+
+
+
+    // LOGIN
+    function fbLogin() {        
+        FB.login(function (response) {
+
+            FbLoginResponse(response);
+            
+        }, { scope: 'email,user_birthday' });
+    }
+
+
+    function FbLoginResponse(response) {
+
+        if (response.authResponse) {
+
+            ShowAppPage();
+
+            FB.api(graphUrl, function (response) {
+
+                var postData = { JsonData: $.toJSON(response) };
+
+                $.ajax({
+                    url: '/Start/FbLogin',
+                    type: "POST",
+                    data: postData,
+                    dataType: 'json',
+                    success: function (response) {
+
+                        //console.log(response.result);
+
+                        goIn();
+
+                    },
+                    error: function (response) {
+
+                        //console.log(response);
+
+                        location.href = '/Error/AppOffline';
+
+                    }
+                });
+
+            });
+
+        } else
+            console.log('User cancelled login or did not fully authorize.');
+    }
+
+
+    function goIn() {        
+        $('#appPage').load('/Login', function (responseText, textStatus, req) {
+
+
+            $('#appPage').hide().fadeIn('slow', iFrameHeightRender);
+
+        });
+    }
+
+
+    function ShowLanding()
+    {
+        $('#landing').css({"visibility":"visible"});
+        iFrameHeightRender();
+    }
+
+
+    function ShowAppPage() {
+        $('#landing').fadeOut();
+        $('#appPage').fadeIn('slow', iFrameHeightRender);        
+    }
+
+</script>
+
+<section class="wrapper">
+
+    @Html.Partial("Header")
+
+
+    <section id="landing" style="visibility: hidden;">
+
+        @Html.Partial("Landing")
+
+    </section>
+    
+
+    <section id="appPage" style="display: none; min-height: 500px">
+        
+        <section class="appStarting fIta">
+
+            @Html.Partial("Loading") <br /> 
+            Giriş yapılıyor...
+        </section>
+
+    </section>
+
+        
+    @Html.Partial("Footer")
+
+    <ins></ins>
+
+</section>
+
+
+
+    @Html.Partial("_Kendo")    
+
+</body>
+</html>

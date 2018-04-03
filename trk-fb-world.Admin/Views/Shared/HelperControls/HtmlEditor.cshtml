@@ -1,0 +1,54 @@
+﻿@model TurkcellFacebookDunyasi.Admin.Models.HtmlEditorModel
+
+<script type="text/javascript">
+
+    function CheckHtmlEditor() {
+        if ($('#@Model.Expression').val() != "") return true;
+        else {
+            $("form").validate().showErrors({ "@Model.Expression" : "@HttpContext.GetGlobalResourceObject("Notices", @Model.ErrorMessageRsrcKey).ToString()" });
+            return false;
+        }
+    }
+
+    $(function () {
+        $('form').submit(CheckHtmlEditor)
+    });
+
+</script>
+
+@(Html.Kendo().Editor()
+    .Name(Model.Expression)
+    .Value(HttpUtility.HtmlDecode(Model.Value)).Encode(false)
+    .Messages(m => m
+        .Bold(HttpContext.GetGlobalResourceObject("Kendo", "HtmlEditorBold").ToString())
+        .Underline(HttpContext.GetGlobalResourceObject("Kendo", "HtmlEditorUnderline").ToString())
+        .Strikethrough(HttpContext.GetGlobalResourceObject("Kendo", "HtmlEditorStrikethrough").ToString())
+        .JustifyLeft(HttpContext.GetGlobalResourceObject("Kendo", "HtmlEditorJustifyLeft").ToString())
+        .JustifyRight(HttpContext.GetGlobalResourceObject("Kendo", "HtmlEditorJustifyRight").ToString())
+        .JustifyCenter(HttpContext.GetGlobalResourceObject("Kendo", "HtmlEditorJustifyCenter").ToString())
+        .JustifyFull(HttpContext.GetGlobalResourceObject("Kendo", "HtmlEditorJustifyFull").ToString())
+        .CreateLink(HttpContext.GetGlobalResourceObject("Kendo", "HtmlEditorCreateLink").ToString())
+        .Unlink(HttpContext.GetGlobalResourceObject("Kendo", "HtmlEditorUnlink").ToString())
+        .InsertImage(HttpContext.GetGlobalResourceObject("Kendo", "HtmlEditorInsertImage").ToString())
+        .FontNameInherit(HttpContext.GetGlobalResourceObject("Kendo", "HtmlEditorFontNameInherit").ToString())
+        .FontSizeInherit(HttpContext.GetGlobalResourceObject("Kendo", "HtmlEditorFontSizeInherit").ToString())
+    )
+    .Tools(t => t
+        .Clear()
+        .Bold()
+        .Italic()
+        .Underline()
+        .Strikethrough()
+        .FontColor()
+        .BackColor()
+        .JustifyLeft().JustifyCenter().JustifyRight().JustifyFull()
+        .InsertOrderedList()
+        .InsertUnorderedList()
+        .Indent()
+        .CreateLink().Unlink()
+        .InsertImage()
+        .FontName()
+        .FontSize()
+    )
+    .HtmlAttributes(new { style = "height: " + (Model.Height == 0 ? 300 : Model.Height) + "px;" })
+)    

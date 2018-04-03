@@ -1,0 +1,54 @@
+﻿<div id='colorboxContentainer3'>
+    <div id="colorboxContent3">
+
+        <script>
+            $("#msisdnUpdateLink").live("click", function () {
+                $("#msisdnUpdateLink").hide();
+                $("#LoadingForm").show();
+                $.ajax({
+                    url: "/Login/LdapUpdate/",
+                    dataType: "json",
+                    success: function (response) {
+                        $("#LoadingForm").hide();
+                        if (response.result == "1") {
+                            processResult(2, "Numaranız başarıyla güncellenmiştir.", "#msisdnResult");
+
+                            setTimeout(function () {
+                                $.colorbox.close();
+                            }, 3000);
+                        }
+                        else {
+                            processResult(1, "İşlem başarısız.", "#msisdnResult");
+                        }
+                    },
+                    error: function () {
+                        $("#LoadingForm").hide();
+                        processResult(1, "İşlem başarısız.", "#msisdnResult");
+                    }
+                });
+            });
+        </script>
+
+        <h2 class="colorboxHeader">Numaranızı Güncelleyin</h2>
+
+        <section class="f20">
+
+            <ins class="space35"></ins>
+
+            <section id="msisdnResult">
+                Hattınız başka bir Facebook hesabı ile eşleştirilmiş.<br />
+                Bu eşleşmeyi şu anki Facebook hesabı ile güncellemek istiyor musunuz?
+            
+                <ins class="space35"></ins>
+
+                <a href="javascript:;" class="buttonLink fLeft" id="msisdnUpdateLink">Numaramı Güncelle</a>
+                <section id="LoadingForm" class="fLeft ajaxFormLoad" style="display:none;">@Html.Action("LoadingSmall","Global")</section>
+
+            </section>
+
+        </section>
+
+        <ins></ins>
+
+    </div>
+</div>

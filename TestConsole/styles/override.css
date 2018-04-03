@@ -1,0 +1,31 @@
+﻿/* ---------- Validation Engine ----------*/
+.formError { left:0px !important; position:initial !important; position: relative\9 !important; top: 0px \9 !important; }
+.formError .formErrorContent { width: 100%; background: url("../images/icons/infoVal.png") no-repeat #D61C75; position: relative; color: white; width: 150px; font-size: 15px; border: 1px solid #9B217D; box-shadow: 3px 3px 6px black; -moz-box-shadow: 0 0 6px #000; -webkit-box-shadow: 2px 2px 11px 0px #910D5A; padding: 11px 11px 11px 35px; border-radius: 5px; -moz-border-radius: 6px; -webkit-border-radius: 5px; font-family:"Turkcellsaturameditaregular",Arial; }
+.formError .formErrorArrow div { border-left: 1px solid #9B217D; border-right: 1px solid #9B217D; box-shadow: 0 2px 3px #444; -moz-box-shadow: 0 2px 3px #444; -webkit-box-shadow: 0 2px 3px #444; font-size: 0px; height: 1px; background: #D61C75; margin: 0 auto; line-height: 0; font-size: 0; display: block; }
+.formError .formErrorArrow .line3 { width: 1px; border-left: 2px solid #D61C75; border-right: 2px solid #D61C75; border-bottom: 0 solid #D61C75; margin-top: -1px;}
+.formError .formErrorArrow .line2 { width: 3px; border: none; background: #D61C75;}
+.formError .formErrorArrow .line1 { width: 1px; border: none; background: #D61C75; }
+.txtWhoformError { z-index:99999;}
+
+/* ------------ Colorbox ------------*/
+#cboxOverlay { background:#000000; -moz-opacity:0.6 !important; opacity:0.6 !important; }
+#cboxLoadedContent { background:transparent; border-radius:5px 5px 5px 5px; overflow:hidden !important;}
+#colorboxContentainer { background:url('../images/global/blue.png'); height:427px; padding:5px; border-radius:5px 5px 5px 5px; color:#ffffff; }
+#colorboxContentainer2 { background:url('../images/global/blue.png'); height:327px; padding:5px; border-radius:5px 5px 5px 5px; color:#ffffff; }
+#colorboxContentainer3 { background:url('../images/global/blue.png'); height:auto; padding:5px; border-radius:5px 5px 5px 5px; color:#ffffff; }
+#colorboxContentainer4 { background:url('../images/global/blue.png'); height:534px; padding:5px; border-radius:5px 5px 5px 5px; color:#ffffff; }
+#colorboxError { background:#5f1529; height:auto; padding:5px; border-radius:5px 5px 5px 5px; color:#ffffff; }
+#colorboxContent { background:url('../images/global/colorboxBg.png') no-repeat #112c86; height: 377px; padding: 25px; width: 407px; }
+#colorboxContent2 { background:url('../images/global/colorboxBg.png') no-repeat #112c86; height: 277px; padding: 25px; width: 407px; }
+#colorboxContent3 { background:url('../images/global/colorboxBg.png') no-repeat #112c86; height: auto; padding: 25px; width: 407px; }
+#colorboxContent4 { background:url('../images/global/colorboxBg.png') no-repeat #112c86; height: 510px; padding: 25px 0 0 0; width: 544px; }
+#colorboxErrorContent { background:url('../images/global/errorLbBg.jpg') #be085e; height: auto; padding: 25px; width: 409px; }
+#cboxClose {width:39px; height:36px; background:url('../images/global/colorboxClose.png') no-repeat; margin:38px 17px 0 0;}
+:hover#cboxClose { background-position:0 -36px;}
+#colorbox, #cboxOverlay, #cboxWrapper {z-index:99999;}
+#colorboxErrorContent #ayarlar { line-height: 25px; font-size: 20px; margin-top: 25px; }
+#colorboxErrorContent h2.colorboxHeader { color:#ff6fb2; }
+#cboxTitle { display:none !important; }
+
+/* --------- Nano Scroller ----------*/
+.nano > .pane { width: 8px; }

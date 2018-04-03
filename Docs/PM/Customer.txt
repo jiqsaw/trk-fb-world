@@ -1,0 +1,3 @@
+﻿- Fatura Detayı SMS Metni
+- Footerdaki bannerların url’leri com.tr anasayfaya yönleniyor.
+- Kullanım Koşulları metni revize edilecek

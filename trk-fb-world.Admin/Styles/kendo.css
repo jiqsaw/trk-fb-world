@@ -1,0 +1,31 @@
+﻿.k-editor, .k-datepicker { margin: 7px 0 20px; }
+.k-editor { min-width: 491px !important; }
+.k-editor-toolbar { padding: 5px; }
+.k-editor-toolbar li { min-height: 34px !important; display: inline-block; }
+
+.k-datepicker { display: block; }
+.k-textbox { min-height: inherit; }
+.k-picker-wrap .k-input:focus { border: none !important; }
+
+.k-filter-menu input { margin-top: 5px; margin-bottom: 0; font-size: inherit; width: 100%; }
+.k-filter-menu label input[type=radio]{ margin: 3px 10px 0 3px; float: left; width: auto !important; }
+.k-filter-help-text { margin-bottom: 10px; color: #800000; font-style: italic; }
+
+.k-pager-numbers .k-state-selected, .k-pager-numbers .k-link { -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border-width: 0; line-height: inherit; }
+.k-pager-wrap > .k-link { -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
+.k-pager-wrap { padding: 8px 0 7px 7px; }
+.k-pager-info { padding: 0 10px; }
+.k-pager-wrap input, .k-editor-toolbar-wrap input { min-height: inherit; height: inherit; }
+.k-pager-wrap .k-dropdown-wrap, .k-pager-wrap .k-numeric-wrap { padding: 0 0 0 3px; }
+
+.k-grid { clear: both; }
+.k-grid-toolbar { padding: 5px; }
+.k-grid table td:last-child { text-align: center; width: 170px; }
+
+.k-upload-button { display: block; }
+.k-dropzone { padding: 0; }
+.k-dropzone em { font-style: italic; font-size: .9em; visibility: visible; margin: 0; padding-top: 7px; display: inline-block; }
+
+.k-editor-dialog .k-form-text-row label, .k-editor-dialog .k-button { display: inline; }
+
+.k-editor-dialog { padding: 0 20px 0 10px !important; }

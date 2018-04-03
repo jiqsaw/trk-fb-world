@@ -1,0 +1,10 @@
+﻿@using System.Web.Mvc.Html
+
+@helper Rsrc(string ResourceName, string Key)
+{    
+    @HttpContext.GetGlobalResourceObject(ResourceName, Key)
+}
+
+@helper BodyNav(System.Web.Mvc.HtmlHelper html, string Title, bool HasBtnSortable = false, bool HasBtnList = true, bool HasBtnNew = true, object RouteValues = null) {
+    html.RenderPartial("Common/BodyNav", new TurkcellFacebookDunyasi.Admin.Models.BodyNavModel { Title = Title, HasBtnSortable = HasBtnSortable, HasBtnList = HasBtnList, HasBtnNew = HasBtnNew, RouteValues = RouteValues });    
+}

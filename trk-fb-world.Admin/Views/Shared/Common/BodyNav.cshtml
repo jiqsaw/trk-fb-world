@@ -1,0 +1,21 @@
+﻿@model TurkcellFacebookDunyasi.Admin.Models.BodyNavModel
+
+<header> 
+
+    <h1> @Model.Title </h1>
+    <img alt="" id="LoadingPage" class="loading" src="~/Images/app_utils/loader.gif" />
+    
+    
+    @if (Model.HasBtnNew) {
+        Html.RenderPartial("HelperControls/ButtonNewItem", new TurkcellFacebookDunyasi.Admin.Models.ButtonNavModel { ActionName = "Form", RouteValues = Model.RouteValues });
+    }
+
+    @if (Model.HasBtnList) {
+        Html.RenderPartial("HelperControls/ButtonList", new TurkcellFacebookDunyasi.Admin.Models.ButtonNavModel { ActionName = "Default", RouteValues = Model.RouteValues });
+    }
+    
+    @if (Model.HasBtnSortable) {
+        Html.RenderPartial("HelperControls/ButtonSortable", new TurkcellFacebookDunyasi.Admin.Models.ButtonNavModel { ActionName = "Sortable", RouteValues = Model.RouteValues });
+    }
+
+</header>

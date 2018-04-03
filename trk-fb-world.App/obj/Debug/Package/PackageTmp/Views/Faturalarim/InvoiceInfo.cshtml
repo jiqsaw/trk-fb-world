@@ -1,0 +1,39 @@
+﻿
+<script>
+    
+    function invoiceInfoCall() {
+        var amount = dsInvoices[activeMonthIndex].amount;
+        var paymentLastDate = dsInvoices[activeMonthIndex].paymentLastDate;
+
+        $('#invoiceInfo').fadeOut('fast', function () {
+
+            $('#invoiceAmount').text(amount);
+            $('#paymentLastDate').text(paymentLastDate);
+
+            $('#invoiceInfo').fadeIn('slow');
+
+        });      
+    }
+
+</script>
+
+<article class="mainContainer fLeft">
+    <section class="billingInfo">
+        <h3>FATURA BİLGİLERİM</h3>
+        <ins></ins>
+
+        <section id="invoiceInfo" style="display: none;">
+
+                <label id="lblInvoiceAmount">Fatura Tutarı:</label> <span id="invoiceAmount" class="big"> </span><span class="fLeft curr"> TL</span>
+
+                <ins></ins>
+
+                <label>Son Ödeme Tarihi:</label> <span id="paymentLastDate"> </span>
+
+                <aside class="title fReg listAll mNoneTop">
+                    <a id="callDetail" href="javascript:;" class="pageNav" data-ga="InvoiceDetail" data-tab-page="Faturalarim" data-page="CallDetails/CallDetail/0" data-index="0">fatura detayı</a>
+                    @*<a href="javascript:invoiceTabOpen(0);" data-index="0" data-ga="Faturalarim_Detail" data-load-page="/CallDetails/CallDetail/">Fatura Detayı</a>*@
+                </aside>
+        </section>
+    </section>
+</article>

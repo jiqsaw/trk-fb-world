@@ -1,0 +1,31 @@
+﻿@{
+    int type = 0;
+
+    if (!String.IsNullOrEmpty(Request.QueryString["Type"]))
+    {
+        if (int.TryParse(Request.QueryString["Type"], out type))
+        {
+            if (type == (int)Parameter.DataServiceType.Contracts)
+            {
+    <input type="text" readonly="true" value="@LIB.Util.GetConfigValue("url_ContractsService")" />   
+            }
+            else if (type == (int)Parameter.DataServiceType.JetmileDatas)
+            {
+    <input type="text" readonly="true" value="@LIB.Util.GetConfigValue("url_JetmileDatasService")" /> 
+            }
+            else if (type == (int)Parameter.DataServiceType.MobileDatas)
+            {
+    <input type="text" readonly="true" value="@LIB.Util.GetConfigValue("url_MobileDatasService")" /> 
+            }
+            else if (type == (int)Parameter.DataServiceType.TicketTexts)
+            {
+    <input type="text" readonly="true" value="@LIB.Util.GetConfigValue("url_TicketTextsService")" /> 
+            }
+            else if (type == (int)Parameter.DataServiceType.OtherDataServices)
+            {
+    <input type="text" readonly="true" value="@LIB.Util.GetConfigValue("url_DataService")" /> 
+            }
+        }
+    }
+    
+}

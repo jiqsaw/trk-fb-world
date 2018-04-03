@@ -1,0 +1,195 @@
+﻿/****** Object:  View [dbo].[vwClickToCallCounts]    Script Date: 02/28/2013 01:49:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW [dbo].[vwClickToCallCounts]
+AS
+SELECT     ParticipantAUserId, ParticipantBUserId, COUNT(ParticipantAUserId) AS CallCount
+FROM         dbo.ClickToCalls
+GROUP BY ParticipantAUserId, ParticipantBUserId
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane1', @value=N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]
+Begin DesignProperties = 
+   Begin PaneConfigurations = 
+      Begin PaneConfiguration = 0
+         NumPanes = 4
+         Configuration = "(H (1[40] 4[20] 2[20] 3) )"
+      End
+      Begin PaneConfiguration = 1
+         NumPanes = 3
+         Configuration = "(H (1 [50] 4 [25] 3))"
+      End
+      Begin PaneConfiguration = 2
+         NumPanes = 3
+         Configuration = "(H (1 [50] 2 [25] 3))"
+      End
+      Begin PaneConfiguration = 3
+         NumPanes = 3
+         Configuration = "(H (4 [30] 2 [40] 3))"
+      End
+      Begin PaneConfiguration = 4
+         NumPanes = 2
+         Configuration = "(H (1 [56] 3))"
+      End
+      Begin PaneConfiguration = 5
+         NumPanes = 2
+         Configuration = "(H (2 [66] 3))"
+      End
+      Begin PaneConfiguration = 6
+         NumPanes = 2
+         Configuration = "(H (4 [50] 3))"
+      End
+      Begin PaneConfiguration = 7
+         NumPanes = 1
+         Configuration = "(V (3))"
+      End
+      Begin PaneConfiguration = 8
+         NumPanes = 3
+         Configuration = "(H (1[56] 4[18] 2) )"
+      End
+      Begin PaneConfiguration = 9
+         NumPanes = 2
+         Configuration = "(H (1 [75] 4))"
+      End
+      Begin PaneConfiguration = 10
+         NumPanes = 2
+         Configuration = "(H (1[66] 2) )"
+      End
+      Begin PaneConfiguration = 11
+         NumPanes = 2
+         Configuration = "(H (4 [60] 2))"
+      End
+      Begin PaneConfiguration = 12
+         NumPanes = 1
+         Configuration = "(H (1) )"
+      End
+      Begin PaneConfiguration = 13
+         NumPanes = 1
+         Configuration = "(V (4))"
+      End
+      Begin PaneConfiguration = 14
+         NumPanes = 1
+         Configuration = "(V (2))"
+      End
+      ActivePaneConfig = 0
+   End
+   Begin DiagramPane = 
+      Begin Origin = 
+         Top = 0
+         Left = 0
+      End
+      Begin Tables = 
+         Begin Table = "ClickToCalls"
+            Begin Extent = 
+               Top = 6
+               Left = 38
+               Bottom = 125
+               Right = 233
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+      End
+   End
+   Begin SQLPane = 
+   End
+   Begin DataPane = 
+      Begin ParameterDefaults = ""
+      End
+      Begin ColumnWidths = 9
+         Width = 284
+         Width = 1500
+         Width = 1500
+         Width = 1500
+         Width = 1500
+         Width = 1500
+         Width = 1500
+         Width = 1500
+         Width = 1500
+      End
+   End
+   Begin CriteriaPane = 
+      Begin ColumnWidths = 12
+         Column = 1440
+         Alias = 900
+         Table = 1170
+         Output = 720
+         Append = 1400
+         NewValue = 1170
+         SortType = 1350
+         SortOrder = 1410
+         GroupBy = 1350
+         Filter = 1350
+         Or = 1350
+         Or = 1350
+         Or = 1350
+      End
+   End
+End
+' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'vwClickToCallCounts'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPaneCount', @value=1 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'vwClickToCallCounts'
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetUserFriendsData]    Script Date: 04/10/2013 19:14:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[GetUserFriendsData]
+@UserId int, @FbId nvarchar(24), @FriendsFbIds nvarchar(MAX)
+WITH EXEC AS CALLER
+AS
+BEGIN
+	SELECT 
+		U.Id 'UserId',
+		U.FbId 'FbId',		
+		U.Msisdn 'Msisdn',		
+		U.FbBirthDay 'FbBirthDay',		
+
+		(SELECT CAST(COUNT(Id) AS BIT) FROM ClickToCallUserBlocks CTCBlocks WHERE CTCBlocks.UserId = U.Id AND CTCBlocks.UserFriendFbId = @FbId AND CTCBlocks.IsDeleted='False') 
+		AS 'IsClickToCallBlock',		 
+
+		ISNULL((SELECT CTCPref.IsInvisible FROM ClickToCallPreferences CTCPref WHERE CTCPref.UserId = U.Id AND CTCPref.IsDeleted='False'), 0) 
+		AS 'IsClickToCallInvisible',				
+
+		(SELECT COUNT(Id) FROM ClickToCalls CTC WHERE CTC.ParticipantAUserId = U.Id AND CTC.ParticipantBUserId = @UserId) 
+		AS 'InComingCallCount',
+
+		(SELECT COUNT(Id) FROM ClickToCalls CTC WHERE CTC.ParticipantAUserId = @UserId AND CTC.ParticipantBUserId = U.Id) 
+		AS 'OutGoingCallCount'
+			
+	FROM UserFbs U
+
+	INNER JOIN (SELECT item from dbo.fnSplit(@FriendsFbIds, ',')) F
+	ON F.item = U.FbId AND U.IsDeleted = 0
+END
+GO
+
+/****** Object:  UserDefinedFunction [dbo].[fnSplit]    Script Date: 02/28/2013 02:45:38 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE FUNCTION [dbo].[fnSplit](
+    @sInputList VARCHAR(8000) -- List of delimited items
+  , @sDelimiter VARCHAR(8000) = ',' -- delimiter that separates items
+) RETURNS @List TABLE (item VARCHAR(8000))
+
+BEGIN
+DECLARE @sItem VARCHAR(8000)
+WHILE CHARINDEX(@sDelimiter,@sInputList,0) <> 0
+ BEGIN
+ SELECT
+  @sItem=RTRIM(LTRIM(SUBSTRING(@sInputList,1,CHARINDEX(@sDelimiter,@sInputList,0)-1))),
+  @sInputList=RTRIM(LTRIM(SUBSTRING(@sInputList,CHARINDEX(@sDelimiter,@sInputList,0)+LEN(@sDelimiter),LEN(@sInputList))))
+
+ IF LEN(@sItem) > 0
+  INSERT INTO @List SELECT @sItem
+ END
+
+IF LEN(@sInputList) > 0
+ INSERT INTO @List SELECT @sInputList -- Put the last item in
+RETURN
+END

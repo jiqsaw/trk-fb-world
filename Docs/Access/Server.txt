@@ -1,0 +1,40 @@
+﻿TEST
+...........................................................................
+RDP SERVER BİLGİLERİ
+---------------------------------------------
+User	IISPORT03\wanda_user
+Password 	Ce1234!
+Sanal Test Server IP 	192.168.157.234
+
+
+Database Bilgileri
+---------------------------------------------
+User	facebook_tcell_user 
+Password 	Ce1234!
+Sanal Test Server IP / Port 	IP: 10.210.54.57 Port: 63981 
+Server Name 	CLSTSTSQL05\INSTA
+Database 	facebook_turkcell_DB
+
+Turkcell SVN Bilgileri
+---------------------------------------------
+Server		https://iisport03.wss.local/svn/tfb-test/trunk
+Users		Wanda-Hakan
+			Wanda-Mesut
+			Wanda-Feyyaz
+
+LIVE
+...........................................................................
+Username : VELEZ\vmadmin
+Password : Az1234!
+IP : 172.18.148.80
+ 
+Username : LORENZO\vmadmin
+Password : Az1234!
+IP : 172.18.148.81
+ 
+DB bilgileri aşağıdaki gibidir.
+ 
+Clsmssql08\instb  10.210.58.54,55298
+User : facebook_turkcell
+Catalog : FACEBOOKDB
+Pass:fbTurkcell_1

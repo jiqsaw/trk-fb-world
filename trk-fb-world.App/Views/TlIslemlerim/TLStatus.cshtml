@@ -1,0 +1,5 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.GuncelTLMiktariModel
+
+<label>Güncel TL Tutarı:</label> <span class="bigTl">@Model.serviceData.CurrentAmount </span><span class="fLeft curTl"> TL</span>
+<ins></ins>
+<label>Son Yükleme Tarihi:</label> <span>@LIB.FormatHelper.DateFormat(Model.serviceData.CounterRechargeDate.ToString())</span>

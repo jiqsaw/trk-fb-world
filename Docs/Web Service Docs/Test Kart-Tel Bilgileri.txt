@@ -1,0 +1,35 @@
+﻿Tl paket yükle datası aşağıdaki gibi.
+ 
+ 
+TL yükle
+5348656495
+5348679405
+5382505790
+ 
+Nar paketi yükle—3 nolu paket seçilecek test yaparken
+5345748146
+ 
+Cepten internet
+5343238528
+ 
+MGB Bilgisayrdan internet
+5336675212
+ 
+Test kredi kartı bilgileri: (sorun çıkabilir sürekli, log atabilirseniz ilgili ekipten destek alırız)
+ 
+YKB  (stable ortam için)
+
+4506341010205499
+1503
+000
+
+Akbank  (prp ortamı için)
+4355084355084358 
+1216
+000
+
+Visa - YKB
+4553 5910 0014 8024                
+CVC : 000          
+expDate : 03/13 
+Sifre : a

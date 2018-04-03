@@ -1,0 +1,21 @@
+﻿@using TurkcellFacebookDunyasi.Com.Helpers
+
+<section class="subContainer">
+
+    <section class="tabContents">
+        <section class="tabContent">
+           
+            <script>
+                $(document).ready(function () {
+                    setTimeout(function () {
+                        $('.pageLoading').hide();
+                        $("#PaketYukleIframe").fadeIn('slow');
+                    }, 2000);
+                });
+            </script>
+            <iframe src="@ConfigManager.GetInstance().TLYukleIframeUrl" id="PaketYukleIframe" width="100%" height="1000px" allowTransparency="true" frameBorder="0" style="display:none;"></iframe>
+
+        </section>
+    </section>
+
+</section>

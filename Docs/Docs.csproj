@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4A0F99D6-A978-4459-803A-34D4BE060EB9}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Docs</RootNamespace>
+    <AssemblyName>Docs</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="Analysis\CSI_Facebook_App.pdf" />
+    <None Include="App.config" />
+    <None Include="Notes\Turkcellhesabım_düzeltme.docx" />
+    <None Include="Tools\JsonCSharpClassGenerator\JsonCSharpClassGenerator.exe.config" />
+    <None Include="Web Service Docs\AD - FB Turkcell Dünyası %281.0%29.docx" />
+    <None Include="Web Service Docs\AD_CSI FB Tıkla Konuş.docx" />
+    <None Include="Web Service Docs\CSI FB_LOG.xlsx" />
+    <None Include="Web Service Docs\FB CSI Calısma %28515 KB%29.msg" />
+    <None Include="Web Service Docs\fbcsi.docx" />
+    <None Include="Web Service Docs\MesajlarimAPIDocument_v7.pdf" />
+    <None Include="Web Service Docs\TestCaseList.xlsx" />
+    <None Include="Web Service Docs\VAV-API_Dok+-man¦-_v1.1.pdf" />
+    <None Include="Web Service Docs\WebServiceRequirements.xlsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Access\Proxies.txt" />
+    <Content Include="Access\Server.txt" />
+    <Content Include="Access\Test Kart-Tel Bilgileri.txt" />
+    <Content Include="Designs\ArkadasDetay.jpg" />
+    <Content Include="Designs\CeptenAra.jpg" />
+    <Content Include="Designs\CeptenAraAyarlar.jpg" />
+    <Content Include="Designs\CeptenAraniyor2.jpg" />
+    <Content Include="Designs\CeptenAraniyor3.jpg" />
+    <Content Include="Designs\CeptenAraniyor4.jpg" />
+    <Content Include="Designs\FaturaDetayi.jpg" />
+    <Content Include="Designs\Faturalarim.jpg" />
+    <Content Include="Designs\Guvenlik.jpg" />
+    <Content Include="Designs\HatOzetim.jpg" />
+    <Content Include="Designs\KrediGonder.jpg" />
+    <Content Include="Designs\KrediIsteArkadasSecim.jpg" />
+    <Content Include="Designs\KrediIsteSonuc.jpg" />
+    <Content Include="Designs\KrediIsteTalep.jpg" />
+    <Content Include="Designs\Login.jpg" />
+    <Content Include="Designs\Main.jpg" />
+    <Content Include="Designs\Profil.jpg" />
+    <Content Include="Designs\SMSGonder.jpg" />
+    <Content Include="Designs\SSS.jpg" />
+    <Content Include="Designs\TLIslemlerim.jpg" />
+    <Content Include="Designs\TLPaketYukle1.jpg" />
+    <Content Include="Designs\TLPaketYukle2.jpg" />
+    <Content Include="Designs\TLPaketYukle3.jpg" />
+    <Content Include="GenerateScripts\DbData.txt" />
+    <Content Include="GenerateScripts\DbObjectScripts.txt" />
+    <Content Include="GenerateScripts\GenerateData.txt" />
+    <Content Include="PM\Bugs.txt" />
+    <Content Include="PM\Customer.txt" />
+    <Content Include="OnlineIslemlerScreenShots\5.jpg" />
+    <Content Include="OnlineIslemlerScreenShots\FaturaAnaliz.jpg" />
+    <Content Include="OnlineIslemlerScreenShots\FaturaAnaliz2.jpg" />
+    <Content Include="OnlineIslemlerScreenShots\FaturaAnalizi.jpg" />
+    <Content Include="OnlineIslemlerScreenShots\FaturaDetay.jpg" />
+    <Content Include="OnlineIslemlerScreenShots\Faturalarim.jpg" />
+    <Content Include="OnlineIslemlerScreenShots\Faturalarin.png" />
+    <Content Include="OnlineIslemlerScreenShots\HatOzetim.jpg" />
+    <Content Include="OnlineIslemlerScreenShots\HatOzetim_TarifeBilgileri.jpg" />
+    <Content Include="OnlineIslemlerScreenShots\KullanimDetayi.jpg" />
+    <Content Include="OnlineIslemlerScreenShots\Login.jpg" />
+    <Content Include="OnlineIslemlerScreenShots\TLIslemler.jpg" />
+    <Content Include="OnlineIslemlerScreenShots\tlyukle2.jpg" />
+    <Content Include="OnlineIslemlerScreenShots\tlyukle3.jpg" />
+    <Content Include="PM\ToDoList.txt" />
+    <Content Include="Tools\JsonCSharpClassGenerator\JsonCSharpClassGenerator.exe" />
+    <Content Include="Web Service Docs\Test Kart-Tel Bilgileri.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Logs\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

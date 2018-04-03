@@ -1,0 +1,45 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.TiklaAraTercihlerModel
+@using TurkcellFacebookDunyasi.Com.Helpers
+
+<script>
+    
+    $(".ajax").colorbox();
+    function preferenceFormOnSuccess() {
+        $('#preferenceOptions').hide();
+        $('#preferenceResult').css("display", "block");
+    }
+</script>
+
+
+<div id='colorboxContentainer3'>
+    <div id="colorboxContent3">
+        
+		<h2 class="colorboxHeader">Aranma Tercihleri</h2>
+
+        <section id="preferenceOptions">
+
+        
+            <section id="remainingBalance"></section>
+            <script>
+                partialViewLoad("remainingBalance", "/TiklaAra/RemainingBalance");
+            </script>            
+
+            <ins></ins>    
+
+            @Html.Action("PreferencesForm", "TiklaAra")
+
+            <ins class="space35"></ins>
+
+        </section>
+
+        <section id="preferenceResult" style="display:none;">
+            <ins class="space35"></ins>
+            <section class="success">
+                <br /> Tercihleriniz başarılı bir şekilde kaydedilmiştir.. <br /> <ins class="space35"></ins>
+            </section>
+            <ins></ins>
+        </section>
+
+        <ins class="space35"></ins>
+    </div>
+</div>

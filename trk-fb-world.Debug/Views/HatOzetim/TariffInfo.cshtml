@@ -1,0 +1,19 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.HatOzetimModel
+
+<label class="tariffLabel">
+    Mevcut Tarifeniz: 
+    <b class="tariffName">
+        @Model.serviceData.TariffDesc
+    </b>
+</label>
+
+@if (!String.IsNullOrEmpty(Model.serviceData.AdvPackName.Trim())) {
+
+<label class="tariffDetail">
+    <span>Tarife ve Avantaj Detayları</span> <br />
+    <ul>
+        <li>@Model.serviceData.AdvPackName</li>
+    </ul>
+</label>
+    
+}

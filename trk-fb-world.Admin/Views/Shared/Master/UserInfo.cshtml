@@ -1,0 +1,9 @@
+﻿@using TurkcellFacebookDunyasi.Com.Helpers
+<section class="userInfo">
+    
+    <img src="@TurkcellFacebookDunyasi.Com.Helpers.UrlHelper.Images.AdminUser(SessionManager.GetInstance().UserPhoto, Parameter.ImageSizeNaming.Preview)" onerror="NoImage(this)" />
+
+    @SessionManager.GetInstance().FullName <br />
+    @Html.ActionLink(HttpContext.GetGlobalResourceObject("Global", "UserProfile").ToString(), "UserSelfForm", "AdminUser")
+
+</section>

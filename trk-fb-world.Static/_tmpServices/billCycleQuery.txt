@@ -1,0 +1,11 @@
+﻿{
+    "BillCycleQuery":
+    {"billCycleDateList":
+        [
+            {"getInvoiceDueDate":"22.03.2013 00:00:00"},
+            {"getInvoiceDueDate":"24.04.2013 00:00:00"},
+            {"getInvoiceDueDate":"22.05.2013 00:00:00"},
+            {"getInvoiceDueDate":"24.06.2013 00:00:00"}
+        ],
+    "lastBillCycleDate":"10.03.2013 00:00:00"}
+}

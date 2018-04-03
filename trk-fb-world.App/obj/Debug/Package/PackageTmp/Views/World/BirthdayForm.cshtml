@@ -1,0 +1,26 @@
+﻿<section id="bdayForm">
+    <label class="smsTextbox">
+        <textarea name="txtSmsMessage" class="validate[required] multiTextSmall" id="Message" maxlength="@ConfigManager.GetInstance().SmsCharLength" onkeyup="MaxCharacter('Message','charRemaining',@ConfigManager.GetInstance().SmsCharLength)" style="width:350px">@Html.Raw(ConfigManager.GetInstance().TemplateMsg_Birthday)</textarea>
+    </label>
+    <label class="birthdayInfo fIta">
+        <span class="fLeft">
+        Kalan karakter: <b class="f18" id="charRemaining">@ConfigManager.GetInstance().SmsCharLength</b>
+        </span>
+    </label>
+        <span class="fRight fBoldIta birthdayButton">
+            <input type="submit" id="btnBirthdaySubmit" name="btnBirthdaySubmit" value="GÖNDER" style="float:right;" />
+            <section id="BirthdayLoadingForm" class="fRight ajaxFormLoad displayNone">@Html.Action("LoadingSmall","Global")</section>
+        </span>
+    <ins></ins>
+    <label class="birthdayInfo fIta">
+        <a href="javascript:;" id="birthdayTooltipLink"> <img src="@PathHelper.UrlStatic/images/icons/info3.png" /></a>
+        Aynı gün içerisinde Turkcell'ilere göndereceğiniz 1 kısa mesajdan sonraki 15 mesaj ücretsizdir. Arkadaşlarının doğum gününde onları ücretsiz arayabilirsin.
+    </label>
+
+    <script>
+        CharLength('Message', 'charRemaining', '@ConfigManager.GetInstance().SmsCharLength');
+    </script>
+</section>
+<script>
+    $(".ajax").colorbox();
+</script>

@@ -1,0 +1,35 @@
+﻿@model TurkcellFacebookDunyasi.Core.WebServiceLog
+
+@Helper.BodyNav(Html, "WebServiceLogs",false,true,false)
+                
+
+    <aside class="panel main">
+        
+        @Html.ValidationMessageFor(model => model.PlatformCode)    @Html.LabelFor(model => model.PlatformCode)    @Html.TextBoxFor(model => model.PlatformCode, new { @readonly="" })
+        
+
+        @Html.ValidationMessageFor(model => model.RequestUrl)    @Html.LabelFor(model => model.RequestUrl)    @Html.TextBoxFor(model => model.RequestUrl, new { @readonly="" })    
+        
+        @Html.ValidationMessageFor(model => model.ResponseData)    @Html.LabelFor(model => model.ResponseData)    @Html.TextAreaFor(model => model.ResponseData, new { @readonly="" })  
+        
+        @Html.ValidationMessageFor(model => model.UserId)    @Html.LabelFor(model => model.UserId)    @Html.TextBoxFor(model => model.UserId, new { @readonly="" })  
+        
+        @Html.ValidationMessageFor(model => model.Naming)    @Html.LabelFor(model => model.Naming)    @Html.TextBoxFor(model => model.Naming, new { @readonly="" })  
+
+       
+        
+        @Html.ValidationMessageFor(model => model.IP)    @Html.LabelFor(model => model.IP)    @Html.TextBoxFor(model => model.IP, new { @readonly="" })  
+        
+        @Html.ValidationMessageFor(model => model.Status)    @Html.LabelFor(model => model.Status)    @Html.TextBoxFor(model => model.Status, new { @readonly="" })  
+        
+        @Html.ValidationMessageFor(model => model.FbId)    @Html.LabelFor(model => model.FbId)    @Html.TextBoxFor(model => model.FbId, new { @readonly="" })  
+        
+        @Html.ValidationMessageFor(model => model.Msisdn)    @Html.LabelFor(model => model.Msisdn)    @Html.TextBoxFor(model => model.Msisdn, new { @readonly="" })  
+        
+        @Html.ValidationMessageFor(model => model.TcellSession)    @Html.LabelFor(model => model.TcellSession)    @Html.TextBoxFor(model => model.TcellSession, new { @readonly="" })  
+        
+        @Html.ValidationMessageFor(model => model.CreateDate)    @Html.LabelFor(model => model.CreateDate)    @Html.TextBoxFor(model => model.CreateDate, new { @readonly="" })                              
+
+            
+
+    </aside>

@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    
+    <title>Turkcell Web Service Test Tool</title>
+
+    <script src="Scripts/jquery.js"></script>
+
+    <style>
+
+        html, body { background-color: #f5f1f1; font: normal 13px 'Calibri', 'Arial'; height: 100%; margin: 0; padding: 0; }
+
+        ins { clear: both; display: block; }
+
+        table { clear: both; width: 100%; height: 100%; border-collapse: collapse; border-spacing: 0 0; }
+        table tr td { vertical-align: top; padding: 30px; }
+        td.output { background-color: #000; width: 60%; }
+
+        h1 { font-size: 18px; }
+
+        #loading { color: #808080; font-style: italic; margin-top: 50px; padding: 40px; display: block; }
+
+        a { padding: 6px; display: inline-block; text-decoration: none; color: #1d0093; }
+        a:hover { color: #FFF; background-color: #191717; }
+
+        .aRun { font-size: 16px; background: #232121; color: #f6f768; margin: 0 0 0 2px; float: left; padding: 12px 10px 11px; }
+        .aRun:hover { background: #373131; color: #fafba7; }
+
+        iframe { width: 90%; height: 90%; border: none; display: none; overflow: hidden; margin-top: 20px; }
+
+        input[type="text"] { width: 80%; height: 32px; float: left; background: #232121; padding: 5px 15px; font-size: 16px; font-weight: bold; color: #218a36; font-family: Calibri, Arial; outline: none; border: none; }
+        input[type="text"]:focus { background-color: #2e2a2a; }        
+
+    </style>
+
+    <script>
+
+        $(function () {
+            $('a.aRun').click(function () {
+
+                $('#iFrameResult').hide();
+                $('#loading').show();
+
+                var path = "Output.aspx?q=|";
+                path = path + $('#txtServiceUrl').val();
+
+                window.frames.iFrameResult.document.location.href = path;
+            });
+
+            $('.directRun').click(function () {
+                $('#txtServiceUrl').val($(this).attr("title"));
+                $('a.aRun').click();
+            });
+
+            $('#aCodePage').click(function () {
+                $('#txtServiceUrl').val('');
+                var path = "Code.aspx?FileName=Output.aspx";                
+                window.frames.iFrameResult.document.location.href = path;
+                $('#iFrameResult').fadeIn('slow');
+            });
+
+        });
+
+        function outputReady() {
+            $('#loading').hide();
+            $('#iFrameResult').fadeIn('slow');
+        }
+        
+    </script>
+
+    <base target="iFrameResult" />
+
+</head>
+<body>
+
+    <table>
+        <tr>
+            <td style="width: 40%;">
+
+                <h1> CSI LIVE Web Service List</h1>
+
+                <a class="directRun" href="javascript:;" title="https://csi.turkcell.com.tr/fbcsi/facebook/login?csiEntranceId=1301&msisdn=5323308474">PROD > LOGIN PREP </a>
+                <a class="directRun" href="javascript:;" title="https://csi.turkcell.com.tr/fbcsi/facebook/login?csiEntranceId=1301&msisdn=5321528280">PROD > LOGIN POSP</a>
+
+                <br /><br />
+
+                <section>
+
+                https://csi.turkcell.com.tr/fbcsi/tariffQuery <br />
+                https://csi.turkcell.com.tr/fbcsi/freeServicesQuery <br />
+                https://csi.turkcell.com.tr/fbcsi/currentInvoice <br />
+                https://csi.turkcell.com.tr/fbcsi/customerAssets <br />
+                https://csi.turkcell.com.tr/fbcsi/billCycleQuery <br />
+                https://csi.turkcell.com.tr/fbcsi/prepaidFreeServicesQuery <br />
+                https://csi.turkcell.com.tr/fbcsi/faturaLimitSubs <br />
+                https://csi.turkcell.com.tr/fbcsi/kontorIsteLimitQuery <br />
+                https://csi.turkcell.com.tr/fbcsi/kontorIsteRequest <br />
+                https://csi.turkcell.com.tr/fbcsi/creditTransfer <br />
+                https://csi.turkcell.com.tr/fbcsi/kontormetre <br />
+                https://csi.turkcell.com.tr/fbcsi/usagePeriodDisplay <br />
+                https://csi.turkcell.com.tr/fbcsi/facebookOperations <br />
+                https://csi.turkcell.com.tr/fbcsi/callDetails <br />
+
+                </section>
+
+                <br />
+
+                <h1> PRP Web Service List</h1>
+                
+                <a class="directRun" href="javascript:;" title="http://intprp.tm.turkcell.com.tr/fbcsi/facebook/login?csiEntranceId=1301&msisdn=5323308474">PRP > LOGIN PREP </a>
+                <a class="directRun" href="javascript:;" title="http://intprp.tm.turkcell.com.tr/fbcsi/facebook/login?csiEntranceId=1301&msisdn=5321528280">PRP > LOGIN POSP</a>
+
+                <br /><br />
+
+                <section>
+
+                http://intprp.tm.turkcell.com.tr/fbcsi/tariffQuery <br />
+                http://intprp.tm.turkcell.com.tr/fbcsi/freeServicesQuery <br />
+                http://intprp.tm.turkcell.com.tr/fbcsi/currentInvoice <br />
+                http://intprp.tm.turkcell.com.tr/fbcsi/customerAssets <br />
+                http://intprp.tm.turkcell.com.tr/fbcsi/billCycleQuery <br />
+                http://intprp.tm.turkcell.com.tr/fbcsi/prepaidFreeServicesQuery <br />
+                http://intprp.tm.turkcell.com.tr/fbcsi/faturaLimitSubs <br />
+                http://intprp.tm.turkcell.com.tr/fbcsi/kontorIsteLimitQuery <br />
+                http://intprp.tm.turkcell.com.tr/fbcsi/kontorIsteRequest <br />
+                http://intprp.tm.turkcell.com.tr/fbcsi/creditTransfer <br />
+                http://intprp.tm.turkcell.com.tr/fbcsi/kontormetre <br />
+                http://intprp.tm.turkcell.com.tr/fbcsi/usagePeriodDisplay <br />
+                http://intprp.tm.turkcell.com.tr/fbcsi/facebookOperations <br />
+                http://intprp.tm.turkcell.com.tr/fbcsi/callDetails <br />
+                http://intprp.tm.turkcell.com.tr/fbcsi/prepaidCallDetails <br />
+
+                </section>
+
+                <br /><br />
+
+                <a href="javascript:;" id="aCodePage">[VIEW CODE PAGE]</a>
+
+            </td>
+            <td class="output">
+                
+                <input type="text" id="txtServiceUrl" placeholder="Web Service Url..." />
+                <a class="aRun" href="javascript:;">RUN</a>
+
+                <iframe id="iFrameResult" name="iFrameResult" src="#"></iframe>
+                <span id="loading" style="display: none;">Loading...</span>
+
+            </td>
+        </tr>
+    </table>    
+
+    <ins></ins>
+
+    
+
+</body>
+</html>

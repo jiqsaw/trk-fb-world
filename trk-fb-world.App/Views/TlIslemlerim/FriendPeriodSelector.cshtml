@@ -1,0 +1,33 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.CallDetailsModel
+
+<script>
+    $("#FriendPeriodSelector").live("change", function () {
+        var SelectIndex = document.getElementById('FriendPeriodSelector').selectedIndex;
+        partialViewLoad("callDetailsContent", "/CallDetails/FriendCallDetail?dateRangeId=" + SelectIndex + "&userId=@ViewBag.FbId");
+    });
+</script>
+
+<section class="friendPeriodSelector">
+@if (Model.DateRange.Count > 0)
+{
+<select id="FriendPeriodSelector" style="width:380px">
+    @for (int i = 0; i < Model.DateRange.Count; i++)
+    {
+        if (i != 0)
+        {
+            string PrevDate=LIB.FormatHelper.DateChar(Model.DateRange[i - 1].Day.ToString())+"."+LIB.FormatHelper.DateChar(Model.DateRange[i - 1].Month.ToString())+"."+Model.DateRange[i - 1].Year.ToString();
+            string NextDate = LIB.FormatHelper.DateChar(Model.DateRange[i].Day.ToString()) + "." + LIB.FormatHelper.DateChar(Model.DateRange[i].Month.ToString()) + "." + Model.DateRange[i].Year.ToString();
+            
+        <option value="@PrevDate|@NextDate">@PrevDate - @NextDate</option>
+        }
+    }
+</select>
+
+
+<script>
+    $(function () {
+        $("select").kendoDropDownList({ autoBind: false });
+    });
+</script>
+}
+</section>

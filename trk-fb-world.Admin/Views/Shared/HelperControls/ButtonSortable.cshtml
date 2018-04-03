@@ -1,0 +1,6 @@
+﻿@model TurkcellFacebookDunyasi.Admin.Models.ButtonNavModel
+
+<a id="aList" class="k-button" href="@Url.Action(Model.ActionName, Model.RouteValues)">
+    <span id="newIcon" class="k-icon k-i-restore"></span>
+    @HttpContext.GetGlobalResourceObject("Global", "EditOrder")
+</a>

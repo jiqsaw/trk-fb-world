@@ -1,0 +1,74 @@
+﻿@model IEnumerable<TurkcellFacebookDunyasi.Core.WebServiceLog>
+
+@Helper.BodyNav(Html, "WebServiceLogs",false,true,false)
+<ins></ins>
+
+@section Scripts {
+<script type="text/javascript">
+
+    function slNamingOnChange(sender) {
+        var ddl = $("#NamingTypes").data("kendoDropDownList");
+
+        if (grid.length) {
+            gridData = grid.data("kendoGrid");
+
+            var selectedValue = ddl.value();
+
+            if (selectedValue)
+                gridData.dataSource.filter({ field: "Naming", operator: "eq", value: selectedValue });
+            else
+                gridData.dataSource.filter({});
+        }
+    }
+
+</script>
+}
+
+<header class="gridToolBar">
+
+    @Html.Partial("HelperControls/GridRefresh")
+
+    @(Html.Kendo().DropDownList()
+            .Name("NamingTypes")
+            .DataTextField("Description")
+            .DataValueField("Naming")
+            .OptionLabel(HttpContext.GetGlobalResourceObject("Form", "All").ToString())
+            .DataSource(source => { source.Read(read => { read.Action("GetNamings", "Logs"); }); })          
+            .Events(e => e.Change("slNamingOnChange"))
+    )
+
+    @Html.Partial("HelperControls/GridSearch")
+
+</header>
+
+@(Html.Kendo().Grid(Model)
+    .Name(KendoManager.GridName)
+        
+    .Columns(clm =>
+    {
+        clm.Bound(c => c.Naming);
+        clm.Bound(c => c.RequestUrl);
+        clm.Bound(c => c.Status);
+        
+        clm.Command(cmd =>
+        {
+            cmd.Custom("Edit").Text(KendoManager.HtmlEditIcon + HttpContext.GetGlobalResourceObject("Global", "TabDetail").ToString()).Click("kGridGoDetail");
+        } );
+    })
+
+    .DataSource(dataSource =>
+        dataSource
+            .Ajax()
+            .ServerOperation(false)
+            .Model(model => model.Id(m => m.Id))
+            .Read(r => r.Action("k_jRead", "Logs"))
+            .Events(e => e.Error("kGridOnError"))
+        )
+            
+    .Sortable()
+    .Pageable(KendoManager.pagerSettings)
+    .Events(e => e.DataBound("kGridOnDataBound"))
+    .Reorderable(reorder => reorder.Columns(true))
+    .Resizable(resize => resize.Columns(true))
+    .Filterable(KendoManager.filterSettings)
+)

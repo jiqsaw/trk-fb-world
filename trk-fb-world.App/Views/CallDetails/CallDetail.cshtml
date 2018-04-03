@@ -1,0 +1,194 @@
+﻿@using TurkcellFacebookDunyasi.Com.Helpers
+@model TurkcellFacebookDunyasi.App.Models.FaturalarimModel
+
+<script>
+
+    @if (new UserFbManager().Data.UserType == (int)Parameter.UserType.posp)
+    {
+        <text>
+        var sourceUrl = "/CallDetails/GetCallDetails/?period=" + dsInvoices[activeMonthIndex].period;
+        </text>
+    }
+    else
+    {
+        <text>
+        var sourceUrl = "/CallDetails/GetPrepCallDetails/?id=@ViewBag.ActiveMonthIndex";
+        </text>    
+    }
+                
+
+    $(function () {
+
+        $("#gridCallDetails").hide();
+        $(".k-grid-pager").hide();
+
+        $("#gridCallDetails").kendoGrid({
+
+            dataSource: {
+                transport: {
+                    read: {
+                        url: sourceUrl,
+                        dataType: "json"
+                    }
+                },
+
+                schema: {
+                    model: {
+                        fields: {                            
+                            DateDisplay: { type: "string" },
+                            OpAddress: { type: "string" },
+                            Amount: { type: "string" },
+                            DataVolume: { type: "string" },
+                            Description: { type: "string" },
+
+                            UserId: {},
+                            FbId: {},
+                            IsClickToCallInvisible: { },
+                            IsClickToCallBlock: { },
+                            FirstNameView: { type: "string" },
+                            LastNameView: { type: "string" },
+                            PictureLink: { type: "string" }
+                        }
+                    }
+                },
+                pageSize: 10,
+                change: function () {
+                    $("#gridCallDetails").show();
+                    $("#gridLoading").hide();
+                }
+            },
+
+            rowTemplate: kendo.template($("#rowTemplate").html()),
+
+            sortable: true,
+            pageable: {
+                input: true,
+                numeric: false
+            },
+            columns: [
+                { field: "DateDisplay", title: "TARİH", sortable: false, width: 100  },
+                { field: "OpAddress", title: "ARANAN KİŞİ", sortable: false, width: 220 },
+                { field: "DataVolume", title: "BİRİM(Adet/Sn/Kb)" },
+                { field: "Amount", title: "TUTAR(TL)" },
+                { field: "Description", title: "AÇIKLAMA" }
+            ],
+
+            change: function () {
+                $(".ajax").colorbox();
+            }
+        });
+
+        $("#txtFilter").on("keyup", function (e) {
+            var dsGrid = $("#gridCallDetails").data('kendoGrid').dataSource;
+            kGridSearch(dsGrid, e);
+        });
+    });
+
+
+    @if (new UserFbManager().Data.UserType == (int)Parameter.UserType.posp)
+    {
+        <text>
+        invoiceInfoCall();
+
+        function invoiceInfoCall() {
+            
+            var amount = dsInvoices[activeMonthIndex].amount;
+            $('#invoiceDetailAmount').text(amount + " TL");
+        }
+        </text>
+    }
+
+</script>
+
+
+
+<script id="rowTemplate" type="text/x-kendo-tmpl">
+
+    <tr>
+        <td>#: DateDisplay #</td>
+        <td>
+            #if (UserId != null && UserId != '')  { #
+                            
+                <a class="lProfile ajax" href="/Friend/FriendProfile/#= UserId #" data-ga="FriendDetail_#= FbId #">
+
+                    <figure class="fLeft user userMedium">
+                        <img src="#: PictureLink #" border="0" />
+                    </figure>
+
+                    <p class="friendName"> #: FirstNameView # <br /> #: LastNameView # </p>
+
+                </a>
+
+                #if ((!IsClickToCallInvisible) && (!IsClickToCallBlock))  { #    
+                    <a class='friendCall ajax cboxElement' href="/TiklaAra/Call/#: UserId #" data-ga="Ara">ara</a>
+                # } #
+
+            # }
+
+            else { #
+
+                #: OpAddress #    
+
+            # } #
+
+        </td>
+        <td>#: Amount #</td>
+        <td>#: DataVolume #</td>
+        <td>#: Description #</td>
+    </tr>
+
+</script>
+
+<section class="subContainer">
+    
+    <section class="tabContents">
+        <section class="tabContent">
+
+<section class="invoiceDetailHeader fLeft">
+
+    <section class="invoiceAmount">
+        @if (new UserFbManager().Data.UserType == (int)Parameter.UserType.posp)
+        {
+        <text>Fatura Tutarı: </text>  <b id="invoiceDetailAmount"></b>
+        }
+        @if (new UserFbManager().Data.UserType == (int)Parameter.UserType.prep)
+        {
+        <text>Kullanım Detayı</text>
+        }
+    </section>
+
+    <section class="invoiceFilter specialText top">
+        <input id="txtFilter" type="text" placeholder="Filtrele..." style="width:230px" />
+        <span class="searchBtn"></span>
+    </section>
+
+</section>
+@if (SessionManager.GetInstance().IsSubscriptionActive == false)
+{
+    <p class="fLeft fReg topCalledInfo topCalledInfoDetail"><img src="@PathHelper.UrlStatic/images/icons/info3.png" width="12" /> 
+        Fatura detayı aboneliğiniz bulunmamaktadır, 
+        <a href="https://csi.turkcell.com.tr/csi/invoiceSettings?referrer=invoiceSettings&csiEntranceId=0101&ref=1" data-ga="FaturaDetayAboneOl" class="csiLink" target="_blank" title="Fatura detayı aboneliğiniz bulunmadığı için en çok aradağınız kişilerin telefon numarakarının son 4 hanesini görememektesiniz. Fatura Detayı aboneliğini başlatmak için tıklayınız.">abone olun</a>.</p>
+}
+<ins></ins>
+
+
+
+     <div id="gridLoading">
+        Fatura detayları yükleniyor...
+    </div>
+
+<div id="gridCallDetails" class="k-grid k-widget">
+    
+</div>
+
+@if (new UserFbManager().Data.UserType == (int)Parameter.UserType.posp)
+{
+<a href="javascript:;" class="invoiceBack pageNav fIta" data-page="Faturalarim" data-ga="Faturalarim">Fatura Bilgileri</a>
+}
+@if (new UserFbManager().Data.UserType == (int)Parameter.UserType.prep)
+{
+<a href="javascript:;" class="invoiceBack pageNav fIta" data-page="TlIslemlerim" data-ga="TlIslemlerim">TL İşlemlerim</a>
+}
+            </section>
+        </section>
+    </section>

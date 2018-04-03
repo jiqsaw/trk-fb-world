@@ -1,0 +1,99 @@
+﻿@using TurkcellFacebookDunyasi.Com.Helpers
+@model TurkcellFacebookDunyasi.App.Models.FaturalarimModel
+
+<script>
+
+    @if (new UserFbManager().Data.UserType == (int)Parameter.UserType.posp)
+    {
+        <text>
+        var sourceUrl = "/CallDetails/GetFriendCallDetailsPosp/?Period=@ViewBag.Period&friendFbId=@ViewBag.FriendFbId";
+        </text>
+    }
+    else
+    {
+        <text>
+            var sourceUrl = "/CallDetails/GetFriendCallDetailsPrep?dateIndex=@ViewBag.ActiveMonthIndex&friendFbId=@ViewBag.FriendFbId";
+        </text>    
+    }
+                
+
+    $(function () {                
+        
+        $("#gridCallDetails").kendoGrid({
+
+            dataSource: {
+                transport: {
+                    read: {
+                        url: sourceUrl,
+                        dataType: "json"
+                    }
+                },
+
+                schema: {
+                    model: {
+                        fields: {                            
+                            DateDisplay: { type: "string" },
+                            OpAddress: { type: "string" },
+                            Amount: { type: "string" },
+                            DataVolume: { type: "string" },
+                            Description: { type: "string" },
+
+                            UserId: {},
+                            FbId: {},
+                            IsClickToCallInvisible: { },
+                            IsClickToCallBlock: { },
+                            FirstNameView: { type: "string" },
+                            LastNameView: { type: "string" },
+                            PictureLink: { type: "string" }
+                        }
+                    }
+                },
+                pageSize: 10
+            },
+
+            rowTemplate: kendo.template($("#rowTemplate").html()),
+
+            sortable: true,
+            pageable: {
+                input: true,
+                numeric: false
+            },
+            columns: [
+                { field: "DateDisplay", title: "TARİH", sortable: false, width: 140 },
+                { field: "Amount", title: "BİRİM", width: 80 },
+                { field: "DataVolume", title: "TUTAR(TL)" }
+            ],
+
+            change: function () {
+                setTimeout(function () {
+                    $(".nano").nanoScroller({ alwaysVisible: true });
+                    $(".ajax").colorbox();
+                }, 500);
+            },
+
+            dataBound: function (e) {
+                if (this.dataSource.total() < 1)
+                    $('#noItems').fadeIn('slow');
+            }
+        });
+
+    });
+
+
+</script>
+
+
+
+<script id="rowTemplate" type="text/x-kendo-tmpl">
+
+    <tr>
+        <td>#: DateDisplay #</td>
+        <td>#: Amount #</td>
+        <td>#: DataVolume #</td>
+    </tr>
+
+</script>
+
+<div id="gridCallDetails" class="k-grid k-widget"></div>
+
+<section id="noItems" style="display: none;"><br />Görüşme kaydı bulunmamaktadır..</section>

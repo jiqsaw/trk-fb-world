@@ -1,0 +1,143 @@
+﻿@using TurkcellFacebookDunyasi.Com.Helpers
+
+<script>
+    var nextUrl = "@ViewBag.NextUrl";
+    
+    $(function () {
+
+        $.colorbox({
+            onComplete: function () {
+                $("#FriendSearch").focus();
+                radioChecked();
+                $(".nano2").nanoScroller({ alwaysVisible: true });
+                $(".ajax").colorbox();
+            }
+        });
+
+    });
+
+
+</script>
+<style>
+    .nano2 { width: 100%; height: 490px; }
+    .p_friendContainer { display:none; }
+</style>
+<div id='colorboxContentainer5'>
+    <div id="colorboxContent5">
+		<h2 class="colorboxHeader">Arkadaşlarınız</h2>
+         
+        <section id="ayarlar">
+
+            <span class="fLeft friendListInfo">Lütfen bir arkadaşınızı seçin.</span>
+
+        <section class="friendBox" >
+            <section class="_top"></section>
+            <section class="_cont">
+
+                <section class="specialText fLeft" style="margin-bottom:18px;">
+                    <input id="FriendSearch" type="text" style="width:320px" placeholder="Arkadaşlarınız arasında arayın..." />
+                    <span class="searchBtn searchBtn2"></span>
+                </section>
+
+                <script id="templateFriend" type="text/x-kendo-template">
+                    <aside class="friendUser2">
+                      
+                            <figure class="fLeft user userMedium">
+                                <img src="#= Picture.Data.Url #" border="0" />
+                            </figure>
+                            <label class="noneLink">
+                                <p>#= FirstNameView # #= LastNameView #</p>
+                            </label>
+                            
+                            #if (Msisdn != null && Msisdn != '')  { #
+                            <a href="javascript:selectFriend('#= UserId #','#= FbId #','#= FirstNameView #','#= LastNameView #','#= Picture.Data.Url #','#= Msisdn #');" class="selectLink">seç</a>
+                            # } #
+                            #if (Msisdn == null || Msisdn == '')  { #
+                            <a href="javascript:sendRequestToRecipients('#= FbId #');" class="inviteLink" data-ga="Invite_#= FbId #">davet et</a>
+                            # } #
+                        
+                    </aside>
+
+                    <ins class="line"></ins>
+                </script>
+
+                <script>
+                    var frDataSource = null;
+                    $(document).ready(function () {
+
+                        // create a template using the above definition
+                        var template = kendo.template($("#templateFriend").html());
+                        var friendDataSource = new kendo.data.DataSource({
+                            transport: {
+                                read: {
+                                    url: "/User/GetAllFriends",
+                                    dataType: "json"
+                                }
+                            },
+                            schema: {
+                                model: {
+                                    fields: {
+                                        Name: { type: "string" }
+                                    }
+                                }
+                            },
+                            change: function () { // subscribe to the CHANGE event of the data source
+                                $("#p_friendAllContent").html(kendo.render(template, this.view())); // populate the table
+                                $(".nano2").nanoScroller({ alwaysVisible: true });
+                                $(".ajax").colorbox();
+                            }
+                        });
+
+                        friendDataSource.read();
+
+                        $("#FriendSearch").on("keyup", function (e) {
+                            kGridSearch(friendDataSource, e);
+                        });
+
+                        //Scroll için..
+                        setTimeout(function () {
+                            var html = $("#p_friendAllContent").html();
+                            $("#p_friendAllContent").html('');
+                            $("#p_friendAllContent").html(html);
+                            $(".nano2").nanoScroller({ alwaysVisible: true });
+                        }, 500);
+                   
+                    });
+                </script>
+
+                <section id="p_friendAll" class="nano2">
+                    <section class="content" id="p_friendAllContent">
+                        Arkadaş listeniz yükleniyor...
+                    </section>
+                </section>
+
+            </section>
+            <section class="_bot"></section>
+        </section>
+
+        <ins></ins>
+
+        </section>
+
+    </div>
+</div>
+<a class="ajax" id="ClickToPage" style="display:none;">ClickToPage</a>
+<script>
+    $(document).ready(function () {
+        $(".ajax").colorbox();
+    });
+
+    function selectFriend(_userId, _fbId, _firstName, _lastName, _pictureLink, _msisdn) {
+        if (nextUrl=="TlIste/Default") {
+            $("#ClickToPage").attr("href", "/" + nextUrl + "/?UserId=" + _userId);
+            $("#ClickToPage").click();
+        }
+        else if (nextUrl == "SmsGonder") {
+            addFriends(_userId, _fbId, _firstName, _lastName, _pictureLink, _msisdn);
+        }
+        else if (nextUrl == "TlGonder/Default") {
+            $("#ClickToPage").attr("href", "/" + nextUrl + "/?UserId=" + _userId);
+            $("#ClickToPage").click();
+        }
+    }
+</script>

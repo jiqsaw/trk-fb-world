@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sch="http://vav.kartaca.com/XMLSchema/CallService" xmlns:tns="http://vav.kartaca.com/XMLSchema/CallService" targetNamespace="http://vav.kartaca.com/XMLSchema/CallService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <schema xmlns:santral="http://vav.kartaca.com/XMLSchema/Service" xmlns:call="http://vav.kartaca.com/XMLSchema/CallService" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://vav.kartaca.com/XMLSchema/CallService" xmlns="http://www.w3.org/2001/XMLSchema">
+      <simpleType name="callStatus">
+        <restriction base="string">
+          <enumeration value="INITIALIZING" />
+          <enumeration value="DIALING_A" />
+          <enumeration value="DIALING_B" />
+          <enumeration value="LIVE" />
+          <enumeration value="CLOSED" />
+        </restriction>
+      </simpleType>
+      <simpleType name="scenario">
+        <restriction base="string">
+          <enumeration value="MSISDN_PREREQ" />
+          <enumeration value="CODE_PREREQ" />
+          <enumeration value="MSISDN_COUNT" />
+          <enumeration value="CODE_COUNT" />
+          <enumeration value="MSISDN_MINUTE" />
+          <enumeration value="CODE_MINUTE" />
+        </restriction>
+      </simpleType>
+      <simpleType name="participantStatus">
+        <restriction base="string">
+          <enumeration value="UNKNOWN" />
+          <enumeration value="BUSY" />
+          <enumeration value="ANSWER" />
+          <enumeration value="CALLED_NUMBER" />
+          <enumeration value="NOT_REACHABLE" />
+          <enumeration value="NO_ANSWER" />
+          <enumeration value="DISCONNECTED" />
+        </restriction>
+      </simpleType>
+      <complexType name="exceptionDescription">
+        <simpleContent>
+          <extension base="string">
+            <attribute name="lang" type="string" />
+          </extension>
+        </simpleContent>
+      </complexType>
+      <complexType name="exception">
+        <sequence>
+          <element minOccurs="1" maxOccurs="1" name="code" type="long" />
+          <element minOccurs="1" maxOccurs="1" name="description" type="call:exceptionDescription" />
+        </sequence>
+      </complexType>
+      <simpleType name="transactionId">
+        <restriction base="string" />
+      </simpleType>
+      <element name="getRemainingBalanceRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="campaignCode" type="string" />
+            <element minOccurs="0" maxOccurs="1" name="usingCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="participantA" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <complexType name="balanceItem">
+        <sequence>
+          <element minOccurs="1" maxOccurs="1" name="start" type="dateTime" />
+          <element minOccurs="1" maxOccurs="1" name="end" type="dateTime" />
+          <element minOccurs="1" maxOccurs="1" name="duration" type="long" />
+          <element minOccurs="1" maxOccurs="1" name="price" type="double" />
+          <element minOccurs="1" maxOccurs="1" name="rank" type="long" />
+          <element minOccurs="1" maxOccurs="1" name="partialUse" type="boolean" />
+        </sequence>
+      </complexType>
+      <element name="getRemainingBalanceResponse">
+        <complexType>
+          <sequence>
+            <element minOccurs="0" maxOccurs="unbounded" name="package" type="call:balanceItem" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="startCallRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="campaignCode" type="string" />
+            <element minOccurs="0" maxOccurs="1" name="usingCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="participantA" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="participantB" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="startCallResponse">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="callId" type="long" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="getCallInformationRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="callId" type="long" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="getCallInformationResponse">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="callId" type="long" />
+            <element minOccurs="1" maxOccurs="1" name="campaignCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="participantA" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="participantStatusA" type="call:participantStatus" />
+            <element minOccurs="1" maxOccurs="1" name="participantB" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="participantStatusB" type="call:participantStatus" />
+            <element minOccurs="1" maxOccurs="1" name="status" type="call:callStatus" />
+            <element minOccurs="1" maxOccurs="1" name="requestTime" type="dateTime" />
+            <element minOccurs="0" maxOccurs="1" name="usingCode" type="string" />
+            <element minOccurs="0" maxOccurs="1" name="duration" type="long" />
+            <element minOccurs="0" maxOccurs="1" name="price" type="double" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="getCampaignInformationRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="campaignCode" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="getCampaignInformationResponse">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="scenario" type="call:scenario" />
+            <element minOccurs="1" maxOccurs="1" name="startDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="endDate" type="date" />
+            <element minOccurs="0" maxOccurs="1" name="minuteLimit" type="double" />
+            <element minOccurs="0" maxOccurs="1" name="spentMinutes" type="double" />
+            <element minOccurs="0" maxOccurs="1" name="benefitedUserLimit" type="long" />
+            <element minOccurs="0" maxOccurs="1" name="benefitedUsers" type="long" />
+            <element minOccurs="0" maxOccurs="1" name="callLimit" type="long" />
+            <element minOccurs="0" maxOccurs="1" name="calls" type="long" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="getRemainingBalanceResponse">
+    <wsdl:part name="getRemainingBalanceResponse" element="tns:getRemainingBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="startCallResponse">
+    <wsdl:part name="startCallResponse" element="tns:startCallResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCallInformationResponse">
+    <wsdl:part name="getCallInformationResponse" element="tns:getCallInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCallInformationRequest">
+    <wsdl:part name="getCallInformationRequest" element="tns:getCallInformationRequest" />
+  </wsdl:message>
+  <wsdl:message name="getCampaignInformationResponse">
+    <wsdl:part name="getCampaignInformationResponse" element="tns:getCampaignInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRemainingBalanceRequest">
+    <wsdl:part name="getRemainingBalanceRequest" element="tns:getRemainingBalanceRequest" />
+  </wsdl:message>
+  <wsdl:message name="startCallRequest">
+    <wsdl:part name="startCallRequest" element="tns:startCallRequest" />
+  </wsdl:message>
+  <wsdl:message name="getCampaignInformationRequest">
+    <wsdl:part name="getCampaignInformationRequest" element="tns:getCampaignInformationRequest" />
+  </wsdl:message>
+  <wsdl:portType name="CallPort">
+    <wsdl:operation name="getRemainingBalance">
+      <wsdl:input name="getRemainingBalanceRequest" message="tns:getRemainingBalanceRequest" />
+      <wsdl:output name="getRemainingBalanceResponse" message="tns:getRemainingBalanceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="startCall">
+      <wsdl:input name="startCallRequest" message="tns:startCallRequest" />
+      <wsdl:output name="startCallResponse" message="tns:startCallResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getCallInformation">
+      <wsdl:input name="getCallInformationRequest" message="tns:getCallInformationRequest" />
+      <wsdl:output name="getCallInformationResponse" message="tns:getCallInformationResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getCampaignInformation">
+      <wsdl:input name="getCampaignInformationRequest" message="tns:getCampaignInformationRequest" />
+      <wsdl:output name="getCampaignInformationResponse" message="tns:getCampaignInformationResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CallPortSoap11" type="tns:CallPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getRemainingBalance">
+      <soap:operation soapAction="" />
+      <wsdl:input name="getRemainingBalanceRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getRemainingBalanceResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startCall">
+      <soap:operation soapAction="" />
+      <wsdl:input name="startCallRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="startCallResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCallInformation">
+      <soap:operation soapAction="" />
+      <wsdl:input name="getCallInformationRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getCallInformationResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCampaignInformation">
+      <soap:operation soapAction="" />
+      <wsdl:input name="getCampaignInformationRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getCampaignInformationResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CallPortService">
+    <wsdl:port name="CallPortSoap11" binding="tns:CallPortSoap11">
+      <soap:address location="http://tiklakonuscorptest.turkcell.com.tr:80/vav-engine/service/call" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

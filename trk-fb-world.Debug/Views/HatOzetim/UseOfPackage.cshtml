@@ -1,0 +1,27 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.KalanKullanimBilgisiModel
+
+@foreach (var item in Model.serviceData.FreeUnits.Take(2).ToList())
+{                  
+    <section class="remainingContainer">
+        <label class="remainingTitle">
+            @item.CampaignName  <br /> <span>(Bitiş: @item.EndDate)</span>
+        </label>
+        <label class="remainingInfo">
+            <span class="remainingInfoLeft">@item.UnitTypeDesc</span>
+            <span class="remainingInfoRight">@String.Format("{0:0.00}",item.UsedBalance) / @item.TotalBalance @item.CreditUnit</span>
+        </label>
+        <label>
+            <aside id="bar_@item.Id"></aside>
+        </label>
+    </section>
+                        
+    <script>
+        $(function () {
+            RateGenerate('bar_@item.Id', '@item.Percentage%');
+        });
+    </script>
+}
+
+<aside class="title fReg listAll">
+    <a href="javascript:;" class="pageNav" data-page="HatOzetim" data-ga="HatOzetim">tümü</a>
+</aside>

@@ -1,0 +1,29 @@
+﻿@using TurkcellFacebookDunyasi.Com.Helpers
+
+<section class="tabs fReg">
+    <nav id="topMenu">
+        <a href="javascript:;" class="pageNav pageTab active" data-page="World/Entry" data-ga="AnaSayfa"><img src="@PathHelper.UrlStatic/images/icons/home-icon.png" /></a>
+        <a href="javascript:;" class="pageNav pageTab" data-page="HatOzetim" data-ga="HatOzetim">HAT ÖZETİM</a>
+        @if ((new UserFbManager()).Data.UserType==(int)Parameter.UserType.posp)
+        {
+            <a href="javascript:;" class="pageNav pageTab" data-page="Faturalarim" data-ga="Faturalarim">FATURALARIM</a>
+        }
+        else
+        {
+            <a href="javascript:;" class="pageNav pageTab" data-page="TlIslemlerim" data-ga="TLIslemlerim">TL İŞLEMLERİM</a>
+        }
+        <a href="javascript:;" class="pageNav pageTab" data-page="TlPaketYukle" data-ga="TLPaketYukle">TL/PAKET YÜKLE</a>
+        @if ((new UserFbManager()).Data.CustomerType == (int)Parameter.CustomerType.flat)
+        {
+            <a href="/Friend/FriendList/?NextUrl=TlGonder/Default" class="pageTab ajax" data-ga="TLGonder">TL GÖNDER</a>
+            if ((new UserFbManager()).Data.UserType==(int)Parameter.UserType.prep)
+            {
+            <a href="/Friend/FriendList/?NextUrl=TlIste/Default" class="pageTab ajax" id="navCreditRequest" data-ga="TLIste">TL İSTE</a>
+            }
+        }
+    </nav>
+
+    @if ((new UserFbManager()).Data.CustomerType == (int)Parameter.CustomerType.flat) {
+        <section class="shadow"></section>
+    }
+</section>

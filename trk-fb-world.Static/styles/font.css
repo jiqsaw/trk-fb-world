@@ -1,0 +1,49 @@
+﻿@font-face {
+    font-family: 'turkcellsaturabolregular';
+    src: url('font/turkcellsaturabol-turkcell.eot');
+    src: url('font/turkcellsaturabol-turkcell.eot?#iefix') format('embedded-opentype'),
+         url('font/turkcellsaturabol-turkcell.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'turkcellsaturaregular';
+    src: url('font/turkcellsaturareg-webfont.eot');
+    src: url('font/turkcellsaturareg-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/turkcellsaturareg-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'turkcellsaturameditaregular';
+    src: url('font/turkcellsaturamedita-webfont.eot');
+    src: url('font/turkcellsaturamedita-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/turkcellsaturamedita-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'turkcellsaturabolita';
+    src: url('font/turkcellsaturabolita-webfont.eot');
+    src: url('font/turkcellsaturabolita-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/turkcellsaturabolita-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+.fReg { font-family: 'turkcellsaturaregular',"Arial"; }
+.fBold { font-family: 'turkcellsaturabolregular', "Arial"; }
+.fIta { font-family: 'turkcellsaturameditaregular', "Arial"; }
+.fBoldIta { font-family: 'turkcellsaturabolita', "Arial"; }
+
+.fLightGreen{ color:#e2f577; }
+.fLightBlue { color: #b5caf9; }
+.fPink { color: #ec1c34; }
+.fWhite { color:#ffffff !important; }
+.f18 { font-size:18px; }
+.f20 { font-size:20px; }

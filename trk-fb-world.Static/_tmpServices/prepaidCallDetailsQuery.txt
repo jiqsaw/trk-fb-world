@@ -1,0 +1,17 @@
+﻿{"CallDetailsSuccessPage":
+	{"callDetails":
+		[
+			{"getDate":"10/03/2013","getHour":"22:10:54","getVolume":"59.0","getCalledNumber":"5358881131 ","getUsedCounter":"0.27966","getDescription":"TURKCELL"},
+			{"getDate":"10/03/2013","getHour":"22:10:54","getVolume":"59.0","getCalledNumber":"5329881131 ","getUsedCounter":"0.27966","getDescription":"TURKCELL"},
+			{"getDate":"10/03/2013","getHour":"21:27:51","getVolume":"23.0","getCalledNumber":"02163841110 ","getUsedCounter":"0.111864","getDescription":"YURTİÇİ"},
+			{"getDate":"10/03/2013","getHour":"21:27:51","getVolume":"23.0","getCalledNumber":"02163841110 ","getUsedCounter":"0.111864","getDescription":"YURTİÇİ"},
+			{"getDate":"10/03/2013","getHour":"21:08:07","getVolume":"59.0","getCalledNumber":"05424341620 ","getUsedCounter":"0.50847","getDescription":"DİĞER OPERATÖR"},
+			{"getDate":"10/03/2013","getHour":"21:08:07","getVolume":"59.0","getCalledNumber":"05424341620 ","getUsedCounter":"0.50847","getDescription":"DİĞER OPERATÖR"},
+			{"getDate":"10/03/2013","getHour":"19:30:55","getVolume":"0.0","getCalledNumber":"905322339488 ","getUsedCounter":"3.1548","getDescription":"Yurtdışında Yapılan Arama"},
+			{"getDate":"10/03/2013","getHour":"19:30:55","getVolume":"0.0","getCalledNumber":"905322339488 ","getUsedCounter":"3.1548","getDescription":"Yurtdışında Yapılan Arama"},
+			{"getDate":"10/03/2013","getHour":"18:43:03","getVolume":"0.0","getCalledNumber":"905329010000 ","getUsedCounter":"0.5676","getDescription":"Gönderilen Kısa Mesaj"},
+			{"getDate":"10/03/2013","getHour":"18:43:03","getVolume":"0.0","getCalledNumber":"905329010000 ","getUsedCounter":"0.5676","getDescription":"Gönderilen Kısa Mesaj"}
+		],
+		"currentPage":"1","totalPage":"3"
+	}
+}

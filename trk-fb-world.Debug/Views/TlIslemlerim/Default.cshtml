@@ -1,0 +1,91 @@
+﻿@using TurkcellFacebookDunyasi.Com.Helpers
+
+<section class="subContainer">
+
+    <section class="tabContents">
+        <section class="tabContent fLeft">
+
+            <section class="invoiceTabs" id="tabCont" style="display:block">
+
+                <section id="invoiceContainer" style="overflow:hidden; width:750px; height:550px; float:left;">
+                    <section id="invoiceTabCont" style="width:1520px; height:550px; float:left;">
+
+                        <section class="invoiceTab" style="margin-left: -1510px;">
+                            
+                            <section id="invoiceDetail">
+                            </section>
+
+                        </section>
+
+                        <section class="invoiceTab" style="display: block; margin-left: 0px;">
+           
+                            <h2>TL İŞLEMLERİM</h2>
+ 
+                             <article class="mainContainer fLeft">
+                                <section class="billingInfo">
+                                    <h3>GÜNCEL TL BİLGİLERİM</h3>
+                                    <ins></ins>
+                                    <section id="tlStatus">
+                                        <script>
+                                            partialViewLoad("tlStatus", "/TlIslemlerim/TLStatus");
+                                        </script>
+                                    </section>
+
+                                </section>
+                             </article>
+
+                             <article class="mainContainer fRight">
+                                <section class="billingInfo">
+                                    <h3>GÖRÜŞME DETAYLARIM</h3>
+                                    <ins></ins>
+                                    <section id="pasCalled">
+                                        <script>
+                                            partialViewLoad("pasCalled", "/TlIslemlerim/PeriodSelector");
+                                        </script>
+                                    </section>
+                                </section>
+                             </article>
+
+                             <ins></ins>
+
+                             <article class="mainContainer fLeft">
+                                <section class="billingInfo">
+                                    <h3>EN ÇOK KONUŞTUĞUM KİŞİLER</h3>
+                                    <ins></ins>
+                                    <section id="cokKonustuklarim">
+                                        <script>
+                                            partialViewLoad("cokKonustuklarim", "/CallDetails/TopCalledNumbers");
+                                        </script>
+                                    </section>
+                                </section>
+                             </article>
+
+                             <article class="mainContainer fRight">
+                                <section class="billingInfo">
+                                    <h3>KREDİ İSTE LİMİTİM</h3>
+                                    <ins></ins>
+                                    <section id="krediIsteLimit">
+                                        <script>
+                                            partialViewLoad("krediIsteLimit", "/TlIslemlerim/KrediIsteLimit");
+                                        </script>
+                                    </section>
+                                </section>
+                             </article>
+                         
+                        </section>
+
+                    </section>
+                </section>
+
+                @*<section class="invoicePoints">
+                    <nav>
+                        <a href="javascript:invoiceTabOpen(0);" data-ga="TlIslemlerim_Detail" data-index="0" data-load-page="/CallDetails/CallDetail/0"></a>
+                        <a href="javascript:invoiceTabOpen(1);" class="active" data-ga="TlIslemlerim_Default"></a>
+                    </nav>
+                </section>*@
+
+            </section>    
+        </section>
+    </section>
+
+</section>

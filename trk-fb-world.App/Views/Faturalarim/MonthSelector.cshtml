@@ -1,0 +1,41 @@
+﻿                    
+<select name="slInvoiceMonths" id="slInvoiceMonths" style="width:190px">
+</select>
+                    
+<script>
+
+    $(document).ready(function () {
+
+        $("#slInvoiceMonths").kendoDropDownList({
+            dataTextField: "MonthDisplay",
+            dataValueField: "Period",
+            dataSource: {
+                type: "json",
+                transport: {
+                    read: {
+                        url: "/Faturalarim/Last6BillsJson",
+                    }
+                }
+            },
+            index: 0,
+            change: onSlMonthChange,
+            dataBound: function (e) {
+                $('#slInvoiceMonths option')[$('#slInvoiceMonths option').length - 1].selected = true;
+                onSlMonthChange();
+                selectedPeriod = $("#slInvoiceMonths").val();
+            }                                
+        });                 
+
+    });
+
+    function onSlMonthChange() {
+                            
+        var dropdownlist = $("#slInvoiceMonths").data("kendoDropDownList");
+                            
+        selectedPeriod = $("#slInvoiceMonths").val();
+                            
+        friendProfilePospMonthChange();
+
+    }
+
+</script>

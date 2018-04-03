@@ -1,0 +1,16 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.ResultModel
+
+<script>
+    $(function () {
+        var resultId = "#@Model.Type.ToString()";
+        $(resultId).fadeOut().fadeIn();
+    });
+</script>
+
+<ins class="space35"></ins>    
+<section class="@Model.Type.ToString() displayNone" id="@Model.Type.ToString()"> 
+    @Html.Raw(Model.Message)
+</section>
+<script>
+    iFrameHeightRender();
+</script>

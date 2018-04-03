@@ -1,0 +1,151 @@
+/** initial setup **/
+.nano,.nano2,.nano3 {
+  position : relative;
+  width    : 100%;
+  height   : 100%;
+  overflow : hidden;
+}
+.nano .content, .nano2 .content, .nano3 .content {
+  position      : absolute;
+  overflow      : scroll;
+  overflow      : hidden\9;
+  moz-overflow  : hidden;
+  overflow-x    : hidden;
+  top           : 0;
+  right         : 0;
+  bottom        : 0;
+  left          : 0;
+}
+.nano .content, .nano2 .content, .nano3 .content, x:-moz-any-link, x:default { overflow  : hidden !important; }
+.nano .content:focus, .nano2 .content:focus, .nano3 .content:focus {
+  outline: thin dotted;
+}
+.nano .content::-webkit-scrollbar, .nano2 .content::-webkit-scrollbar, .nano3 .content::-webkit-scrollbar {
+  visibility: hidden;
+}
+.has-scrollbar .content::-webkit-scrollbar {
+  visibility: visible;
+}
+
+
+.nano > .pane {
+  background : rgba(0,0,0,.30);
+  position   : absolute;
+  width      : 10px;
+  right      : 0;
+  top        : 1px;
+  bottom     : -1px;
+  visibility : hidden\9; /* Target only IE7 and IE8 with this hack */
+  opacity    : .01; 
+  -webkit-transition    : .2s;
+  -moz-transition       : .2s;
+  -o-transition         : .2s;
+  transition            : .2s;
+  -moz-border-radius    : 5px;
+  -webkit-border-radius : 5px;  
+  border-radius         : 5px;
+  
+  margin-top:3px !important;
+}
+.nano > .pane > .slider {
+  background: rgba(79,116,200,1);
+  position              : relative;
+  -moz-border-radius    : 3px;
+  -webkit-border-radius : 3px;  
+  border-radius         : 3px;
+  margin-top:-3px !important;
+  cursor                : pointer;
+}
+.nano > .pane > .slider:hover,.nano > .pane > .slider:checked {
+    background: #4368bd;
+}
+.nano:hover > .pane, .pane.active, .pane.flashed {
+  visibility : visible\9; /* Target only IE7 and IE8 with this hack */
+  opacity    : 0.99;
+}
+
+
+
+
+/* ------- ----------*/
+
+.nano2 > .pane {
+  background : rgba(0,0,0,.25);
+  position   : absolute;
+  width      : 10px;
+  right      : 0;
+  top        : 1px;
+  bottom     : -1px;
+  visibility : hidden\9; /* Target only IE7 and IE8 with this hack */
+  opacity    : .01; 
+  -webkit-transition    : .2s;
+  -moz-transition       : .2s;
+  -o-transition         : .2s;
+  transition            : .2s;
+  -moz-border-radius    : 5px;
+  -webkit-border-radius : 5px;  
+  border-radius         : 5px;
+  margin-top:3px !important;
+}
+.nano2 > .pane > .slider {
+  background: rgba(0,0,0,.4);
+  position              : relative;
+  margin                : 0 1px;
+  -moz-border-radius    : 3px;
+  -webkit-border-radius : 3px;  
+  border-radius         : 3px;
+  margin-top:-3px !important;
+  cursor                : pointer;
+}
+.nano2 > .pane > .slider:hover,.nano2 > .pane > .slider:checked {
+    background: rgba(0,0,0,.6);
+}
+.nano2:hover > .pane, .pane.active, .pane.flashed {
+  visibility : visible\9; /* Target only IE7 and IE8 with this hack */
+  opacity    : 0.99;
+}
+
+
+/* ------- ----------*/
+
+.nano3 > .pane {
+  background : transparent;
+  position   : absolute;
+  width      : 7px;
+  right      : 0;
+  top        : 1px;
+  bottom     : -1px;
+  visibility : hidden\9; /* Target only IE7 and IE8 with this hack */
+  opacity    : .01; 
+  -webkit-transition    : .2s;
+  -moz-transition       : .2s;
+  -o-transition         : .2s;
+  transition            : .2s;
+  -moz-border-radius    : 2px;
+  -webkit-border-radius : 2px;  
+  border-radius         : 2px;
+  margin-top:3px !important;
+}
+.nano3 > .pane > .slider {
+  background: #a43272;
+  position              : relative;
+  margin                : 0 1px;
+  -moz-border-radius    : 2px;
+  -webkit-border-radius : 2px;  
+  border-radius         : 2px;
+  margin-top:-3px !important;
+  cursor                : pointer;
+}
+.nano3 > .pane > .slider:hover,.nano3 > .pane > .slider:checked {
+    background: #922964;
+}
+.nano3:hover > .pane, .pane.active, .pane.flashed {
+  visibility : visible\9; /* Target only IE7 and IE8 with this hack */
+  opacity    : 0.99;
+}
+
+.has-scrollbar > .content { right:14px !important; outline:none !important; }
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .has-scrollbar > .content { right:10px !important; outline:none !important; }
+}
+.nano .content, .nano3 .content { right: 0px !important; }

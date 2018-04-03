@@ -1,0 +1,96 @@
+﻿@using TurkcellFacebookDunyasi.Com.Helpers
+
+@model TurkcellFacebookDunyasi.App.Models.CallModel
+
+<script>
+    $(document).ready(function () {
+        //$("select").kendoDropDownList();
+        $("#btnAra").click(function () {
+
+            $("#CallStep1").hide();
+            $("#CallStep2").fadeIn('slow');
+
+            var postData = { FriendUserId: @Model.FriendData.UserId };
+
+            $.ajax({
+                url: '/TiklaAra/CallStart/',
+                type: "POST",
+                data: postData,
+                dataType: 'json',
+                success: function (response) {
+
+                    if (response.result == 0) {
+                        $("#CallStep2").hide();
+                        $('#CallStepError').show();
+                    }
+
+                }
+            });
+
+        });
+    });
+</script>
+
+<div id='colorboxContentainer2'>
+    <div id="colorboxContent2">
+		<h2 class="colorboxHeader">Arkadaşını Tıkla Ara</h2>              
+
+        <section id="CallStep1">
+          
+            <section id="remainingBalance"></section>
+            <script>
+                partialViewLoad("remainingBalance", "/TiklaAra/RemainingBalance");
+            </script>
+
+        <section class="fLeft profil">
+            <figure class="fLeft user userLarge">
+                <img src="@Model.FriendData.PictureLink" border="0" />
+            </figure>
+            <section class="fRight fBoldIta">
+                <p class="large">@Model.FriendData.FirstNameView @Model.FriendData.LastNameView</p>
+                <ins></ins>
+
+                @if (Model.IsAvailable) {
+                    <a href="javascript:;" id="btnAra" data-ga="Araniyor" class="dtCall">Tıkla ARA</a>
+                }
+                else
+                {
+                    <section class="error">Arkadaşın bu zaman diliminde aranmak istemiyor.</section>
+                }
+
+            </section>
+        </section>
+
+          <section class="textAreaBottom fIta">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s , when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries..</section>
+            
+        </section>
+
+        <section id="CallStep2" style="display:none;">
+            <ins class="space35"></ins>
+            
+            <section class="calling">
+
+                <section class="contacts fLeft">
+                    <img src="@Model.UserFb.Data.FbProfilePicture" class="contact1" />
+                    <img src="@Model.FriendData.PictureLink" class="contact2" />
+                </section>
+
+                <section class="callingSuccess fRight fIta">
+                    <b>Aranıyor<img src="@PathHelper.UrlStatic/images/global/callingPoint.gif" /></b><br />
+                    Karşı taraf aramayı kabul ettiğinde, Turkcell sizi arayacak ve aradığınız kişiye bağlayacak.
+                </section>
+                
+            </section>
+
+        </section>
+
+        <section id="CallStepError" class="error" style="display:none;">
+            <ins class="space35"></ins>
+
+            ARAMA ŞU AN İÇİN GERÇEKLEŞTİRİLEMİYOR! <br /> 
+            Lütfen daha sonra tekrar deneyiniz...
+
+        </section>
+
+    </div>
+</div>

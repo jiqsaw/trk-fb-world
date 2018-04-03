@@ -1,0 +1,25 @@
+﻿@model TurkcellFacebookDunyasi.App.Models.ClickToCallUserBlockListModel
+
+@if (Model.BlockList.Count > 0)
+{
+
+    foreach (var item in Model.BlockList)
+    {                                                            
+                            
+        <aside class="friendUser">
+            <figure class="fLeft user userMedium">
+                <img src="@item.PictureLink" border="0" />
+            </figure>
+            <label>
+                <p>@item.FirstNameView @item.LastNameView</p>
+                <a href="javascript:removeBlock('@item.FbId');" class="fIta refresh">Engeli Kaldır</a>
+            </label>
+        </aside>
+
+        <ins class="line"></ins>
+                                
+    }
+} else
+{
+    <section class="fIta">Engellediğiniz arkadaşınız bulunmamaktadır.</section>
+}

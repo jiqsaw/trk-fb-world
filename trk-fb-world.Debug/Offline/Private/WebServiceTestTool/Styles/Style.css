@@ -1,0 +1,9 @@
+﻿html, body { font-family: 'Courier New'; font-size: 12px; background: #000; color: #00ff90; }
+h1 { font-weight: bold; display: block; font-size: 14px; color: #2d9d1c; margin: 15px 0 0; padding: 0 0 3px; }
+.exc { color: red; }
+
+.string { color: green; }
+.number { color: darkorange; }
+.boolean { color: blue; }
+.null { color: magenta; }
+.key { color: red; }

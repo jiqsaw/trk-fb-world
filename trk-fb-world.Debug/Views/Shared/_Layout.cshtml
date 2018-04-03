@@ -1,0 +1,97 @@
+﻿@using TurkcellFacebookDunyasi.Com.Helpers
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="http://www.facebook.com/2008/fbml">
+
+<head>        
+    
+    <title>Turkcell Hesabım</title>
+
+    @Html.Partial("_LayoutHead")
+
+</head>
+<body>
+
+
+<div id="fb-root"></div>
+
+<script>
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: _appId, // App ID
+            status: true, // check login status
+            cookie: true, // enable cookies to allow the server to access the session
+            xfbml: true,  // parse XFBML
+            channelUrl: '@PathHelper.UrlWeb/channel.html' //custom channel
+        });
+
+        FB.Canvas.setAutoGrow(true);
+    };
+
+    // Load the SDK Asynchronously
+    (function (d) {
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/tr_TR/all.js";
+        ref.parentNode.insertBefore(js, ref);
+    }(document));
+
+</script>        
+        <div style="display:none;">
+            <span>Secure Connection: </span>
+            <span>@Request.IsSecureConnection.ToString()</span>
+            <br />
+            <span>Protocol Type:</span>
+            <span>@Request.ServerVariables["SERVER_PROTOCOL"].ToString()</span>
+        </div>
+        <section class="wrapper">
+
+            @Html.Partial("Header")
+
+            <section class="container">
+               
+                <section class="top">
+
+                    <section class="subContainerTop">
+                        
+                    @Html.Partial("UserInfo")
+
+                    @Html.Action("BigModul", "Menu")
+
+                    </section>
+
+                    @Html.Action("Top", "Menu")
+
+                </section>
+
+                <section class="pageLoading">
+                    @Html.Partial("Loading")
+                </section>
+
+                <section class="pageBody">
+
+                    @RenderBody()
+
+                </section>
+
+                <ins></ins>
+
+                @Html.Action("General", "Offer")
+   
+	        </section>
+                    
+            @Html.Partial("Footer")
+
+            
+
+        </section>
+
+        @Html.Partial("_Kendo")
+        
+</body>
+</html>
